@@ -6,7 +6,7 @@ namespace Models
 {
     public abstract class IChip
     {
-        protected IChip(int id)
+        public IChip(int id)
         {
             this.id = id;
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj": {}
+    "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\Interfaces.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj": {
+    "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj",
-        "projectName": "Catan",
-        "projectPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj",
+        "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\Interfaces.csproj",
+        "projectName": "Interfaces",
+        "projectPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\Interfaces.csproj",
         "packagesPath": "C:\\Users\\Joeyvanderwoude\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\obj\\",
+        "outputPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,18 +41,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.1.1, )",
-              "autoReferenced": true
-            },
-            "Microsoft.AspNetCore.Razor.Design": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.1.2, )"
-            },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true

@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Models\\Models.csproj",
-      "projectName": "Models",
-      "projectPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Models\\Models.csproj",
+      "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\Interfaces.csproj",
+      "projectName": "Interfaces",
+      "projectPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\Interfaces.csproj",
       "packagesPath": "C:\\Users\\Joeyvanderwoude\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Models\\obj\\",
+      "outputPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

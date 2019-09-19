@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joeyvanderwoude\\source\\repos\\Catan\\DAO\\DAO.csproj": {}
+    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\DAO\\DAO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joeyvanderwoude\\source\\repos\\Catan\\DAO\\DAO.csproj": {
+    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\DAO\\DAO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\source\\repos\\Catan\\DAO\\DAO.csproj",
+        "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\DAO\\DAO.csproj",
         "projectName": "DAO",
-        "projectPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\Catan\\DAO\\DAO.csproj",
+        "projectPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\DAO\\DAO.csproj",
         "packagesPath": "C:\\Users\\Joeyvanderwoude\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\Catan\\DAO\\obj\\",
+        "outputPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\DAO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
