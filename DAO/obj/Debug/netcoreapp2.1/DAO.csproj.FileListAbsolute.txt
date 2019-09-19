@@ -1,0 +1,6 @@
+C:\Users\ninov\Source\Repos\Dryjoey\CatanPT2\DAO\bin\Debug\netcoreapp2.1\DAO.deps.json
+C:\Users\ninov\Source\Repos\Dryjoey\CatanPT2\DAO\bin\Debug\netcoreapp2.1\DAO.dll
+C:\Users\ninov\Source\Repos\Dryjoey\CatanPT2\DAO\obj\Debug\netcoreapp2.1\DAO.csprojAssemblyReference.cache
+C:\Users\ninov\Source\Repos\Dryjoey\CatanPT2\DAO\obj\Debug\netcoreapp2.1\DAO.csproj.CoreCompileInputs.cache
+C:\Users\ninov\Source\Repos\Dryjoey\CatanPT2\DAO\obj\Debug\netcoreapp2.1\DAO.AssemblyInfoInputs.cache
+C:\Users\ninov\Source\Repos\Dryjoey\CatanPT2\DAO\obj\Debug\netcoreapp2.1\DAO.AssemblyInfo.cs

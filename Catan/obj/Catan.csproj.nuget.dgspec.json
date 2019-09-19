@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joeyvanderwoude\\source\\repos\\Catan\\Catan\\Catan.csproj": {}
+    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joeyvanderwoude\\source\\repos\\Catan\\Catan\\Catan.csproj": {
+    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\source\\repos\\Catan\\Catan\\Catan.csproj",
+        "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj",
         "projectName": "Catan",
-        "projectPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\Catan\\Catan\\Catan.csproj",
+        "projectPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj",
         "packagesPath": "C:\\Users\\Joeyvanderwoude\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\Catan\\Catan\\obj\\",
+        "outputPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
