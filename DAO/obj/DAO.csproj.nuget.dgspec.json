@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\DAO\\DAO.csproj": {}
+    "D:\\Projects\\Catan_proftaak\\DAO\\DAO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\DAO\\DAO.csproj": {
+    "D:\\Projects\\Catan_proftaak\\DAO\\DAO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\DAO\\DAO.csproj",
+        "projectUniqueName": "D:\\Projects\\Catan_proftaak\\DAO\\DAO.csproj",
         "projectName": "DAO",
-        "projectPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\DAO\\DAO.csproj",
-        "packagesPath": "C:\\Users\\Joeyvanderwoude\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\DAO\\obj\\",
+        "projectPath": "D:\\Projects\\Catan_proftaak\\DAO\\DAO.csproj",
+        "packagesPath": "C:\\Users\\rickv\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\Catan_proftaak\\DAO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Joeyvanderwoude\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\rickv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
@@ -30,8 +32,8 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Models\\Models.csproj"
+              "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj": {
+                "projectPath": "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj"
               }
             }
           }
@@ -50,6 +52,10 @@
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.6.1, )"
             }
           },
           "imports": [
@@ -60,21 +66,23 @@
         }
       }
     },
-    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Models\\Models.csproj": {
+    "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Models\\Models.csproj",
+        "projectUniqueName": "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\Joeyvanderwoude\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Models\\obj\\",
+        "projectPath": "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\rickv\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\Catan_proftaak\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Joeyvanderwoude\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\rickv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"

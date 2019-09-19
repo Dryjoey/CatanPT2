@@ -704,24 +704,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Joeyvanderwoude\\.nuget\\packages\\": {},
+    "C:\\Users\\rickv\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\Interfaces.csproj",
+      "projectUniqueName": "D:\\Projects\\Catan_proftaak\\Interfaces\\Interfaces.csproj",
       "projectName": "Interfaces",
-      "projectPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\Interfaces.csproj",
-      "packagesPath": "C:\\Users\\Joeyvanderwoude\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Interfaces\\obj\\",
+      "projectPath": "D:\\Projects\\Catan_proftaak\\Interfaces\\Interfaces.csproj",
+      "packagesPath": "C:\\Users\\rickv\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\Catan_proftaak\\Interfaces\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Joeyvanderwoude\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\rickv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -733,8 +736,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Models\\Models.csproj"
+            "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj": {
+              "projectPath": "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj"
             }
           }
         }
