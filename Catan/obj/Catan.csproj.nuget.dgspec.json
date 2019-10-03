@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj": {}
+    "D:\\Projects\\Catan_proftaak\\Catan\\Catan.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj": {
+    "D:\\Projects\\Catan_proftaak\\Catan\\Catan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj",
+        "projectUniqueName": "D:\\Projects\\Catan_proftaak\\Catan\\Catan.csproj",
         "projectName": "Catan",
-        "projectPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\Catan.csproj",
-        "packagesPath": "C:\\Users\\Joeyvanderwoude\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Catan\\obj\\",
+        "projectPath": "D:\\Projects\\Catan_proftaak\\Catan\\Catan.csproj",
+        "packagesPath": "C:\\Users\\rickv\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\Catan_proftaak\\Catan\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Joeyvanderwoude\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\rickv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
