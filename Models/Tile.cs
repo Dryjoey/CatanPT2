@@ -6,15 +6,36 @@ namespace Models
 {
     public class Tile
     {
-        public Tile(int id, Categorie categorie, TileChip tilechip)
+        public Tile(int id, TileChip tilechip)
         {
             this.id = id;
-            this.categorie = categorie;
             this.tilechip = tilechip;
         }
 
         public int id { get; private set; }
-        public Categorie categorie { get; private set; }
         public TileChip tilechip { get; private set; }
+
+        public string [] Tilecategorie = new string[19] 
+        {
+            "desert",
+            "brick",
+            "brick",
+            "brick",
+            "lumber",
+            "lumber",
+            "lumber",
+            "lumber",
+            "ore",
+            "ore",
+            "ore",
+            "sheep",
+            "sheep",
+            "sheep",
+            "sheep",
+            "wheat",
+            "wheat",
+            "wheat",
+            "wheat"
+        };
     }
 }

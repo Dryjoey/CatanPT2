@@ -207,6 +207,29 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "DAO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DAO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAO.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
+        }
       }
     }
   },
@@ -680,11 +703,23 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "DAO/1.0.0": {
+      "type": "project",
+      "path": "../DAO/DAO.csproj",
+      "msbuildProject": "../DAO/DAO.csproj"
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/Models.csproj",
+      "msbuildProject": "../Models/Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "Microsoft.NETCore.App >= 2.1.0"
+      "DAO >= 1.0.0",
+      "Microsoft.NETCore.App >= 2.1.0",
+      "Models >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -694,11 +729,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Logic\\Logic.csproj",
+      "projectUniqueName": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Logic\\Logic.csproj",
       "projectName": "Logic",
-      "projectPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Logic\\Logic.csproj",
+      "projectPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Logic\\Logic.csproj",
       "packagesPath": "C:\\Users\\Joeyvanderwoude\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Joeyvanderwoude\\Source\\Repos\\CatanPT2\\Logic\\obj\\",
+      "outputPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Logic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -716,7 +751,14 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\DAO\\DAO.csproj": {
+              "projectPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\DAO\\DAO.csproj"
+            },
+            "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\Joeyvanderwoude\\source\\repos\\CatanPT2\\Models\\Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

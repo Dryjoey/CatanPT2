@@ -4,13 +4,10 @@ using System.Text;
 
 namespace Models
 {
-    public class TileChip :IChip 
+    public class TileChip  
     {
-        public TileChip(string value)
-        {
-            this.value = value;
-        }
+        
+     public int[] AllChips = new int[18] { 2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12 };
 
-        public string value { get; private set; }
     }
 }
