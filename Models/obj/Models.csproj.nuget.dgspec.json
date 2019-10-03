@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj": {}
+    "C:\\Users\\ninov\\Source\\Repos\\Dryjoey\\CatanPT2\\Models\\Models.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj": {
+    "C:\\Users\\ninov\\Source\\Repos\\Dryjoey\\CatanPT2\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\ninov\\Source\\Repos\\Dryjoey\\CatanPT2\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "D:\\Projects\\Catan_proftaak\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\rickv\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Catan_proftaak\\Models\\obj\\",
+        "projectPath": "C:\\Users\\ninov\\Source\\Repos\\Dryjoey\\CatanPT2\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\ninov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ninov\\Source\\Repos\\Dryjoey\\CatanPT2\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\rickv\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ninov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
@@ -51,10 +49,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
