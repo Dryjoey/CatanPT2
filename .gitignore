@@ -71,3 +71,5 @@ _[Ss]cripts
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
+*.lock
+/.vs/Catan/v15/Server/sqlite3
