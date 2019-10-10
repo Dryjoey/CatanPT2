@@ -10,9 +10,9 @@ namespace Models
 
 
         public int id { get; private set; }
-        public TileChip tilechip { get; private set; }
         public string tilecategorie; 
         public int chip;
+        public string placement;
 
     }
 }
