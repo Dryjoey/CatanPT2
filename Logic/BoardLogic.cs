@@ -13,7 +13,7 @@ namespace Logic
         public static int[][] adjecent = new int[][]
         {
         new int[] {1,3,4},
-        new int [] {0,2,4,5},
+        new int[] {0,2,4,5},
         new int[]{1,5,6},
         new int[]{0,4,7,8},
         new int[]{0,1,3,5,8,9},
@@ -46,6 +46,20 @@ namespace Logic
                 T value = list[k];
                 list[k] = list[n];
                 list[n] = value;
+            }
+        }
+        public void Place(List<Tile> tiles)
+        {
+            foreach(Tile tile in tiles)
+            {
+                if(tile.chip == 8 || tile.chip == 6)
+                {
+                    PlaceRed(tile);
+                }
+                else
+                {
+                    PlaceRest(tile);
+                }
             }
         }
        
