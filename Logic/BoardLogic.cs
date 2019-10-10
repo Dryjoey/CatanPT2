@@ -48,7 +48,7 @@ namespace Logic
                 list[n] = value;
             }
         }
-        public void Place(List<Tile> tiles)
+        public static void Place(List<Tile> tiles)
         {
             foreach(Tile tile in tiles)
             {
