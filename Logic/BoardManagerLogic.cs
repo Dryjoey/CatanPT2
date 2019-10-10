@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,6 +19,17 @@ namespace Logic
                 T value = list[k];
                 list[k] = list[n];
                 list[n] = value;
+            }
+        }
+
+        public static void SetTiles<T>(IList<T> resources, IList<T> Chips)
+        {
+            List<Tile> newTiles = new List<Tile>();
+            for(int x = 0; x <= resources.Count; x++)
+            {
+                TileChip tc = new TileChip();
+                tc.chip = tc.AllChips[x];
+                newTiles.Add(new Tile(x, tc));
             }
         }
     }
