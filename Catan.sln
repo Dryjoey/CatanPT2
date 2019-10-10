@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAO", "DAO\DAO.csproj", "{0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{F5A04AEC-27E5-4968-8A47-BFF8739C0A11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{F32EA04E-08FF-49BA-9A50-C340E9A85114}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\Interfaces.csproj", "{F32EA04E-08FF-49BA-9A50-C340E9A85114}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
