@@ -11,5 +11,6 @@ namespace Logic
         {
             boarddao.AddEntity(board);
         }
+
     }
 }
