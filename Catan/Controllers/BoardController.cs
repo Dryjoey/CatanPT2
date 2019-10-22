@@ -12,5 +12,15 @@ namespace Catan.Controllers
         {
             return View("Views/Board/BoardTest.cshtml");
         }
+
+        public IActionResult BigBoard()
+        {
+            return View("Views/Board/BigBoardTest.cshtml");
+        }
+
+        public IActionResult SmallBoard()
+        {
+            return View("Views/Board/BoardTest.cshtml");
+        }
     }
 }
