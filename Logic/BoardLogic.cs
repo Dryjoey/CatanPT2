@@ -43,29 +43,29 @@ namespace Logic
             int n = list.Count;
             while (n > 1)
             {
-                n--;
+                n--; 
                 int k = rng.Next(n + 1);
                 T value = list[k];
                 list[k] = list[n];
                 list[n] = value;
             }
         }
-        public static void Place(List<Tile> tiles)
+        public static void Position(List<Tile> tiles)
         {
             foreach (Tile tile in tiles)
             {
                 if (tile.chip == 8 || tile.chip == 6)
                 {
-                    PlaceRed(tiles, tile);
+                    PositionRed(tiles, tile);
                 }
                 else
                 {
-                    PlaceRest(tiles, tile);
+                    PositionRest(tiles, tile);
                 }
             }
         }
         //Bleeding : Not tested
-        private static void PlaceRed(List<Tile> tiles, Tile tile)
+        private static void PositionRed(List<Tile> tiles, Tile tile)
         {
             List<int> emptyPositions = new List<int>()
             {
@@ -82,12 +82,12 @@ namespace Logic
                 tile.Position = newPosition;
                 emptyPositions.Remove(newPosition);
                 placeable.Remove(newPosition);
-                removeAdjacent(placeable, newPosition);
+                RemoveAdjacent(placeable, newPosition);
                 tiles.Remove(tile);
             }
         }
         //Bleeding : Not tested
-        private static void removeAdjacent(List<int> placeable, int position)
+        private static void RemoveAdjacent(List<int> placeable, int position)
         {
             foreach (int x in adjecent[position])
             {
@@ -95,12 +95,10 @@ namespace Logic
             }
         }
         //Bleeding : Not tested
-        private static void PlaceRest(List<Tile> tiles, Tile tile)
+        private static void PositionRest(List<Tile> tiles, Tile tile)
         {
-            foreach(Tile x in tiles)
-            {
-                tile.Position = GetNewPositionValue();
-            }
+            tile.Position = GetNewPositionValue();
+            tiles.Remove(tile);
         }
         //Bleeding
 
