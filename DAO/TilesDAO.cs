@@ -52,8 +52,8 @@ namespace DAO
                 {
                     command.Parameters.AddWithValue("@Boardid", board.Id);
                     command.Parameters.AddWithValue("@Tileposition", tile.id);
-                    command.Parameters.AddWithValue("@Resource", tile.tilechip);
-                    command.Parameters.AddWithValue("@chip", tile.tilechip);
+                    command.Parameters.AddWithValue("@Resource", tile.tilecategorie);
+                    command.Parameters.AddWithValue("@chip", tile.chip);
 
                     command.ExecuteNonQuery();
 

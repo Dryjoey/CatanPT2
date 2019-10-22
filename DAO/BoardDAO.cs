@@ -13,7 +13,7 @@ namespace DAO
         {
             con.Open();
             // where needs to be added
-            string query = "SELECT * FROM Board";
+            string query = "SELECT * FROM Board WHERE UserId = @userid";
             List<Board> result = new List<Board>();
 
             using (SqlCommand command = new SqlCommand(query, con))
@@ -44,9 +44,6 @@ namespace DAO
             {
                 command.Parameters.AddWithValue("@Id", board.Id);
                 command.Parameters.AddWithValue("@UserId", board.UserId);
-              
-                 
-
 
                 command.ExecuteNonQuery();
 
@@ -71,8 +68,6 @@ namespace DAO
 
                 con.Close();
             }
-
-
         }
     }
 }
