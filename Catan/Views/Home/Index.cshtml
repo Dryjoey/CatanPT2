@@ -4,7 +4,10 @@
             <button type="button" class="btn btn-light main-menu-btn">test</button>
         </div>
         <div>
-            <button type="button" class="btn btn-light main-menu-btn">test</button>
+                @using (Html.BeginForm("Index", "Board"))
+                {
+                    <button type="submit">OK</button>
+                }
         </div>
     </div>
 </body> 

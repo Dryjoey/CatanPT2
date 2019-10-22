@@ -10,7 +10,7 @@ namespace Catan.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View("Views/Board/Board.cshtml");
         }
     }
 }
