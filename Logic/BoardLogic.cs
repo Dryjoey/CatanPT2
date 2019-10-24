@@ -11,7 +11,7 @@ namespace Logic
     {
         public static int[] AllChips = new int[] { 3, 5, 6, 8, 2, 11, 10, 7, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11 };
         public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
-        public static string[] Recource = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "desert", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
+        public static string[] Rescource = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "desert", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
         public static int[][] adjecent = new int[][]
         {
         new int[] {1,3,4},
@@ -34,38 +34,77 @@ namespace Logic
         new int[]{ 13, 14, 16, 18 },
         new int[]{ 14, 15, 17 }
         };
+        private static HashSet<int> exclude = new HashSet<int>();
+        private static Random rng = new Random();
 
-        public static Random rng = new Random();
 
-        public static void Shuffle<T>(this IList<T> list)
+        public static Board Normal()
         {
+            Board board = new Board();
+            List<Tile> tiles = CreateNewEmptyTileList();
+            board.Tiles = FillTiles();
 
-            int n = list.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = rng.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
-            }
+            return board;
         }
-        public static void Place(List<Tile> tiles)
+        public static List<Tile> CreateNewEmptyTileList()
+        {
+            List<Tile> tileList = new List<Tile>();
+            foreach (int tile in Tiles)
+            {
+                tileList.Add(new Tile());
+            }
+            return tileList;
+        }
+
+        public static List<Tile> FillTiles(List<Tile> tiles)
+        {
+            tiles = SetChips(tiles);
+            tiles = SetResource(tiles);
+            tiles = Position(tiles); ;
+            return tiles;
+        }
+        public static string[] shuffle(string[] array)
+        { 
+         return array.OrderBy(x => rng.Next()).ToArray();
+        }
+
+        public static int[] shuffle(int[] array)
+        {
+         return array.OrderBy(x => rng.Next()).ToArray();
+        }
+        /****************************************************
+        * Position                                          *
+        * ------------------------------------------------- *
+        * Return Value: Void                                *
+        * Description:                                      *
+        * Removes Adjacent Tiles from possible useable      *  
+        * positions list                                    *
+        * State: Bleeding                                   *
+        *****************************************************/
+        public static List<Tile> Position(List<Tile> tiles)
         {
             foreach (Tile tile in tiles)
             {
                 if (tile.chip == 8 || tile.chip == 6)
                 {
-                    PlaceRed(tiles, tile);
+                    PositionRed(tile);
                 }
                 else
                 {
-                    PlaceRest(tiles, tile);
+                    PositionRest(tile);
                 }
             }
+            return tiles;
         }
-        //Bleeding : Not tested
-        private static void PlaceRed(List<Tile> tiles, Tile tile)
+        /****************************************************
+        * PositionRed                                       *
+        * ------------------------------------------------- *
+        * Return Value: Void                                *
+        * Description:                                      *
+        * Position Tiles in board if they are an 8 or an 6  *
+        * State: Bleeding                                   *
+        *****************************************************/
+        private static void PositionRed(Tile tile)
         {
             List<int> emptyPositions = new List<int>()
             {
@@ -82,42 +121,71 @@ namespace Logic
                 tile.Position = newPosition;
                 emptyPositions.Remove(newPosition);
                 placeable.Remove(newPosition);
-                removeAdjacent(placeable, newPosition);
-                tiles.Remove(tile);
+                RemoveAdjacent(placeable, newPosition);
             }
         }
-        //Bleeding : Not tested
-        private static void removeAdjacent(List<int> placeable, int position)
+        /****************************************************
+        * RemoveAdjecent                                    *
+        * ------------------------------------------------- *
+        * Return Value: Void                                *
+        * Description:                                      *
+        * Removes Adjacent Tiles from possible useable      *  
+        * positions list                                    *
+        * State: Bleeding                                   *
+        *****************************************************/
+        private static void RemoveAdjacent(List<int> placeable, int position)
         {
             foreach (int x in adjecent[position])
             {
                 placeable.Remove(x);
+                exclude.Add(x);
             }
         }
-        //Bleeding : Not tested
-        private static void PlaceRest(List<Tile> tiles, Tile tile)
+        /****************************************************
+        * Place Rest                                        *
+        * ------------------------------------------------- *
+        * Return Value: Void                                *
+        * Description:                                      *
+        * Give Tile it's position                           *
+        * State: Bleeding                                   *
+        *****************************************************/
+        private static void PositionRest(Tile tile)
         {
-            foreach(Tile x in tiles)
-            {
-                tile.Position = GetNewPositionValue();
-            }
+            tile.Position = GetNewPositionValue();
         }
-        //Bleeding
-
-        /*************************************************************************/
-        /* Generates new position filtering already used int values within range */
-        /*************************************************************************/
+        /****************************************************
+        * GetNewPositionValue                               *
+        * ------------------------------------------------- *
+        * Return Value: Int32                               *
+        * Description:                                      *
+        * Returns the next possible Position within the     *
+        * board, checking which PLAIN position has been     *
+        * used already to give a new position               *
+        * State: Bleeding                                   *
+        *****************************************************/
         private static int GetNewPositionValue()
         {
-            var exclude = new HashSet<int>();
             var range = Enumerable.Range(0, 18).Where(i => !exclude.Contains(i));
 
-            var rand = new Random();
-            int index = rand.Next(0, 18 - exclude.Count);
+            int index = rng.Next(0, 18 - exclude.Count);
             int finalValue = range.ElementAt(index);
             exclude.Add(finalValue);
             return finalValue;
         }
+        public static void SetRescources(Tile[] tiles, string[] resource)
+        {
+            for(int i=0; i<Rescource.Length; i++)
+            {
+             tiles[i].Rescource = shuffle(Rescource)[i];
+            }
+        }
 
+        public static void SetChips(Tile[] tiles, string[] resource)
+        {
+            for(int i=0; i<AllChips.Length; i++)
+            {
+                tiles[i].chip = shuffle(AllChips)[i];
+            }
+        }
     }
 }
