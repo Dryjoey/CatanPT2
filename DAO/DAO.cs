@@ -10,7 +10,7 @@ namespace DAO
         public SqlConnection con;
         public DAO()
         {
-            this.con = new SqlConnection("Server=mssql.fhict.local;Database=dbi382997;User Id=dbi382997;Password=12345;");
+            this.con = new SqlConnection("Server=192.71.226.6:1433;Database=catanAdmin;User Id=CatanAdmin;Password=CatanAdmin!@1;");
         }
     }
 }

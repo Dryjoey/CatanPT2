@@ -4,18 +4,14 @@ namespace Models
 {
     public class Board
     {
-        public Board(int id, Tile tile, Port port)
+        public Board(int id, int userid )
         {
-            this.Tile = tile;
-            this.Port = port;
+            this.Id = id;
+            this.UserId = userid;
         }
-
-        
        
-        public Tile Tile { get; private set; }
-        public Port Port { get; private set; }
-
-        
+        public int Id { get; private set; }
+        public int UserId { get; private set; }
 
     }
 }
