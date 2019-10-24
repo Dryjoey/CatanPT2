@@ -9,9 +9,9 @@ namespace Logic
 {
     public static class BoardLogic
     {
-        public static int[] AllChips = new int[] { 3, 5, 6, 8, 2, 11, 10, 7, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11 };
+        public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 7, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11 };
         public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
-        public static string[] Resource = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "desert", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
+        public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "desert", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
         public static int[][] adjecent = new int[][]
         {
         new int[] {1,3,4},
@@ -38,18 +38,38 @@ namespace Logic
         private static Random rng = new Random();
 
 
-        public static List<Tile> Normal()
+        public static Board Normal()
         {
-            return new List<Tile>();
+            Board board = new Board();
+            List<Tile> tiles = CreateNewEmptyTileList();
+            board.Tiles = FillTiles(tiles);
+            return board;
+        }
+        public static List<Tile> CreateNewEmptyTileList()
+        {
+            List<Tile> tileList = new List<Tile>();
+            foreach (int tile in Tiles)
+            {
+                tileList.Add(new Tile());
+            }
+            return tileList;
+        }
+
+        public static List<Tile> FillTiles(List<Tile> tiles)
+        {
+            tiles = SetChips(tiles, Chips);
+            tiles = SetResources(tiles, Resources);
+            tiles = Position(tiles); ;
+            return tiles;
         }
         public static string[] shuffle(string[] array)
-        { 
-         return array.OrderBy(x => rng.Next()).ToArray();
+        {
+            return array.OrderBy(x => rng.Next()).ToArray();
         }
 
         public static int[] shuffle(int[] array)
         {
-         return array.OrderBy(x => rng.Next()).ToArray();
+            return array.OrderBy(x => rng.Next()).ToArray();
         }
         /****************************************************
         * Position                                          *
@@ -60,7 +80,7 @@ namespace Logic
         * positions list                                    *
         * State: Bleeding                                   *
         *****************************************************/
-        public static void Position(List<Tile> tiles)
+        public static List<Tile> Position(List<Tile> tiles)
         {
             foreach (Tile tile in tiles)
             {
@@ -73,6 +93,7 @@ namespace Logic
                     PositionRest(tile);
                 }
             }
+            return tiles;
         }
         /****************************************************
         * PositionRed                                       *
@@ -150,20 +171,22 @@ namespace Logic
             exclude.Add(finalValue);
             return finalValue;
         }
-        public static void SetResources(Tile[] tiles, string[] resource)
+        public static List<Tile> SetResources(List<Tile> tiles, string[] resources)
         {
-            for(int i=0; i<Resource.Length; i++)
+            for (int i = 0; i < resources.Length; i++)
             {
-             tiles[i].Rescource = shuffle(Resource)[i];
+                tiles[i].Rescource = shuffle(resources)[i];
             }
+            return tiles;
         }
 
-        public static void SetChips(Tile[] tiles, string[] resource)
+        public static List<Tile> SetChips(List<Tile> tiles, int[] chips)
         {
-            for(int i=0; i<AllChips.Length; i++)
+            for (int i = 0; i < chips.Length; i++)
             {
-                tiles[i].chip = shuffle(AllChips)[i];
+                tiles[i].chip = shuffle(chips)[i];
             }
+            return tiles.ToList();
         }
     }
 }
