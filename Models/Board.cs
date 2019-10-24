@@ -1,17 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Models
 {
     public class Board
     {
-        public Board(int id, int userid )
+        public Board(List<Tile> tiles, List<Port> ports)
         {
-            this.Id = id;
-            this.UserId = userid;
+            Tiles = tiles;
+            Ports = ports;
         }
-       
-        public int Id { get; private set; }
-        public int UserId { get; private set; }
+
+        public Board()
+        {
+
+        }
+        
+        public List<Tile> Tiles { get; set; }
+        public List<Port> Ports { get; set; }
+
 
     }
 }
