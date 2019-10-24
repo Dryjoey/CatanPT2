@@ -8,7 +8,7 @@ namespace Models
     {
         public Tile(int placement, string tilecategorie, int chip)
         {
-            this.placement = placement;
+            this.Placement = placement;
             this.TileCategorie = tilecategorie;
             this.Chip = chip;
         }
@@ -18,7 +18,7 @@ namespace Models
 
         }
 
-        public int placement { get; set; }
+        public int Placement { get; set; }
         public string TileCategorie { get; set; } 
         public int Chip { get; set; }
      
