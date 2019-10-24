@@ -43,6 +43,8 @@ namespace Logic
             Board board = new Board();
             List<Tile> tiles = CreateNewEmptyTileList();
             board.Tiles = FillTiles();
+
+            return board;
         }
         public static List<Tile> CreateNewEmptyTileList()
         {
