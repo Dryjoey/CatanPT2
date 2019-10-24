@@ -14,13 +14,13 @@ namespace Logic
         public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "desert", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
         public static int[][] adjecent = new int[][]
         {
-        new int[] {1,3,4},
-        new int[] {0,2,4,5},
-        new int[]{1,5,6},
-        new int[]{0,4,7,8},
-        new int[]{0,1,3,5,8,9},
-        new int[]{1,2,4,6,9,10},
-        new int[]{2, 5, 10, 11},
+        new int[]{ 1, 3, 4},
+        new int[]{ 0, 2, 4, 5},
+        new int[]{ 1, 5, 6},
+        new int[]{ 0, 4, 7, 8},
+        new int[]{ 0, 1, 3, 5, 8, 9},
+        new int[]{ 1, 2, 4, 6, 9, 10},
+        new int[]{ 2, 5, 10, 11},
         new int[]{ 3, 8, 12 },
         new int[]{ 3, 4, 7, 9, 12, 13 },
         new int[]{ 4, 5, 8, 10, 13, 14 },
@@ -171,7 +171,7 @@ namespace Logic
             exclude.Add(finalValue);
             return finalValue;
         }
-        public static List<Tile> SetResources(List<Tile> tiles, string[] resources)
+        public static List<Tile> SetResourcesRandom(List<Tile> tiles, string[] resources)
         {
             for (int i = 0; i < resources.Length; i++)
             {
@@ -179,12 +179,28 @@ namespace Logic
             }
             return tiles;
         }
+        public static List<Tile> SetResources(List<Tile> tiles, string[] resources)
+        {
+            for (int i = 0; i < resources.Length; i++)
+            {
+                tiles[i].Rescource = resources[i];
+            }
+            return tiles;
+        }
 
-        public static List<Tile> SetChips(List<Tile> tiles, int[] chips)
+        public static List<Tile> SetChipsRandom(List<Tile> tiles, int[] chips)
         {
             for (int i = 0; i < chips.Length; i++)
             {
                 tiles[i].chip = shuffle(chips)[i];
+            }
+            return tiles.ToList();
+        }
+        public static List<Tile> SetChips(List<Tile> tiles, int[] chips)
+        {
+            for (int i = 0; i < chips.Length; i++)
+            {
+                tiles[i].chip = chips[i];
             }
             return tiles.ToList();
         }
