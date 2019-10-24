@@ -34,38 +34,59 @@ namespace Logic
         new int[]{ 13, 14, 16, 18 },
         new int[]{ 14, 15, 17 }
         };
+        private static HashSet<int> exclude = new HashSet<int>();
+        private static Random rng = new Random();
 
-        public static Random rng = new Random();
 
+        public static List<Tile> Normal()
+        {
+            return new List<Tile>();
+        }
         public static void Shuffle<T>(this IList<T> list)
         {
 
             int n = list.Count;
             while (n > 1)
             {
-                n--; 
+                n--;
                 int k = rng.Next(n + 1);
                 T value = list[k];
                 list[k] = list[n];
                 list[n] = value;
             }
         }
+        /****************************************************
+        * Position                                          *
+        * ------------------------------------------------- *
+        * Return Value: Void                                *
+        * Description:                                      *
+        * Removes Adjacent Tiles from possible useable      *  
+        * positions list                                    *
+        * State: Bleeding                                   *
+        *****************************************************/
         public static void Position(List<Tile> tiles)
         {
             foreach (Tile tile in tiles)
             {
                 if (tile.chip == 8 || tile.chip == 6)
                 {
-                    PositionRed(tiles, tile);
+                    PositionRed(tile);
                 }
                 else
                 {
-                    PositionRest(tiles, tile);
+                    PositionRest(tile);
                 }
             }
         }
-        //Bleeding : Not tested
-        private static void PositionRed(List<Tile> tiles, Tile tile)
+        /****************************************************
+        * PositionRed                                       *
+        * ------------------------------------------------- *
+        * Return Value: Void                                *
+        * Description:                                      *
+        * Position Tiles in board if they are an 8 or an 6  *
+        * State: Bleeding                                   *
+        *****************************************************/
+        private static void PositionRed(Tile tile)
         {
             List<int> emptyPositions = new List<int>()
             {
@@ -83,35 +104,52 @@ namespace Logic
                 emptyPositions.Remove(newPosition);
                 placeable.Remove(newPosition);
                 RemoveAdjacent(placeable, newPosition);
-                tiles.Remove(tile);
             }
         }
-        //Bleeding : Not tested
+        /****************************************************
+        * RemoveAdjecent                                    *
+        * ------------------------------------------------- *
+        * Return Value: Void                                *
+        * Description:                                      *
+        * Removes Adjacent Tiles from possible useable      *  
+        * positions list                                    *
+        * State: Bleeding                                   *
+        *****************************************************/
         private static void RemoveAdjacent(List<int> placeable, int position)
         {
             foreach (int x in adjecent[position])
             {
                 placeable.Remove(x);
+                exclude.Add(x);
             }
         }
-        //Bleeding : Not tested
-        private static void PositionRest(List<Tile> tiles, Tile tile)
+        /****************************************************
+        * Place Rest                                        *
+        * ------------------------------------------------- *
+        * Return Value: Void                                *
+        * Description:                                      *
+        * Give Tile it's position                           *
+        * State: Bleeding                                   *
+        *****************************************************/
+        private static void PositionRest(Tile tile)
         {
             tile.Position = GetNewPositionValue();
-            tiles.Remove(tile);
         }
-        //Bleeding
-
-        /*************************************************************************/
-        /* Generates new position filtering already used int values within range */
-        /*************************************************************************/
+        /****************************************************
+        * GetNewPositionValue                               *
+        * ------------------------------------------------- *
+        * Return Value: Int32                               *
+        * Description:                                      *
+        * Returns the next possible Position within the     *
+        * board, checking which PLAIN position has been     *
+        * used already to give a new position               *
+        * State: Bleeding                                   *
+        *****************************************************/
         private static int GetNewPositionValue()
         {
-            var exclude = new HashSet<int>();
             var range = Enumerable.Range(0, 18).Where(i => !exclude.Contains(i));
 
-            var rand = new Random();
-            int index = rand.Next(0, 18 - exclude.Count);
+            int index = rng.Next(0, 18 - exclude.Count);
             int finalValue = range.ElementAt(index);
             exclude.Add(finalValue);
             return finalValue;
