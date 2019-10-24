@@ -1,6 +1,7 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DAO
@@ -32,19 +33,20 @@ namespace DAO
                 return result;
             }
         }
-        public void AddEntity(Board board)
+        public void InsertBoard(Board board)
         {
+            //inserting board
             con.Open();
 
             string query =
 
-                "INSERT INTO Board(Id,UserId)";
+                "INSERT INTO Board(UserId)";
 
             using (SqlCommand command = new SqlCommand(query, con))
             {
-                command.Parameters.AddWithValue("@Id", board.Id);
-                command.Parameters.AddWithValue("@UserId", board.UserId);
-
+                command.Parameters.Add("@UserId", SqlDbType.Int);
+                command.Parameters["board.UserId"].Value = board.UserId;
+    
                 command.ExecuteNonQuery();
 
                 con.Close();
@@ -60,11 +62,10 @@ namespace DAO
                 "DELETE FROM Board WHERE Id = @Id";
             using (SqlCommand command = new SqlCommand(query, con))
             {
-                command.Parameters.AddWithValue("@Id", board.Id);
-
+                command.Parameters.Add("@Id", SqlDbType.Int);
+                command.Parameters["board.Id"].Value = board.Id;
 
                 command.ExecuteNonQuery();
-
 
                 con.Close();
             }

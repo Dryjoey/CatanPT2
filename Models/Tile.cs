@@ -6,10 +6,22 @@ namespace Models
 {
     public class Tile
     {
-        public int id { get; private set; }
-        public string tilecategorie; 
-        public int chip;
-        public int placement;
+        public Tile(int placement, string tilecategorie, int chip)
+        {
+            this.placement = placement;
+            this.TileCategorie = tilecategorie;
+            this.Chip = chip;
+        }
+        
+        public Tile()
+        {
+
+        }
+
+        public int placement { get; set; }
+        public string TileCategorie { get; set; } 
+        public int Chip { get; set; }
+     
 
     }
 }

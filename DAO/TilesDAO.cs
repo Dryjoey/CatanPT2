@@ -1,6 +1,7 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -8,9 +9,8 @@ namespace DAO
 {
     public class TilesDAO : DAO
     {
-        List<Tile> Tiles = new List<Tile>();
 
-        public List<Tile> GetAllTiles()
+        public List<Tile> GetAllTiles(Board board)
         {
             con.Open();
 
@@ -20,12 +20,16 @@ namespace DAO
             using (SqlCommand command = new SqlCommand(query, con))
             {
                 command.ExecuteNonQuery();
-                command.Parameters.Add("@BoardId");
-                SqlDataReader read = command.ExecuteReader();
+                command.Parameters.Add("@BoardId", SqlDbType.Int);
+                command.Parameters["@BoardId"].Value = board.Id ;
+                SqlDataReader Reader = command.ExecuteReader();
 
-                while (read.Read())
+                while (Reader.Read())
                 {
-                    // result.Add(new Tile());
+                    Tile tile = new Tile(Reader.GetInt32(1), Reader.GetString(2), Reader.GetInt32(3));
+                   
+                    // all tiles in list
+                    result.Add(tile);
                 }
 
                 con.Close();
@@ -37,23 +41,28 @@ namespace DAO
         public void InsertTiles(List<Tile> tiles, Board board)
         {
             //all tiles need to be filled
-
-
             foreach (Tile tile in tiles)
             {
+                // adding all tiles in tiles with all their specification
                 con.Open();
                 string query =
 
                     "INSERT INTO Tiles (BoardId, TilePosition, Resource, Chip) " +
                     "VALUES(@Boardid, @Tileposition, @Resource, @chip)";
 
-
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    command.Parameters.AddWithValue("@Boardid", board.Id);
-                    command.Parameters.AddWithValue("@Tileposition", tile.id);
-                    command.Parameters.AddWithValue("@Resource", tile.tilecategorie);
-                    command.Parameters.AddWithValue("@chip", tile.chip);
+                    command.Parameters.Add("@BoardId", SqlDbType.Int);
+                    command.Parameters["board.Id"].Value = board.Id;
+
+                    command.Parameters.Add("@Tileposition", SqlDbType.Int);
+                    command.Parameters["tile.id"].Value = tile.placement;
+
+                    command.Parameters.Add("@Resource", SqlDbType.VarChar);
+                    command.Parameters["tile.tilecategorie"].Value = tile.TileCategorie;
+
+                    command.Parameters.Add("@chip", SqlDbType.Int);
+                    command.Parameters["tile.chip"].Value = tile.Chip;
 
                     command.ExecuteNonQuery();
 
@@ -64,15 +73,15 @@ namespace DAO
 
         public void DeleteTiles(Board board)
         {
-
+            //deleting al tiles from one board
             con.Open();
             string query =
-
-                "DELETE * FROM Tiles Where BoardId = @BoardId";
+            "DELETE * FROM Tiles Where BoardId = @BoardId";
 
             using (SqlCommand command = new SqlCommand(query, con))
             {
-                command.Parameters.AddWithValue("BoardId", board.Id);
+                command.Parameters.Add("@BoardId", SqlDbType.Int);
+                command.Parameters["board.Id"].Value = board.Id;
 
                 command.ExecuteNonQuery();
 
