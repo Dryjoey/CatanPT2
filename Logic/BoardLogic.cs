@@ -11,7 +11,7 @@ namespace Logic
     {
         public static int[] AllChips = new int[] { 3, 5, 6, 8, 2, 11, 10, 7, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11 };
         public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
-        public static string[] Rescource = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "desert", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
+        public static string[] Resource = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "desert", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
         public static int[][] adjecent = new int[][]
         {
         new int[] {1,3,4},
@@ -150,11 +150,11 @@ namespace Logic
             exclude.Add(finalValue);
             return finalValue;
         }
-        public static void SetRescources(Tile[] tiles, string[] resource)
+        public static void SetResources(Tile[] tiles, string[] resource)
         {
-            for(int i=0; i<Rescource.Length; i++)
+            for(int i=0; i<Resource.Length; i++)
             {
-             tiles[i].Rescource = shuffle(Rescource)[i];
+             tiles[i].Rescource = shuffle(Resource)[i];
             }
         }
 
