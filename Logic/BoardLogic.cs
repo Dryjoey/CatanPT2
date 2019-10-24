@@ -38,9 +38,28 @@ namespace Logic
         private static Random rng = new Random();
 
 
-        public static List<Tile> Normal()
+        public static Board Normal()
         {
-            return new List<Tile>();
+            Board board = new Board();
+            List<Tile> tiles = CreateNewEmptyTileList();
+            board.Tiles = FillTiles();
+        }
+        public static List<Tile> CreateNewEmptyTileList()
+        {
+            List<Tile> tileList = new List<Tile>();
+            foreach (int tile in Tiles)
+            {
+                tileList.Add(new Tile());
+            }
+            return tileList;
+        }
+
+        public static List<Tile> FillTiles(List<Tile> tiles)
+        {
+            tiles = SetChips(tiles);
+            tiles = SetResource(tiles);
+            tiles = Position(tiles); ;
+            return tiles;
         }
         public static void Shuffle<T>(this IList<T> list)
         {
@@ -64,7 +83,7 @@ namespace Logic
         * positions list                                    *
         * State: Bleeding                                   *
         *****************************************************/
-        public static void Position(List<Tile> tiles)
+        public static List<Tile> Position(List<Tile> tiles)
         {
             foreach (Tile tile in tiles)
             {
@@ -77,6 +96,7 @@ namespace Logic
                     PositionRest(tile);
                 }
             }
+            return tiles;
         }
         /****************************************************
         * PositionRed                                       *
