@@ -2,6 +2,8 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Logic
 {
@@ -37,8 +39,8 @@ namespace Logic
 
         public static void Shuffle<T>(this IList<T> list)
         {
-            
-        int n = list.Count;
+
+            int n = list.Count;
             while (n > 1)
             {
                 n--;
@@ -50,18 +52,72 @@ namespace Logic
         }
         public static void Place(List<Tile> tiles)
         {
-            foreach(Tile tile in tiles)
+            foreach (Tile tile in tiles)
             {
-                if(tile.chip == 8 || tile.chip == 6)
+                if (tile.chip == 8 || tile.chip == 6)
                 {
-                    PlaceRed(tile);
+                    PlaceRed(tiles, tile);
                 }
                 else
                 {
-                    PlaceRest(tile);
+                    PlaceRest(tiles, tile);
                 }
             }
         }
-       
+        //Bleeding : Not tested
+        private static void PlaceRed(List<Tile> tiles, Tile tile)
+        {
+            List<int> emptyPositions = new List<int>()
+            {
+                1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
+            };
+            List<int> placeable = new List<int>()
+            {
+                1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
+            };
+            int[] redTiles = { 6, 6, 8, 8 };
+            for (int i = 0; i <= redTiles.Length; i++)
+            {
+                int newPosition = GetNewPositionValue();
+                tile.Position = newPosition;
+                emptyPositions.Remove(newPosition);
+                placeable.Remove(newPosition);
+                removeAdjacent(placeable, newPosition);
+                tiles.Remove(tile);
+            }
+        }
+        //Bleeding : Not tested
+        private static void removeAdjacent(List<int> placeable, int position)
+        {
+            foreach (int x in adjecent[position])
+            {
+                placeable.Remove(x);
+            }
+        }
+        //Bleeding : Not tested
+        private static void PlaceRest(List<Tile> tiles, Tile tile)
+        {
+            foreach(Tile x in tiles)
+            {
+                tile.Position = GetNewPositionValue();
+            }
+        }
+        //Bleeding
+
+        /*************************************************************************/
+        /* Generates new position filtering already used int values within range */
+        /*************************************************************************/
+        private static int GetNewPositionValue()
+        {
+            var exclude = new HashSet<int>();
+            var range = Enumerable.Range(0, 18).Where(i => !exclude.Contains(i));
+
+            var rand = new Random();
+            int index = rand.Next(0, 18 - exclude.Count);
+            int finalValue = range.ElementAt(index);
+            exclude.Add(finalValue);
+            return finalValue;
+        }
+
     }
 }
