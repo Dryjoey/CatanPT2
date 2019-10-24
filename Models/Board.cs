@@ -18,7 +18,5 @@ namespace Models
         
         public List<Tile> Tiles { get; set; }
         public List<Port> Ports { get; set; }
-
-
     }
 }
