@@ -56,5 +56,23 @@ namespace DAO
                 return result;
             }
         }
+
+        public void DeletePorts(Board board)
+        {
+            //deleting al ports from one board
+            con.Open();
+            string query =
+            "DELETE * FROM Port Where BoardId = @BoardId";
+
+            using (SqlCommand command = new SqlCommand(query, con))
+            {
+                command.Parameters.Add("@BoardId", SqlDbType.Int);
+                command.Parameters["board.Id"].Value = board.Id;
+
+                command.ExecuteNonQuery();
+
+                con.Close();
+            }
+        }
     }
 }

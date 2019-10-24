@@ -56,7 +56,7 @@ namespace DAO
                     command.Parameters["board.Id"].Value = board.Id;
 
                     command.Parameters.Add("@Tileposition", SqlDbType.Int);
-                    command.Parameters["tile.id"].Value = tile.placement;
+                    command.Parameters["tile.id"].Value = tile.Placement;
 
                     command.Parameters.Add("@Resource", SqlDbType.VarChar);
                     command.Parameters["tile.tilecategorie"].Value = tile.TileCategorie;
