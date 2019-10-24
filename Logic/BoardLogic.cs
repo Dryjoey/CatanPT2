@@ -59,7 +59,7 @@ namespace Logic
         public static List<Tile> FillTiles(List<Tile> tiles)
         {
             tiles = SetChips(tiles);
-            tiles = SetResource(tiles);
+            tiles = SetResources(tiles);
             tiles = Position(tiles); ;
             return tiles;
         }
@@ -172,20 +172,22 @@ namespace Logic
             exclude.Add(finalValue);
             return finalValue;
         }
-        public static void SetRescources(Tile[] tiles, string[] resource)
+        public static List<Tile> SetResources(List<Tile> tiles, string[] resource)
         {
             for(int i=0; i<Rescource.Length; i++)
             {
              tiles[i].Rescource = shuffle(Rescource)[i];
             }
+            return tiles;
         }
 
-        public static void SetChips(Tile[] tiles, string[] resource)
+        public static List<Tile> SetChips(List<Tile> tiles, string[] resource)
         {
             for(int i=0; i<AllChips.Length; i++)
             {
                 tiles[i].chip = shuffle(AllChips)[i];
             }
+            return tiles.ToList();
         }
     }
 }
