@@ -11,7 +11,7 @@ namespace Logic
     {
         public static int[] AllChips = new int[] { 3, 5, 6, 8, 2, 11, 10, 7, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11 };
         public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
-        public static string[] Recource = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "desert", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
+        public static string[] Rescource = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "desert", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
         public static int[][] adjecent = new int[][]
         {
         new int[] {1,3,4},
@@ -42,18 +42,14 @@ namespace Logic
         {
             return new List<Tile>();
         }
-        public static void Shuffle<T>(this IList<T> list)
-        {
+        public static string[] shuffle(string[] array)
+        { 
+         return array.OrderBy(x => rng.Next()).ToArray();
+        }
 
-            int n = list.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = rng.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
-            }
+        public static int[] shuffle(int[] array)
+        {
+         return array.OrderBy(x => rng.Next()).ToArray();
         }
         /****************************************************
         * Position                                          *
@@ -154,6 +150,20 @@ namespace Logic
             exclude.Add(finalValue);
             return finalValue;
         }
+        public static void SetRescources(Tile[] tiles, string[] resource)
+        {
+            for(int i=0; i<Rescource.Length; i++)
+            {
+             tiles[i].Rescource = shuffle(Rescource)[i];
+            }
+        }
 
+        public static void SetChips(Tile[] tiles, string[] resource)
+        {
+            for(int i=0; i<AllChips.Length; i++)
+            {
+                tiles[i].chip = shuffle(AllChips)[i];
+            }
+        }
     }
 }
