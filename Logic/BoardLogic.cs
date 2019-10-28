@@ -136,8 +136,9 @@ namespace Logic
         {
             foreach (int x in adjecent[position])
             {
-                placeable.Remove(x);
-                exclude.Add(x);
+                if (!placeable.Contains(x)) placeable.Remove(x);
+             
+                if (!exclude.Contains(x)) exclude.Add(x);
             }
         }
         /****************************************************
