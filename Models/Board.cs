@@ -5,19 +5,20 @@ namespace Models
 {
     public class Board
     {
-        public Board(int id, int userid )
+        public Board(List<Tile> tiles, List<Port> ports)
         {
-            this.Id = id;
-            this.UserId = userid;
+            Tiles = tiles;
+            Ports = ports;
         }
+
         public Board()
         {
-            
+
         }
-       
-        public int Id { get; private set; }
-        public int UserId { get; private set; }
-        public List<Tile> Tile { get; set; }
-        public List<Port> Port { get; set; }
+        
+        public List<Tile> Tiles { get; set; }
+        public List<Port> Ports { get; set; }
+
+
     }
 }
