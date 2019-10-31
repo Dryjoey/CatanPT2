@@ -12,5 +12,17 @@ namespace Catan.Controllers
         {
             return View();
         }
+        public IActionResult SetBoardSettings(bool tileIsRandomized, bool chipIsRandomized, bool IsFourplayers)
+        {
+            bool fourPlayer = IsFourplayers;
+            if(fourPlayer == true)
+            {
+                return View("BoardTest");
+            }
+            else
+            {
+                return View("BigBoardTest");
+            }
+        }
     }
 }

@@ -4,13 +4,14 @@
 .container {
     font-size: 5rem;
     margin: 0 auto;
+    top: 300px;
 }
 .custom-control-input{
     width: 30px;
     height: 30px;
 }
 .form-inline.vertical-center{
-    margin: 0 auto;
+    margin: 0px auto;
 }
 .vertical-center {
     width: 100%;
@@ -32,6 +33,9 @@
 }
 .gentitle{
     font-size: 64px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    margin-bottom: 1em;
 }
 .checkdesc{
     font-size: 16px;
@@ -43,4 +47,9 @@
     position:absolute;
     bottom: 0;
     right: 600px;
+}
+.settingsGear{
+    position: absolute;
+    height: 40px;
+    width: 40px;
 }
