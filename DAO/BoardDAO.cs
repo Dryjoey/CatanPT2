@@ -45,8 +45,8 @@ namespace DAO
             string query = "SELECT * FROM Board WHERE Id= @Id";
             using (SqlCommand command = new SqlCommand(query, con))
             {
-                command.Parameters.Add("@Id", SqlDbType.Int);
-                command.Parameters["board.Id"].Value = boardId;
+                command.Parameters.Add(new SqlParameter("@Id", boardId));
+                //command.Parameters["Id"].Value = boardId;
                 command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
                

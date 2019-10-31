@@ -38,7 +38,7 @@ namespace DAO
 
             using (SqlCommand command = new SqlCommand(query, con))
             {
-                command.ExecuteNonQuery();
+                
                 command.Parameters.Add("@BoardId", SqlDbType.Int);
                 command.Parameters["@BoardId"].Value = boardId;
                 SqlDataReader Reader = command.ExecuteReader();
