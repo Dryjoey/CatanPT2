@@ -14,9 +14,8 @@
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"><label class="label" for="TilePlacement">Tile Placement</label></div>
-            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="TileRandom" /></div>
-            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="TileFixed" /></div>
-            <br />
+            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="TileRandom" name="TileRadio" /></div>
+            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="TileFixed" name="TileRadio"/></div>
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"></div>
@@ -25,8 +24,8 @@
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"><label class="label" for="ChipPlacement">Chip Placement</label></div>
-            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="ChipRandom" /></div>
-            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="ChipFixed" /></div>
+            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="ChipRandom" name="ChipRadio" /></div>
+            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="ChipFixed" name="ChipRadio" /></div>
             <br />
         </div>
         <div class="row align-items-center">
@@ -36,11 +35,10 @@
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"><label class="label" for="NumberofPlayers">Number of Players</label></div>
-            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="FourPlayer" /></div>
-            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="FivePlayer" /></div>
+            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="FourPlayer" name="PlayerRadio"/></div>
+            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="FivePlayer" name="PlayerRadio"/></div>
             <br />
         </div>
-        <input class="btn btn-primary btn-lg no-padding submitbutton" type="button" id="submit-btn" value="Create">
+        <input class="btn btn-primary btn-lg no-padding submitbutton" type="button" id="submit-btn" value="Create" onclick="location.href='@Url.Action("SaveBoardSettings")'" />
     </div>
-    <img src="~/images/Gear.svg" class="settingsGear" />
 </form>
