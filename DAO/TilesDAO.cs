@@ -10,7 +10,7 @@ namespace DAO
     public class TilesDAO : DAO
     {
 
-        public List<Tile> GetAllTiles(int boardId)
+        public List<Tile> GetAllTilesFromBoard(int boardId)
         {
             con.Open();
 
@@ -56,10 +56,10 @@ namespace DAO
                     command.Parameters["board.Id"].Value = boardId;
 
                     command.Parameters.Add("@Tileposition", SqlDbType.Int);
-                    command.Parameters["tile.id"].Value = tile.Placement;
+                    command.Parameters["tile.id"].Value = tile.Position;
 
                     command.Parameters.Add("@Resource", SqlDbType.VarChar);
-                    command.Parameters["tile.tilecategorie"].Value = tile.TileCategorie;
+                    command.Parameters["tile.tilecategorie"].Value = tile.Resource;
 
                     command.Parameters.Add("@chip", SqlDbType.Int);
                     command.Parameters["tile.chip"].Value = tile.Chip;

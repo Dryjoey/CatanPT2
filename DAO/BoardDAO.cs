@@ -25,7 +25,9 @@ namespace DAO
 
                 while (read.Read())
                 {
-                    result.Add(new Board(read.GetInt32(0), read.GetInt32(1)));
+                    Board board = new Board();
+                    board.BoardId = read.GetInt32(0);
+                    result.Add(board);
                 }
 
                 con.Close();
@@ -35,7 +37,9 @@ namespace DAO
         }
         public Board GetBoard(int boardId)
         {
-            
+            TilesDAO til = new TilesDAO();
+            PortDAO port = new PortDAO();
+            Board returnBoard = new Board();
             con.Open();
             // where needs to be added
             string query = "SELECT * FROM Board WHERE Id= @Id";
@@ -45,15 +49,17 @@ namespace DAO
                 command.Parameters["board.Id"].Value = boardId;
                 command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
-
+               
                 while (read.Read())
                 {
-                    board.Add(new Board(read.GetInt32(0), read.GetInt32(1)));
+                    read.GetInt32(0);
+                    read.GetInt32(1);
                 }
 
                 con.Close();
-
-                return board;
+                returnBoard.Tiles = til.GetAllTilesFromBoard(boardId); 
+                returnBoard.Ports = port.GetAllPortsFromBoard(boardId); 
+                return returnBoard;
                
                 //daarna ga naar tiles en port en haal alle gegevens op
             }

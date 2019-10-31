@@ -29,7 +29,7 @@ namespace DAO
             con.Open();
         }
 
-        public List<Port> GetAllPorts(int boardId)
+        public List<Port> GetAllPortsFromBoard(int boardId)
         {
             con.Open();
 
