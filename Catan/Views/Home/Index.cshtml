@@ -1,9 +1,13 @@
-﻿<body>
+﻿@using Models
+<body>
+    <p>@Model.Tiles[0].Rescource</p>
     <div class="main-menu-container">
         <div>
+            
+
             @using (Html.BeginForm("BigBoard", "Board"))
             {
-            <button type="submit">BigBoard</button>
+                <button type="submit">BigBoard</button>
             }
         </div>
         <div>

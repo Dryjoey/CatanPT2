@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Logic;
+using Models;
 
 namespace Catan.Controllers
 {
@@ -11,7 +12,6 @@ namespace Catan.Controllers
     {
         public IActionResult Index()
         {
-
             return View("Views/Board/BoardTest.cshtml");
         }
 

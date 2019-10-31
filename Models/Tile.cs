@@ -5,11 +5,8 @@ using System.Text;
 namespace Models
 {
     public class Tile
-    {
-        public int id { get; private set; }
-        public string tilecategorie; 
+    { 
         public int chip;
-        public string placement;
         /*
          * Subject to change towards actuall DataValues
          * Please check and manifest working type DataValues further.
