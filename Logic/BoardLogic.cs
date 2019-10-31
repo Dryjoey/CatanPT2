@@ -84,7 +84,7 @@ namespace Logic
         {
             foreach (Tile tile in tiles)
             {
-                if (tile.chip == 8 || tile.chip == 6)
+                if (tile.Chip == 8 || tile.Chip == 6)
                 {
                     PositionRed(tile);
                 }
@@ -176,7 +176,7 @@ namespace Logic
         {
             for (int i = 0; i < resources.Length; i++)
             {
-                tiles[i].Rescource = shuffle(resources)[i];
+                tiles[i].Resource = shuffle(resources)[i];
             }
             return tiles;
         }
@@ -184,7 +184,7 @@ namespace Logic
         {
             for (int i = 0; i < resources.Length; i++)
             {
-                tiles[i].Rescource = resources[i];
+                tiles[i].Resource = resources[i];
             }
             return tiles;
         }
@@ -193,7 +193,7 @@ namespace Logic
         {
             for (int i = 0; i < chips.Length; i++)
             {
-                tiles[i].chip = shuffle(chips)[i];
+                tiles[i].Chip = shuffle(chips)[i];
             }
             return tiles.ToList();
         }
@@ -201,7 +201,7 @@ namespace Logic
         {
             for (int i = 0; i < chips.Length; i++)
             {
-                tiles[i].chip = chips[i];
+                tiles[i].Chip = chips[i];
             }
             return tiles.ToList();
         }
