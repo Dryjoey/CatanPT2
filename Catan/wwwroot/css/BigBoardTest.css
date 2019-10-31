@@ -1,6 +1,9 @@
 ﻿/* ----------------------------------------- */
+html, body{
+    height: 100%;
+}
 .container {
-    position: relative;
+    position: absolute;
     width: 1200px;
     transform: rotate(-30deg);
 }
