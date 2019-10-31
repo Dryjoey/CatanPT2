@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Web;
 
 namespace Catan.Controllers
 {
@@ -12,17 +13,9 @@ namespace Catan.Controllers
         {
             return View();
         }
-        public IActionResult SetBoardSettings(bool tileIsRandomized, bool chipIsRandomized, bool IsFourplayers)
+        public IActionResult SetBoardSettings()
         {
-            bool fourPlayer = IsFourplayers;
-            if(fourPlayer == true)
-            {
-                return View("BoardTest");
-            }
-            else
-            {
-                return View("BigBoardTest");
-            }
+            return View();
         }
     }
 }

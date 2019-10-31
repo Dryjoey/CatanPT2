@@ -5,42 +5,42 @@
 <h1 class="gentitle">
     Generator Settings
 </h1>
-    <form action="" method="post" class="form-inline vertical-center">
-        <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col-xs-6"></div>
-                <div class="col-xs-2"><label class="checkdesc">Random</label></div>
-                <div class="col-xs-2"><label class="checkdesc">Fixed</label></div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-xs-6"><label class="label" for="TilePlacement">Tile Placement</label></div>
-                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="TileRandom" /></div>
-                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox2" /></div>
-                <br />
-            </div>
-            <div class="row align-items-center">
-                <div class="col-xs-6"></div>
-                <div class="col-xs-2"><label class="checkdesc">Random</label></div>
-                <div class="col-xs-2"><label class="checkdesc">Fixed</label></div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-xs-6"><label class="label" for="ChipPlacement">Chip Placement</label></div>
-                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox3" /></div>
-                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox4" /></div>
-                <br />
-            </div>
-            <div class="row align-items-center">
-                <div class="col-xs-6"></div>
-                <div class="col-xs-2"><label class="checkdesc">4</label></div>
-                <div class="col-xs-2"><label class="checkdesc">5</label></div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-xs-6"><label class="label" for="NumberofPlayers">Number of Players</label></div>
-                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox1" /></div>
-                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox1" /></div>
-                <br />
-            </div>
+<form action="" method="post" class="form-inline vertical-center">
+    <div class="container text-center">
+        <div class="row align-items-center">
+            <div class="col-xs-6"></div>
+            <div class="col-xs-2"><label class="checkdesc">Random</label></div>
+            <div class="col-xs-2"><label class="checkdesc">Fixed</label></div>
         </div>
-        <input class="btn btn-primary btn-lg no-padding submitbutton" type="button" onclick="location.href=@Url.Action("setSetting","SetBoardSettings" )" id="submit-btn" value="Create">
-    </form>
+        <div class="row align-items-center">
+            <div class="col-xs-6"><label class="label" for="TilePlacement">Tile Placement</label></div>
+            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="TileRandom" /></div>
+            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="TileFixed" /></div>
+            <br />
+        </div>
+        <div class="row align-items-center">
+            <div class="col-xs-6"></div>
+            <div class="col-xs-2"><label class="checkdesc">Random</label></div>
+            <div class="col-xs-2"><label class="checkdesc">Fixed</label></div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-xs-6"><label class="label" for="ChipPlacement">Chip Placement</label></div>
+            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="ChipRandom" /></div>
+            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="ChipFixed" /></div>
+            <br />
+        </div>
+        <div class="row align-items-center">
+            <div class="col-xs-6"></div>
+            <div class="col-xs-2"><label class="checkdesc">4</label></div>
+            <div class="col-xs-2"><label class="checkdesc">5</label></div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-xs-6"><label class="label" for="NumberofPlayers">Number of Players</label></div>
+            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="FourPlayer" /></div>
+            <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="FivePlayer" /></div>
+            <br />
+        </div>
+        <input class="btn btn-primary btn-lg no-padding submitbutton" type="button" id="submit-btn" value="Create">
+    </div>
     <img src="~/images/Gear.svg" class="settingsGear" />
+</form>
