@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Catan.Models;
+using Logic;
+using Microsoft.AspNetCore.Mvc;
+using Models;
 
 namespace Catan.Controllers
 {
@@ -12,7 +14,8 @@ namespace Catan.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            Board board = BoardLogic.Normal();
+            return View(board);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
