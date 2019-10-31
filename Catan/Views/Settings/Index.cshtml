@@ -1,13 +1,45 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
-<head>
-    <link rel="stylesheet" href="~/css/Settings.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+﻿<head>
+    <link href="~/css/Settings.css" rel="stylesheet" type="text/css" />
 </head>
+<title>Generator Settings</title>
+<div class="m-4 pb-5 gentitle">
+    Generator Settings
+    </div>
 <body>
-    <div class="main-menu-container">
+    <form class="form-inline vertical-center">
+        <div class="container text-center">
+            <div class="row align-items-center">
+                <div class="col-xs-6"></div>
+                <div class="col-xs-2"><label class="checkdesc">Random</label></div>
+                <div class="col-xs-2"><label class="checkdesc">Fixed</label></div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-xs-6"><label class="label" for="TilePlacement">Tile Placement</label></div>
+                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox1" /></div>
+                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox2" /></div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-xs-6"></div>
+                <div class="col-xs-2"><label class="checkdesc">Random</label></div>
+                <div class="col-xs-2"><label class="checkdesc">Fixed</label></div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-xs-6"><label class="label" for="ChipPlacement">Chip Placement</label></div>
+                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox3" /></div>
+                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox4" /></div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-xs-6"></div>
+                <div class="col-xs-2"><label class="checkdesc">4</label></div>
+                <div class="col-xs-2"><label class="checkdesc">5</label></div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-xs-6"><label class="label" for="NumberofPlayers">Number of Players</label></div>
+                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox1" /></div>
+                <div class="col-xs-2"><input type="checkbox" class="custom-control-input" id="checkbox1" /></div>
+            </div>
         </div>
+        <button class="btn btn-primary btn-lg no-padding submitbutton" type="submit" ng-click="accept()" id="submit-btn">Submit</button>
+        </div>
+    </form>
 </body>
-
