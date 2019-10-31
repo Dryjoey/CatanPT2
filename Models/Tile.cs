@@ -6,13 +6,24 @@ namespace Models
 {
     public class Tile
     { 
-        public int chip;
+        public Tile(int chip, string resource, int position)
+        {
+            this.Chip = chip;
+            this.Resource = resource;
+            this.Position = position;
+        }
+
+        public Tile()
+        {
+
+        }
+        public int Chip { get; set; }
         /*
          * Subject to change towards actuall DataValues
          * Please check and manifest working type DataValues further.
          * DAT BETEKENT: Tile voldoet nog niet aan alle data eisen die wij hebben uitgezet. moet veranderd worden.
         */ 
-        public string Rescource { get; set; }
+        public string Resource { get; set; }
         public int Position { get; set; }
 
     }

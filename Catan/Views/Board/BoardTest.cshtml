@@ -2,6 +2,40 @@
     Layout = "";
 }
 
+@functions {
+    string NumberToString(int input)
+    {
+
+        switch (input)
+        {
+            case 2:
+                return "number two";
+            case 3:
+                return "number three";
+            case 4:
+                return "number four";
+            case 5:
+                return "number five";
+            case 6:
+                return "number six";
+            case 7:
+                return "number seven";
+            case 8:
+                return "number eight";
+            case 9:
+                return "number nine";
+            case 10:
+                return "number ten";
+            case 11:
+                return "number eleven";
+            case 12:
+                return "number twelve";
+            default:
+                return "number eight";
+        }
+    }
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +46,6 @@
 
 </head>
 <body>
-    <!-- partial:index.partial.html -->
-    <!--
-    Please note that I've forked  the original grid from: https://codepen.io/MattH22/pen/pqFLJ So I cannot take credit for that.
-
-    I've tweaked it a bit from then and added the game pieces that could be used to implement an actual html/js/css based game of Settlers of Catan
-    -->
-
     <div class="container">
 
         <ol class="even">
@@ -44,31 +71,38 @@
                     <div class='harbor-piece br'></div>
                 </div>
             </li>
-            <li class='hex wheat'>
-                <div class='number two'></div>
+            <!--Tile Position 0-->
+            <li class='hex @Model.Tiles[0].Resource'>
+                <div class='@NumberToString(Model.Tiles[0].Chip)'></div>
             </li>
-            <li class='hex wood'>
-                <div class='number three'></div>
+            <!--Tile Position 1-->
+            <li class='hex @Model.Tiles[1].Resource'>
+                <div class='@NumberToString(Model.Tiles[1].Chip)'></div>
             </li>
-            <li class='hex wheat'>
-                <div class='number three'></div>
+            <!--Tile Position 2-->
+            <li class='hex @Model.Tiles[2].Resource'>
+                <div class='@NumberToString(Model.Tiles[2].Chip)'></div>
             </li>
             <li class='hex water'></li>
         </ol>
 
         <ol class="even">
             <li class='hex water'></li>
-            <li class='hex coal'>
-                <div class='number four'></div>
+            <!--Tile Position 3-->
+            <li class='hex @Model.Tiles[3].Resource'>
+                <div class='@NumberToString(Model.Tiles[3].Chip)'></div>
             </li>
-            <li class='hex sheep'>
-                <div class='number four'></div>
+            <!--Tile Position 4-->
+            <li class='hex @Model.Tiles[4].Resource'>
+                <div class='@NumberToString(Model.Tiles[4].Chip)'></div>
             </li>
-            <li class='hex wood'>
-                <div class='number five'></div>
+            <!--Tile Position 5-->
+            <li class='hex @Model.Tiles[5].Resource'>
+                <div class='@NumberToString(Model.Tiles[5].Chip)'></div>
             </li>
-            <li class='hex sheep'>
-                <div class='number five'></div>
+            <!--Tile Position 6-->
+            <li class='hex @Model.Tiles[6].Resource'>
+                <div class='@NumberToString(Model.Tiles[6].Chip)'></div>
             </li>
             <li class='hex water'>
                 <div class='harbor three-one brick'>
@@ -82,37 +116,46 @@
                 <div class='harbor three-one sheep'>
                 </div>
             </li>
-            <li class='hex sheep'>
-                <div class='number six'></div>
+            <!--Tile Position 7-->
+            <li class='hex @Model.Tiles[7].Resource'>
+                <div class='@NumberToString(Model.Tiles[7].Chip)'></div>
             </li>
-            <li class='hex wheat'>
-                <div class='number six'></div>
+            <!--Tile Position 8-->
+            <li class='hex @Model.Tiles[8].Resource'>
+                <div class='@NumberToString(Model.Tiles[8].Chip)'></div>
             </li>
-            <li class='hex wood'>
-                <div class='number eight robber'></div>
+            <!--Tile Position 9-->
+            <li class='hex @Model.Tiles[9].Resource'>
+                <div class='@NumberToString(Model.Tiles[9].Chip)'></div>
             </li>
-            <li class='hex brick'>
-                <div class='number eight'></div>
+            <!--Tile Position 10-->
+            <li class='hex @Model.Tiles[10].Resource'>
+                <div class='@NumberToString(Model.Tiles[10].Chip)'></div>
             </li>
-            <li class='hex brick'>
-                <div class='number nine'></div>
+            <!--Tile Position 11-->
+            <li class='hex @Model.Tiles[11].Resource'>
+                <div class='@NumberToString(Model.Tiles[11].Chip)'></div>
             </li>
             <li class='hex water'>
             </li>
         </ol>
         <ol class="even">
             <li class='hex water'></li>
-            <li class='hex coal'>
-                <div class='number nine'></div>
+            <!--Tile Position 12-->
+            <li class='hex @Model.Tiles[12].Resource'>
+                <div class='@NumberToString(Model.Tiles[12].Chip)'></div>
             </li>
-            <li class='hex brick'>
-                <div class='number ten'></div>
+            <!--Tile Position 13-->
+            <li class='hex @Model.Tiles[13].Resource'>
+                <div class='@NumberToString(Model.Tiles[13].Chip)'></div>
             </li>
-            <li class='hex wood'>
-                <div class='number ten'></div>
+            <!--Tile Position 14-->
+            <li class='hex @Model.Tiles[14].Resource'>
+                <div class='@NumberToString(Model.Tiles[14].Chip)'></div>
             </li>
-            <li class='hex sheep'>
-                <div class='number eleven'></div>
+            <!--Tile Position 15-->
+            <li class='hex @Model.Tiles[15].Resource'>
+                <div class='@NumberToString(Model.Tiles[15].Chip)'></div>
             </li>
             <li class='hex water'>
                 <div class='harbor three-one brick'>
@@ -127,12 +170,17 @@
                     <div class='harbor-piece tr'></div>
                 </div>
             </li>
-            <li class='hex sand'></li>
-            <li class='hex coal'>
-                <div class='number twelve'></div>
+            <!--Tile Position 16-->
+            <li class='hex @Model.Tiles[16].Resource'>
+                <div class='@NumberToString(Model.Tiles[16].Chip)'></div>
             </li>
-            <li class='hex wheat'>
-                <div class='number eight'></div>
+            <!--Tile Position 17-->
+            <li class='hex @Model.Tiles[17].Resource'>
+                <div class='@NumberToString(Model.Tiles[17].Chip)'></div>
+            </li>
+            <!--Tile Position 18-->
+            <li class='hex @Model.Tiles[18].Resource'>
+                <div class='@NumberToString(Model.Tiles[18].Chip)'></div>
             </li>
             <li class='hex water'></li>
         </ol>

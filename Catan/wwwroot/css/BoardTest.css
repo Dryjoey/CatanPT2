@@ -65,16 +65,16 @@ ol.odd {
         background-color: #8e8ee7;
     }
 
-    .hex.sand {
+    .hex.desert {
         background-color: #f0f07f;
     }
 
     .hex.sheep {
-        background-color: green;
+        background-color: #ededed;
     }
 
-    .hex.coal {
-        background-color: gray;
+    .hex.ore {
+        background-color: black;
     }
 
     .hex.wheat {
@@ -82,11 +82,11 @@ ol.odd {
     }
 
     .hex.brick {
-        background-color: red;
+        background-color: brown;
     }
 
-    .hex.wood {
-        background-color: brown;
+    .hex.lumber {
+        background-color: green;
     }
 
 /* end types of hexs */

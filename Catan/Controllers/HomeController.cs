@@ -14,7 +14,6 @@ namespace Catan.Controllers
     {
         public IActionResult Index()
         {
-            //Board board = BoardLogic.Normal();
             return View();
         }
 
