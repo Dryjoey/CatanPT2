@@ -59,7 +59,6 @@ namespace Logic
         {
             tiles = SetChips(tiles, Chips);
             tiles = SetResources(tiles, Resources);
-            tiles = Position(tiles); ;
             return tiles;
         }
         public static string[] shuffle(string[] array)
@@ -84,7 +83,7 @@ namespace Logic
         {
             foreach (Tile tile in tiles)
             {
-                if (tile.chip == 8 || tile.chip == 6)
+                if (tile.Chip == 8 || tile.Chip == 6)
                 {
                     PositionRed(tile);
                 }
@@ -136,8 +135,9 @@ namespace Logic
         {
             foreach (int x in adjecent[position])
             {
-                placeable.Remove(x);
-                exclude.Add(x);
+                if (!placeable.Contains(x)) placeable.Remove(x);
+             
+                if (!exclude.Contains(x)) exclude.Add(x);
             }
         }
         /****************************************************
@@ -165,17 +165,16 @@ namespace Logic
         private static int GetNewPositionValue()
         {
             var range = Enumerable.Range(0, 18).Where(i => !exclude.Contains(i));
-
             int index = rng.Next(0, 18 - exclude.Count);
             int finalValue = range.ElementAt(index);
-            exclude.Add(finalValue);
+            exclude.Add(finalValue);    
             return finalValue;
         }
         public static List<Tile> SetResourcesRandom(List<Tile> tiles, string[] resources)
         {
             for (int i = 0; i < resources.Length; i++)
             {
-                tiles[i].Rescource = shuffle(resources)[i];
+                tiles[i].Resource = shuffle(resources)[i];
             }
             return tiles;
         }
@@ -183,7 +182,7 @@ namespace Logic
         {
             for (int i = 0; i < resources.Length; i++)
             {
-                tiles[i].Rescource = resources[i];
+                tiles[i].Resource = resources[i];
             }
             return tiles;
         }
@@ -192,7 +191,7 @@ namespace Logic
         {
             for (int i = 0; i < chips.Length; i++)
             {
-                tiles[i].chip = shuffle(chips)[i];
+                tiles[i].Chip = shuffle(chips)[i];
             }
             return tiles.ToList();
         }
@@ -200,7 +199,7 @@ namespace Logic
         {
             for (int i = 0; i < chips.Length; i++)
             {
-                tiles[i].chip = chips[i];
+                tiles[i].Chip = chips[i];
             }
             return tiles.ToList();
         }

@@ -1,8 +1,8 @@
 ﻿/* ----------------------------------------- */
-.container {
+.board-container {
     position: relative;
     width: 1200px;
-    transform: rotate(-30deg);
+    line-height: 1.3;
 }
 
 ol.even {
@@ -12,8 +12,8 @@ ol.even {
 
 ol.odd {
     position: relative;
-    margin-top: -78px;
-    margin-bottom: -80px;
+    margin-top: -73px;
+    margin-bottom: -63px;
 }
 
 /* ----------------------------------------- */
@@ -29,8 +29,6 @@ ol.odd {
     display: inline-block;
     margin-right: 60px;
     transition: all 150ms ease-in-out;
-    border-top: 0px solid black;
-    border-bottom: 0px solid black;
 }
 
     .hex:before, .hex:after {
@@ -40,7 +38,6 @@ ol.odd {
         border-radius: inherit;
         background: inherit;
         content: '';
-        transform: rotate(30deg);
     }
 
     .hex:hover {
@@ -49,14 +46,10 @@ ol.odd {
 
     .hex:before {
         transform: rotate(60deg);
-        border-top: 0px solid black;
-        border-bottom: 0px solid black;
     }
 
     .hex:after {
         transform: rotate(-60deg);
-        border-top: 0px solid black;
-        border-bottom: 0px solid black;
     }
 
     /* end base hex */
@@ -71,16 +64,16 @@ ol.odd {
         background-color: #8e8ee7;
     }
 
-    .hex.sand {
+    .hex.desert {
         background-color: #f0f07f;
     }
 
     .hex.sheep {
-        background-color: green;
+        background-color: #ededed;
     }
 
-    .hex.coal {
-        background-color: gray;
+    .hex.ore {
+        background-color: black;
     }
 
     .hex.wheat {
@@ -88,11 +81,11 @@ ol.odd {
     }
 
     .hex.brick {
-        background-color: red;
+        background-color: brown;
     }
 
-    .hex.wood {
-        background-color: brown;
+    .hex.lumber {
+        background-color: green;
     }
 
 /* end types of hexs */
@@ -154,21 +147,16 @@ ol.odd {
         line-height: 25px;
         height: 25px;
         width: 125px;
-        
     }
 
     .harbor::before {
-        transform: rotate(30deg);
         top: -15px;
         position: absolute;
-        left: 5px;
     }
 
     .harbor::after {
-        transform: rotate(30deg);
         top: 10px;
         position: absolute;
-        left: -10px;
     }
 
 .harbor-piece {
@@ -217,7 +205,6 @@ ol.odd {
     }
 
 .harbor.two-one::before {
-    transform: rotate(30deg);
     content: "2:1";
 }
 
@@ -265,20 +252,20 @@ ol.odd {
     border: 2px solid black;
     top: 42px;
     left: 18px;
-    transform: rotate(120deg);
+    transform: rotate(90deg);
     background-color: white;
 }
 
     .hex .number::after {
         position: absolute;
-        font-size: 25px;
+        font-size: 15px;
         line-height: 40px;
         text-align: center;
         z-index: 500;
         height: 45px;
         width: 45px;
         top: 8px;
-        left: 0px;
+        left: -2px;
     }
 
     .hex .number.robber {
@@ -288,34 +275,42 @@ ol.odd {
 
     .hex .number.two::before {
         content: "2";
+        color: black;
     }
 
     .hex .number.two::after {
         content: ".";
+        color: black;
     }
 
     .hex .number.three::before {
         content: "3";
+        color: black;
     }
 
     .hex .number.three::after {
         content: "..";
+        color: black;
     }
 
     .hex .number.four::before {
         content: "4";
+        color: black;
     }
 
     .hex .number.four::after {
         content: "...";
+        color: black;
     }
 
     .hex .number.five::before {
         content: "5";
+        color: black;
     }
 
     .hex .number.five::after {
         content: "....";
+        color: black;
     }
 
     .hex .number.six::before {
@@ -340,34 +335,42 @@ ol.odd {
 
     .hex .number.nine::before {
         content: "9";
+        color: black;
     }
 
     .hex .number.nine::after {
         content: "....";
+        color: black;
     }
 
     .hex .number.ten::before {
         content: "10";
+        color: black;
     }
 
     .hex .number.ten::after {
         content: "...";
+        color: black;
     }
 
     .hex .number.eleven::before {
         content: "11";
+        color: black;
     }
 
     .hex .number.eleven::after {
         content: "..";
+        color: black;
     }
 
     .hex .number.twelve::before {
         content: "12";
+        color: black;
     }
 
     .hex .number.twelve::after {
         content: ".";
+        color: black;
     }
 
 /* end numbers */

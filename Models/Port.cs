@@ -6,16 +6,23 @@ namespace Models
 {
     public class Port
     {
-        public Port(int id, string conversion, int placement)
+        public Port( string conversion, int placement )
         {
-            this.id = id;
+            
             this.Conversion = conversion;
             this.Placement = placement;
+            
+        }
+
+        public Port()
+        {
 
         }
 
-        public int id { get; private set; }
-        public string Conversion { get; private set; }
-        public int Placement { get; private set; }
+      
+        public string Conversion { get;  set; }
+        public int Placement { get;  set; }
+
+       
     }
 }

@@ -1,9 +1,11 @@
 ﻿/* ----------------------------------------- */
+html, body{
+    height: 100%;
+}
 .container {
-    position: relative;
+    position: absolute;
     width: 1200px;
-    border: 1px solid black;
-    line-height: 1.3;
+    transform: rotate(-30deg);
 }
 
 ol.even {
@@ -30,6 +32,8 @@ ol.odd {
     display: inline-block;
     margin-right: 60px;
     transition: all 150ms ease-in-out;
+    border-top: 0px solid black;
+    border-bottom: 0px solid black;
 }
 
     .hex:before, .hex:after {
@@ -39,6 +43,7 @@ ol.odd {
         border-radius: inherit;
         background: inherit;
         content: '';
+        transform: rotate(30deg);
     }
 
     .hex:hover {
@@ -47,10 +52,14 @@ ol.odd {
 
     .hex:before {
         transform: rotate(60deg);
+        border-top: 0px solid black;
+        border-bottom: 0px solid black;
     }
 
     .hex:after {
         transform: rotate(-60deg);
+        border-top: 0px solid black;
+        border-bottom: 0px solid black;
     }
 
     /* end base hex */
@@ -65,16 +74,16 @@ ol.odd {
         background-color: #8e8ee7;
     }
 
-    .hex.sand {
+    .hex.desert {
         background-color: #f0f07f;
     }
 
     .hex.sheep {
-        background-color: green;
+        background-color: #ededed;
     }
 
-    .hex.coal {
-        background-color: gray;
+    .hex.ore {
+        background-color: black;
     }
 
     .hex.wheat {
@@ -82,11 +91,11 @@ ol.odd {
     }
 
     .hex.brick {
-        background-color: red;
+        background-color: brown;
     }
 
-    .hex.wood {
-        background-color: brown;
+    .hex.lumber {
+        background-color: green;
     }
 
 /* end types of hexs */
@@ -148,16 +157,21 @@ ol.odd {
         line-height: 25px;
         height: 25px;
         width: 125px;
+        
     }
 
     .harbor::before {
+        transform: rotate(30deg);
         top: -15px;
         position: absolute;
+        left: 5px;
     }
 
     .harbor::after {
+        transform: rotate(30deg);
         top: 10px;
         position: absolute;
+        left: -10px;
     }
 
 .harbor-piece {
@@ -206,6 +220,7 @@ ol.odd {
     }
 
 .harbor.two-one::before {
+    transform: rotate(30deg);
     content: "2:1";
 }
 
@@ -253,7 +268,7 @@ ol.odd {
     border: 2px solid black;
     top: 42px;
     left: 18px;
-    transform: rotate(90deg);
+    transform: rotate(120deg);
     background-color: white;
 }
 

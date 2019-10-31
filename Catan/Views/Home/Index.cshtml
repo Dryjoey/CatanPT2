@@ -1,16 +1,35 @@
-﻿<body>
+﻿@using Models
+<body>
+    <p></p>
     <div class="main-menu-container">
-        <div>
-            @using (Html.BeginForm("BigBoard", "Board"))
-            {
-            <button type="submit">BigBoard</button>
-            }
-        </div>
-        <div>
-            @using (Html.BeginForm("SmallBoard", "Board"))
-            {
-                <button type="submit">SmallBoard</button>
-            }
-        </div>
+        <ul class="main-menu-list">
+            <li>
+                <div>
+                    @using (Html.BeginForm("index", "Settings"))
+                    {
+                        <button type="submit" class="main-menu-btn">Generate Board</button>
+                    }
+                </div>
+            </li>
+            <li>
+                <div>
+                    @using (Html.BeginForm("BoardTest", "Board"))
+                    {
+                        <button type="submit" class="main-menu-btn">SmallBoard Test</button>
+                    }
+                </div>
+            </li>
+            <li>
+                <div>
+                    @using (Html.BeginForm("BoardDisplay", "Board"))
+                    {
+                        <button type="submit" class="main-menu-btn">Test Page</button>
+                    }
+                </div>
+            </li>
+        </ul>
+        
+        
+        
     </div>
 </body> 

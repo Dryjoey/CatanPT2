@@ -16,6 +16,7 @@ namespace Models
 
         }
         
+        public int BoardId { get; set; }
         public List<Tile> Tiles { get; set; }
         public List<Port> Ports { get; set; }
     }

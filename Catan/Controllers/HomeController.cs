@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Catan.Models;
+using Logic;
+using Models;
 
 namespace Catan.Controllers
 {
