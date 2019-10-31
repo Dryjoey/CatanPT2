@@ -5,23 +5,23 @@
         <ul class="main-menu-list">
             <li>
                 <div>
-                    @using (Html.BeginForm("BigBoard", "Board"))
+                    @using (Html.BeginForm("index", "Settings"))
                     {
-                        <button type="submit" class="main-menu-btn">BigBoard</button>
+                        <button type="submit" class="main-menu-btn">Generate Board</button>
                     }
                 </div>
             </li>
             <li>
                 <div>
-                    @using (Html.BeginForm("SmallBoard", "Board"))
+                    @using (Html.BeginForm("BoardTest", "Board"))
                     {
-                        <button type="submit" class="main-menu-btn">SmallBoard</button>
+                        <button type="submit" class="main-menu-btn">SmallBoard Test</button>
                     }
                 </div>
             </li>
             <li>
                 <div>
-                    @using (Html.BeginForm("ViewTest", "Test"))
+                    @using (Html.BeginForm("BoardDisplay", "Board"))
                     {
                         <button type="submit" class="main-menu-btn">Test Page</button>
                     }

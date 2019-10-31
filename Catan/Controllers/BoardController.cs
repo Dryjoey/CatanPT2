@@ -11,20 +11,22 @@ namespace Catan.Controllers
     public class BoardController : Controller
     {
 
-        public IActionResult Index()
-        {
-            return View("Views/Board/BoardTest.cshtml");
-        }
-
-        public IActionResult BigBoard()
-        {
-            return View("Views/Board/BigBoardTest.cshtml");
-        }
-
-        public IActionResult SmallBoard()
+        public IActionResult BoardDisplay()
         {
             Board board = BoardLogic.Normal();
-            return View("Views/Board/BoardTest.cshtml", board);
+            return View(board);
+        }
+
+        public IActionResult BigBoardTest()
+        {
+            Board board = BoardLogic.Normal(); //there needs to be a function for bigBoard!
+            return View(board);
+        }
+
+        public IActionResult BoardTest()
+        {
+            Board board = BoardLogic.Normal();
+            return View(board);
         }
     }
 }
