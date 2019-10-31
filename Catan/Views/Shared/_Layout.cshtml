@@ -18,9 +18,8 @@
 </head>
 <body>
     
-    <div class="container body-content">
+    <div>
         @RenderBody()
-        <hr />
     </div>
 
     <environment include="Development">
@@ -44,6 +43,5 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
-    @RenderSection("Scripts", required: false)
 </body>
 </html>

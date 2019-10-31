@@ -1,1 +1,26 @@
-﻿<p>  </p>
+﻿@using Models
+<body>
+    <p></p>
+    <div class="main-menu-container">
+        <div>
+
+
+            @using (Html.BeginForm("BigBoard", "Board"))
+            {
+                <button type="submit">BigBoard</button>
+            }
+        </div>
+        <div>
+            @using (Html.BeginForm("SmallBoard", "Board"))
+            {
+                <button type="submit">SmallBoard</button>
+            }
+        </div>
+        <div>
+            @using (Html.BeginForm("ViewTest", "Test"))
+            {
+                <button type="submit">Test Page</button>
+            }
+        </div>
+    </div>
+</body> 
