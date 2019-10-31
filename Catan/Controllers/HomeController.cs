@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Catan.Models;
+using DAO;
 
 namespace Catan.Controllers
 {
@@ -12,7 +13,9 @@ namespace Catan.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            BoardDAO boardDAO = new BoardDAO();
+           
+            return View(boardDAO.GetBoard(1));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

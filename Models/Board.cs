@@ -12,7 +12,7 @@ namespace Models
         }
         public Board()
         {
-
+            
         }
        
         public int Id { get; private set; }

@@ -9,7 +9,7 @@ namespace DAO
 {
    public class PortDAO :DAO
     {
-        public void InsertPort(Board board, Port port)
+        public void InsertPort(int boardId, Port port)
         {
             //inserting all ports into database from board
             con.Open();
@@ -19,7 +19,7 @@ namespace DAO
             using (SqlCommand command = new SqlCommand(query, con))
             {
                 command.Parameters.Add("@BoardId", SqlDbType.Int);
-                command.Parameters["board.Id"].Value = board.Id;
+                command.Parameters["board.Id"].Value = boardId;
                 command.Parameters.Add("@conversion", SqlDbType.VarChar);
                 command.Parameters["port.Conversion"].Value = port.Conversion;
                 command.Parameters.Add("@Placement", SqlDbType.Int);
@@ -29,7 +29,7 @@ namespace DAO
             con.Open();
         }
 
-        public List<Port> GetAllPorts(Board board)
+        public List<Port> GetAllPorts(int boardId)
         {
             con.Open();
 
@@ -40,7 +40,7 @@ namespace DAO
             {
                 command.ExecuteNonQuery();
                 command.Parameters.Add("@BoardId", SqlDbType.Int);
-                command.Parameters["@BoardId"].Value = board.Id;
+                command.Parameters["@BoardId"].Value = boardId;
                 SqlDataReader Reader = command.ExecuteReader();
 
                 while (Reader.Read())
@@ -57,7 +57,7 @@ namespace DAO
             }
         }
 
-        public void DeletePorts(Board board)
+        public void DeletePorts(int boardId)
         {
             //deleting al ports from one board
             con.Open();
@@ -67,7 +67,7 @@ namespace DAO
             using (SqlCommand command = new SqlCommand(query, con))
             {
                 command.Parameters.Add("@BoardId", SqlDbType.Int);
-                command.Parameters["board.Id"].Value = board.Id;
+                command.Parameters["board.Id"].Value = boardId;
 
                 command.ExecuteNonQuery();
 

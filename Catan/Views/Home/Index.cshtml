@@ -1,1 +1,14 @@
-﻿<p> hall0 </p>
+﻿@using Models
+    <p>
+        @foreach (Board board in Model)
+        {
+            @Html.HiddenFor(model => board.Id)
+            <div class="col-xs-6 col-sm-3">
+                <strong></strong>
+            </div>
+            @Html.HiddenFor(model => board.UserId)
+            <div class="col-xs-6 col-sm-3">
+                <strong></strong>
+            </div>
+        }
+    </p>

@@ -8,9 +8,9 @@ namespace DAO
 {
     public class BoardDAO: DAO
     {
-        List<Board> board = new List<Board>();
+        List<Board> boards = new List<Board>();
 
-        public List<Board> GetAllBoards()
+        public List<Board> GetAllBoardsFromUser(int userId)
         {
             con.Open();
             // where needs to be added
@@ -33,7 +33,33 @@ namespace DAO
                 return result;
             }
         }
-        public void InsertBoard(Board board)
+        public Board GetBoard(int boardId)
+        {
+            
+            con.Open();
+            // where needs to be added
+            string query = "SELECT * FROM Board WHERE Id= @Id";
+            using (SqlCommand command = new SqlCommand(query, con))
+            {
+                command.Parameters.Add("@Id", SqlDbType.Int);
+                command.Parameters["board.Id"].Value = boardId;
+                command.ExecuteNonQuery();
+                SqlDataReader read = command.ExecuteReader();
+
+                while (read.Read())
+                {
+                    board.Add(new Board(read.GetInt32(0), read.GetInt32(1)));
+                }
+
+                con.Close();
+
+                return board;
+               
+                //daarna ga naar tiles en port en haal alle gegevens op
+            }
+
+        }
+        public void InsertBoard(int userId)
         {
             //inserting board
             con.Open();
@@ -45,7 +71,7 @@ namespace DAO
             using (SqlCommand command = new SqlCommand(query, con))
             {
                 command.Parameters.Add("@UserId", SqlDbType.Int);
-                command.Parameters["board.UserId"].Value = board.UserId;
+                command.Parameters["board.UserId"].Value = userId;
     
                 command.ExecuteNonQuery();
 
@@ -54,7 +80,7 @@ namespace DAO
             
         }
 
-        public void DeleteBoard(Board board)
+        public void DeleteBoard(int boardId)
         {
             con.Open();
 
@@ -63,7 +89,7 @@ namespace DAO
             using (SqlCommand command = new SqlCommand(query, con))
             {
                 command.Parameters.Add("@Id", SqlDbType.Int);
-                command.Parameters["board.Id"].Value = board.Id;
+                command.Parameters["board.Id"].Value = boardId;
 
                 command.ExecuteNonQuery();
 
