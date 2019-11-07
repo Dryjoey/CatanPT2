@@ -17,6 +17,13 @@ namespace Models
         {
 
         }
+
+        public Tile(int chip, string resource)
+        {
+            Chip = chip;
+            Resource = resource;
+        }
+
         public int Chip { get; set; }
         /*
          * Subject to change towards actuall DataValues

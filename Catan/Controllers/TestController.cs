@@ -15,8 +15,7 @@ namespace Catan.Controllers
     {
         public IActionResult ViewTest()
         {
-            BoardDAO dao = new BoardDAO();
-            Board board = dao.GetBoard(1);
+            Board board = BoardLogic.Random();
            
             return View("Views/TestView.cshtml", board);
         }
