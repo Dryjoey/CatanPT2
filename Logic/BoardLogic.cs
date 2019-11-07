@@ -10,7 +10,7 @@ namespace Logic
     public static class BoardLogic
     {
         public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10,  10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11 };
-        public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+        public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
         public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
         public static int[][] adjecent = new int[][]
         {
@@ -47,33 +47,22 @@ namespace Logic
             return board;
         }
 
-        public static bool CheckRedTiles(Board board)
+        public static Board PseudoRandom()
         {
-            bool passed = true;
+            Board board = new Board();
 
-            for (int x = 0; x < board.Tiles.Count; x++)
+            bool check = false;
+            while(check == false)
             {
-                if (board.Tiles[x].Chip == 6 || board.Tiles[x].Chip == 8)
-                {
-                    passed = CompareRedWithAdjecents(board.Tiles, x);
-                }
+                List<Tile> tiles = CreateNewEmptyTileList();
+                RandomizeTiles(tiles);
+                board.Tiles = tiles;
+                AddRandomDesert(board);
+                check = CheckRedTiles(board.Tiles);
             }
-
-            return passed;
+            return board;
         }
 
-        public static bool CompareRedWithAdjecents(List<Tile> tiles, int index)
-        {
-            bool cool = true;
-            foreach(int p in adjecent[index])
-            {
-                if(tiles[p].Chip == 6 || tiles[p].Chip == 8)
-                {
-                    cool = false;
-                }
-            }
-            return cool;
-        }
 
         public static Board Random()
         {
@@ -111,6 +100,28 @@ namespace Logic
             }
             return tileList;
         }
+        public static List<Tile> FillPseudoRandomTiles(List<Tile> tiles)
+        {
+            
+            RandomizeTiles(tiles);
+            
+            //bool check = CheckRedTiles(tiles);
+            //while (check == false)
+            //{
+            //    RandomizeTiles(tiles);
+                
+            //    check = CheckRedTiles(tiles);
+                
+            //}
+            return tiles;
+            
+        }
+        public static void RandomizeTiles(List<Tile> tiles)
+        {            
+            tiles = SetChips(tiles, shuffle(Chips));
+            tiles = SetResources(tiles, shuffle(Resources));
+            
+        }
         public static List<Tile> FillRandomTiles(List<Tile> tiles)
         {
             tiles = SetChips(tiles, shuffle (Chips));
@@ -143,6 +154,30 @@ namespace Logic
         public static int[] shuffle(int[] array)
         {
             return array.OrderBy(x => rng.Next()).ToArray();
+        }
+        public static bool CheckRedTiles(List<Tile> tiles)
+        {
+            for (int x = 0; x < tiles.Count; x++)
+            {
+                if ((tiles[x].Chip == 6 || tiles[x].Chip == 8) && CompareRedWithAdjecents(tiles, x) == false)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public static bool CompareRedWithAdjecents(List<Tile> tiles, int index)
+        {
+            foreach (int p in adjecent[index])
+            {
+                if (tiles[p].Chip == 6 || tiles[p].Chip == 8)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         /****************************************************
         * Position                                          *
@@ -276,6 +311,12 @@ namespace Logic
             
             Tile tile = new Tile(7,"desert");
             board.Tiles.Insert(rng.Next(18),tile);
+        }
+        public static void AddRandomDesert(List<Tile> tiles)
+        {
+
+            Tile tile = new Tile(7, "desert");
+            tiles.Insert(rng.Next(18), tile);
         }
 
         public static void AddDesert(Board board)
