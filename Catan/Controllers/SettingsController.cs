@@ -17,9 +17,9 @@ namespace Catan.Controllers
         }
         public IActionResult SaveBoardSettings(Settingsmodel model)
         {
-            Session["RandomChip"] = model.ChipIsRandom;
-            Session["RandomTile"] = model.TileIsRandom;
-            Session["IsFourPlayer"] = model.IsSmallBoard;
+            //Session["RandomChip"] = model.ChipIsRandom;
+            //Session["RandomTile"] = model.TileIsRandom;
+            //Session["IsFourPlayer"] = model.IsSmallBoard;
 
             if (ModelState.IsValid)
             {

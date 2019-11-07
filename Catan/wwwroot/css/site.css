@@ -55,3 +55,7 @@ body{
 .main-menu-list {
     list-style-type: none;
 }
+
+.board-partial{
+    margin: 50px;
+}

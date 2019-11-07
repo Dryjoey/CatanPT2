@@ -1,1 +1,30 @@
-﻿    <partial name="Partial/_SmallBoard.cshtml" />
+﻿
+    <div class="board-partial">
+        <partial name="Partial/_SmallBoard.cshtml" />
+    </div>
+       <ul class="main-menu-list">
+            <li>
+                <div>
+                    @using (Html.BeginForm("index", "Settings"))
+                    {
+                        <button type="submit" class="main-menu-btn">Generate Board</button>
+                    }
+                </div>
+            </li>
+            <li>
+                <div>
+                    @using (Html.BeginForm("BoardTest", "Board"))
+                    {
+                        <button type="submit" class="main-menu-btn">SmallBoard Test</button>
+                    }
+                </div>
+            </li>
+            <li>
+                <div>
+                    @using (Html.BeginForm("BoardDisplay", "Board"))
+                    {
+                        <button type="submit" class="main-menu-btn">Test Page</button>
+                    }
+                </div>
+            </li>
+        </ul>
