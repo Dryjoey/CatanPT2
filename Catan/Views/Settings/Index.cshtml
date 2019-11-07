@@ -6,6 +6,8 @@
 <h1 class="gentitle">
     Generator Settings
 </h1>
+@using (Html.BeginForm("Index", "Settings", FormMethod.Post))
+{
 <form action="" method="post" class="form-inline vertical-center">
     <div class="container text-center">
         <div class="row align-items-center">
@@ -15,8 +17,8 @@
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"><label class="label" for="TilePlacement">Tile Placement</label></div>
-            <div class="col-xs-2">@Html.RadioButtonFor(m => m.TileIsRandom, true, new { id = "RandomTile" })</div>
-            <div class="col-xs-2">@Html.RadioButtonFor(m => m.TileIsRandom, false, new { id = "RandomTile" })</div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.TileIsRandom, true)</div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.TileIsRandom, false)</div>
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"></div>
@@ -25,8 +27,8 @@
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"><label class="label" for="ChipPlacement">Chip Placement</label></div>
-            <div class="col-xs-2">@Html.RadioButtonFor(m => m.ChipIsRandom, true, new { id = "RandomChip" })</div>
-            <div class="col-xs-2">@Html.RadioButtonFor(m => m.ChipIsRandom, false, new { id = "RandomChip" })</div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.ChipIsRandom, true)</div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.ChipIsRandom, false)</div>
             <br />
         </div>
         <div class="row align-items-center">
@@ -36,10 +38,11 @@
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"><label class="label" for="NumberofPlayers">Number of Players</label></div>
-            <div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, true, new { id = "FourPlayer" })</div>
-            <div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, false, new { id = "FourPlayer" })</div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, true)</div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, false)</div>
             <br />
         </div>
-        <input class="btn btn-primary btn-lg no-padding submitbutton" type="button" id="submit-btn" value="Create" onclick="location.href = '@Url.Action("SaveBoardSettings")';" />
+        <input class="btn btn-primary btn-lg no-padding submitbutton" type="submit" id="submit-btn" value="Create" />
     </div>
 </form>
+}

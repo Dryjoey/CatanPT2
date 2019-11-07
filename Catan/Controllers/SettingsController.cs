@@ -4,35 +4,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
-using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Http;
 using Catan.Models;
 
 namespace Catan.Controllers
 {
     public class SettingsController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
+
             return View();
         }
-        public IActionResult SaveBoardSettings(Settingsmodel model)
+        [HttpPost]
+        public IActionResult Index(Settingsmodel model)
         {
-            Session["RandomChip"] = model.ChipIsRandom;
-            Session["RandomTile"] = model.TileIsRandom;
-            Session["IsFourPlayer"] = model.IsSmallBoard;
-
+            HttpContext.Session.Get("RandomTile");
+            HttpContext.Session.Get("RandomChip");
+            HttpContext.Session.Get("IsFourPlayer");
             if (ModelState.IsValid)
             {
-                try
+                if (model.IsSmallBoard == true)
                 {
-                    if(model.IsSmallBoard == true)
-                    {
-                        return RedirectToAction("Board", "SmallBoard");
-                    }
+                    return RedirectToAction("BoardDisplay", "Board");
                 }
-                catch
+                else
                 {
-                    return View();
+                    return RedirectToAction("BoardDisplay", "Board");
                 }
             }
             return View();

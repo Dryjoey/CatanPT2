@@ -24,6 +24,12 @@ namespace Catan
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession(so =>
+            {
+                so.IdleTimeout = TimeSpan.FromSeconds(60);
+                so.Cookie.HttpOnly = true;
+                so.Cookie.IsEssential = true;
+            });
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -51,6 +57,7 @@ namespace Catan
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
