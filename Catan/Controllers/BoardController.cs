@@ -28,5 +28,22 @@ namespace Catan.Controllers
             Board board = BoardLogic.Normal();
             return View(board);
         }
+
+        public IActionResult RandomChips()
+        {
+            Board board = BoardLogic.RandomChips();
+            return View("BoardDisplay",board);
+        }
+
+        public IActionResult RandomResources()
+        {
+            Board board = BoardLogic.RandomResources();
+            return View("BoardDisplay",board);
+        }
+        public IActionResult Random()
+        {
+            Board board = BoardLogic.Random();
+            return View("BoardDisplay", board);
+        }
     }
 }
