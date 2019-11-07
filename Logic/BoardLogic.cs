@@ -56,6 +56,23 @@ namespace Logic
             return board;
 
         }
+        public static Board RandomChips()
+        {
+            Board board = new Board();
+            List<Tile> tiles = CreateNewEmptyTileList();
+            board.Tiles = FillRandomChipsTiles(tiles);
+            AddDesert(board);
+            return board;
+        }
+
+        public static Board RandomResources()
+        {
+            Board board = new Board();
+            List<Tile> tiles = CreateNewEmptyTileList();
+            board.Tiles = FillRandomResourceTiles(tiles);
+            AddRandomDesert(board);
+            return board;
+        }
         
         public static List<Tile> CreateNewEmptyTileList()
         {
@@ -68,9 +85,20 @@ namespace Logic
         }
         public static List<Tile> FillRandomTiles(List<Tile> tiles)
         {
-            
-            tiles = SetChipsRandom(tiles, shuffle (Chips));
-            tiles = SetResourcesRandom(tiles, shuffle(Resources));
+            tiles = SetChips(tiles, shuffle (Chips));
+            tiles = SetResources(tiles, shuffle(Resources));
+            return tiles;
+        }
+        public static List<Tile> FillRandomResourceTiles(List<Tile> tiles)
+        {
+            tiles = SetChips(tiles, (Chips));
+            tiles = SetResources(tiles, shuffle(Resources));
+            return tiles;
+        }
+        public static List<Tile> FillRandomChipsTiles(List<Tile> tiles)
+        {
+            tiles = SetChips(tiles, shuffle(Chips));
+            tiles = SetResources(tiles, (Resources));
             return tiles;
         }
         public static List<Tile> FillTiles(List<Tile> tiles)
@@ -188,14 +216,7 @@ namespace Logic
             exclude.Add(finalValue);    
             return finalValue;
         }
-        public static List<Tile> SetResourcesRandom(List<Tile> tiles, string[] resources)
-        {
-            for (int i = 0; i < resources.Length; i++)
-            {
-                tiles[i].Resource = (resources)[i];
-            }
-               return tiles;
-        }
+         
         public static List<Tile> SetResources(List<Tile> tiles, string[] resources)
         {
             for (int i = 0; i < resources.Length; i++)
@@ -205,11 +226,11 @@ namespace Logic
             return tiles;
         }
 
-        public static List<Tile> SetChipsRandom(List<Tile> tiles, int[] chips)
+        public static List<Tile> SetChipsPseudoRandom(List<Tile> tiles, int[] chips)
         {
-            for (int i = 0; i < chips.Length; i++)
+            for(int i = 0; i< chips.Length; i++)
             {
-                tiles[i].Chip = (chips)[i];
+                tiles[i].Chip = chips[i];
             }
             return tiles.ToList();
         }
