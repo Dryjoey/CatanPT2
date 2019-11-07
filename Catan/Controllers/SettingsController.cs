@@ -11,29 +11,8 @@ namespace Catan.Controllers
 {
     public class SettingsController : Controller
     {
-        [HttpGet]
         public IActionResult Index()
         {
-
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Index(Settingsmodel model)
-        {
-            HttpContext.Session.Get("RandomTile");
-            HttpContext.Session.Get("RandomChip");
-            HttpContext.Session.Get("IsFourPlayer");
-            if (ModelState.IsValid)
-            {
-                if (model.IsSmallBoard == true)
-                {
-                    return RedirectToAction("BoardDisplay", "Board");
-                }
-                else
-                {
-                    return RedirectToAction("BoardDisplay", "Board");
-                }
-            }
             return View();
         }
     }
