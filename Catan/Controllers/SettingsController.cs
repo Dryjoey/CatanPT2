@@ -15,7 +15,6 @@ namespace Catan.Controllers
         {
             return View();
         }
-        [HttpPost]
         public IActionResult SaveBoardSettings(Settingsmodel model)
         {
             Session["RandomChip"] = model.ChipIsRandom;
@@ -36,7 +35,7 @@ namespace Catan.Controllers
                     return View();
                 }
             }
-            return RedirectToAction("Board", "SmallBoard");
+            return View();
         }
     }
 }
