@@ -1,4 +1,5 @@
-﻿<head>
+﻿@model Settingsmodel
+<head>
     <link href="~/css/Settings.css" rel="stylesheet" type="text/css" />
 </head>
 <title>Generator Settings</title>
@@ -14,8 +15,8 @@
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"><label class="label" for="TilePlacement">Tile Placement</label></div>
-            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="TileRandom" name="TileRadio" /></div>
-            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="TileFixed" name="TileRadio"/></div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.TileIsRandom, true, new { id = "RandomTile" })</div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.TileIsRandom, false, new { id = "RandomTile" })</div>
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"></div>
@@ -24,8 +25,8 @@
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"><label class="label" for="ChipPlacement">Chip Placement</label></div>
-            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="ChipRandom" name="ChipRadio" /></div>
-            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="ChipFixed" name="ChipRadio" /></div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.ChipIsRandom, true, new { id = "RandomChip" })</div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.ChipIsRandom, false, new { id = "RandomChip" })</div>
             <br />
         </div>
         <div class="row align-items-center">
@@ -35,10 +36,10 @@
         </div>
         <div class="row align-items-center">
             <div class="col-xs-6"><label class="label" for="NumberofPlayers">Number of Players</label></div>
-            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="FourPlayer" name="PlayerRadio"/></div>
-            <div class="col-xs-2"><input type="radio" class="custom-control-input" id="FivePlayer" name="PlayerRadio"/></div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, true, new { id = "FourPlayer" })</div>
+            <div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, false, new { id = "FourPlayer" })</div>
             <br />
         </div>
-        <input class="btn btn-primary btn-lg no-padding submitbutton" type="button" id="submit-btn" value="Create" onclick="location.href='@Url.Action("SaveBoardSettings")'" />
+        <input class="btn btn-primary btn-lg no-padding submitbutton" type="button" id="submit-btn" value="Create" onclick="location.href = '@Url.Action("SaveBoardSettings")';" />
     </div>
 </form>
