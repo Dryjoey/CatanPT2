@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
+using Microsoft.AspNetCore.Session;
+using Catan.Models;
 
 namespace Catan.Controllers
 {
@@ -13,29 +15,27 @@ namespace Catan.Controllers
         {
             return View();
         }
-        public IActionResult SaveBoardSettings(bool tileRandom, bool chipRandom, bool fourPlayer)
+        public IActionResult SaveBoardSettings(Settingsmodel model)
         {
-            Response.Cookies.Append("TileRandom","True");
-            Response.Cookies.Append("TileRandom","False");
-            Response.Cookies.Append("ChipRandom","True");
-            Response.Cookies.Append("ChipRandom","False");
-            Response.Cookies.Append("FourPlayer","True");
-            Response.Cookies.Append("FourPlayer", "False");
-            try
+            Session["RandomChip"] = model.ChipIsRandom;
+            Session["RandomTile"] = model.TileIsRandom;
+            Session["IsFourPlayer"] = model.IsSmallBoard;
+
+            if (ModelState.IsValid)
             {
-                if (fourPlayer == true)
+                try
                 {
-                    return RedirectToAction("BoardController", "Smallboard");
+                    if(model.IsSmallBoard == true)
+                    {
+                        return RedirectToAction("Board", "SmallBoard");
+                    }
                 }
-                else
+                catch
                 {
-                    return RedirectToAction("BoardController", "Bigboard");
+                    return View();
                 }
             }
-            catch(ArgumentException)
-            {
-                return View();
-            }
+            return View();
         }
     }
 }
