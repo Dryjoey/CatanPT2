@@ -59,7 +59,6 @@ namespace Logic
         {
             tiles = SetChips(tiles, Chips);
             tiles = SetResources(tiles, Resources);
-            tiles = Position(tiles); ;
             return tiles;
         }
         public static string[] shuffle(string[] array)
@@ -166,10 +165,9 @@ namespace Logic
         private static int GetNewPositionValue()
         {
             var range = Enumerable.Range(0, 18).Where(i => !exclude.Contains(i));
-
             int index = rng.Next(0, 18 - exclude.Count);
             int finalValue = range.ElementAt(index);
-            exclude.Add(finalValue);
+            exclude.Add(finalValue);    
             return finalValue;
         }
         public static List<Tile> SetResourcesRandom(List<Tile> tiles, string[] resources)
