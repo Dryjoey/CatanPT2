@@ -47,6 +47,34 @@ namespace Logic
             return board;
         }
 
+        public static bool CheckRedTiles(Board board)
+        {
+            bool passed = true;
+
+            for (int x = 0; x < board.Tiles.Count; x++)
+            {
+                if (board.Tiles[x].Chip == 6 || board.Tiles[x].Chip == 8)
+                {
+                    passed = CompareRedWithAdjecents(board.Tiles, x);
+                }
+            }
+
+            return passed;
+        }
+
+        public static bool CompareRedWithAdjecents(List<Tile> tiles, int index)
+        {
+            bool cool = true;
+            foreach(int p in adjecent[index])
+            {
+                if(tiles[p].Chip == 6 || tiles[p].Chip == 8)
+                {
+                    cool = false;
+                }
+            }
+            return cool;
+        }
+
         public static Board Random()
         {
             Board board = new Board();
