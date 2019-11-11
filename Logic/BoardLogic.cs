@@ -47,22 +47,6 @@ namespace Logic
             return board;
         }
 
-        public static Board PseudoChips()
-        {
-            Board board = new Board();
-
-            bool check = false;
-            while (check == false)
-            {
-                List<Tile> tiles = CreateNewEmptyTileList();
-                FillRandomChipsTiles(tiles);
-                board.Tiles = tiles;
-                AddDesert(board);
-                check = CheckRedTiles(board.Tiles);
-            }
-            return board;
-        }
-
         public static Board PseudoRandom()
         {
             Board board = new Board();
@@ -106,7 +90,22 @@ namespace Logic
             AddRandomDesert(board);
             return board;
         }
-        
+        public static Board PseudoChips()
+        {
+            Board board = new Board();
+
+            bool check = false;
+            while (check == false)
+            {
+                List<Tile> tiles = CreateNewEmptyTileList();
+                FillRandomChipsTiles(tiles);
+                board.Tiles = tiles;
+                AddDesert(board);
+                check = CheckRedTiles(board.Tiles);
+            }
+            return board;
+        }
+
         public static List<Tile> CreateNewEmptyTileList()
         {
             List<Tile> tileList = new List<Tile>();
