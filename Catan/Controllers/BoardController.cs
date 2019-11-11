@@ -12,7 +12,7 @@ namespace Catan.Controllers
     {
         public IActionResult BoardDisplay()
         {
-            Board board = BoardLogic.PseudoRandom();
+            Board board = BoardLogic.PseudoChips();
             return View(board);
         }
 
@@ -22,12 +22,7 @@ namespace Catan.Controllers
             return View(board);
         }
 
-        public IActionResult BoardTest()
-        {
-            Board board = BoardLogic.PseudoRandom();
-            return View(board);
-        }
-
+        //these are going to change. 
         public IActionResult RandomChips()
         {
             Board board = BoardLogic.RandomChips();
@@ -36,7 +31,7 @@ namespace Catan.Controllers
 
         public IActionResult RandomResources()
         {
-            Board board = BoardLogic.RandomResources();
+            Board board = BoardLogic.RandomTiles();
             return View("BoardDisplay",board);
         }
         public IActionResult Random()
