@@ -17,40 +17,41 @@ namespace Catan.Controllers
         {
             return View();
         }
-        [HttpPost]
         public IActionResult SetSettings(Settingsmodel model)
         {
+            Board board;
             if (ModelState.IsValid)
             {
                 if(model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
                 {
-                    Board board = BoardLogic.RandomTiles();
-                    return View("BoardDisplay",board);
+                    board = BoardLogic.RandomTiles();
+                    return RedirectToAction("BoardDisplay", "Board");
                 }
                 if (model.ChipState == ChipState.Fixed && model.TileIsRandom == false)
                 {
-                    Board board = BoardLogic.Normal();
-                    return View("BoardDisplay", board);
+                    board = BoardLogic.Normal();
+                    return RedirectToAction("BoardDisplay", "Board", board);
                 }
                 if(model.ChipState == ChipState.Random && model.TileIsRandom == true)
                 {
-                    Board board = BoardLogic.Random();
-                    return View("BoardDisplay", board);
+                    board = BoardLogic.Random();
+                    TempData["_board"] = board;
+                    return RedirectToAction("BoardDisplay", "Board", board);
                 }
                 if(model.ChipState == ChipState.Random && model.TileIsRandom == false)
                 {
-                    Board board = BoardLogic.RandomChips();
-                    return View("BoardDisplay", board);
+                    board = BoardLogic.RandomChips();
+                    return RedirectToAction("BoardDisplay", "Board", board);
                 }
                 if(model.ChipState == ChipState.Psuedo && model.TileIsRandom == true)
                 {
-                    Board board = BoardLogic.PseudoRandom();
-                    return View("BoardDisplay", board);
+                    board = BoardLogic.PseudoRandom();
+                    return RedirectToAction("BoardDisplay", "Board", board);
                 }
                 if(model.ChipState == ChipState.Psuedo && model.TileIsRandom == false)
                 {
-                    Board board = BoardLogic.PseudoChips();
-                    return View("BoardDisplay", board);
+                    board = BoardLogic.PseudoChips();
+                    return RedirectToAction("BoardDisplay", "Board", board);
                 }
             }
             else

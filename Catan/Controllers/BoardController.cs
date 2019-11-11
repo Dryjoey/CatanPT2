@@ -10,9 +10,10 @@ namespace Catan.Controllers
 {
     public class BoardController : Controller
     {
-        public IActionResult BoardDisplay(Board board)
+        [HttpGet]
+        public IActionResult BoardDisplay()
         {
-            return View(board);
+            return View();
         }
     }
 }
