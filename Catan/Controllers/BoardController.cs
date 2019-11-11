@@ -10,22 +10,21 @@ namespace Catan.Controllers
 {
     public class BoardController : Controller
     {
-
         public IActionResult BoardDisplay()
         {
-            Board board = BoardLogic.Normal();
+            Board board = BoardLogic.PseudoRandom();
             return View(board);
         }
 
         public IActionResult BigBoardTest()
         {
-            Board board = BoardLogic.Normal(); //there needs to be a function for bigBoard!
+            Board board = BigBoardLogic.Normal(); //there needs to be a function for bigBoard!
             return View(board);
         }
 
         public IActionResult BoardTest()
         {
-            Board board = BoardLogic.Normal();
+            Board board = BoardLogic.PseudoRandom();
             return View(board);
         }
 
