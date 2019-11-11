@@ -14,10 +14,8 @@ namespace Catan.Controllers
     public class TestController : Controller
     {
         public IActionResult ViewTest()
-        {
-            Board board = BoardLogic.PseudoRandom();
-           
-            return View("Views/Board/BoardDisplay.cshtml", board);
+        {           
+            return View("Views/TestView.cshtml");
         }
     }
 }
