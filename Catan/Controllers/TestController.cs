@@ -15,16 +15,9 @@ namespace Catan.Controllers
     {
         public IActionResult ViewTest()
         {
-            Board board = BoardLogic.Random();
+            Board board = BoardLogic.PseudoRandom();
            
-            return View("Views/TestView.cshtml", board);
-        }
-
-        public void GekkeTest()
-        {
-            Board board = BigBoardLogic.Normal();
-            BoardController controller = new BoardController();
-            controller.BoardDisplay(board);
+            return View("Views/Board/BoardDisplay.cshtml", board);
         }
     }
 }
