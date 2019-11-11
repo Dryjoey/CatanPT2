@@ -25,32 +25,32 @@ namespace Catan.Controllers
                 if(model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
                 {
                     Board board = BoardLogic.RandomTiles();
-                    return RedirectToAction("BoardDisplay","Board");
+                    return View("BoardDisplay",board);
                 }
                 if (model.ChipState == ChipState.Fixed && model.TileIsRandom == false)
                 {
                     Board board = BoardLogic.Normal();
-                    return RedirectToAction("BoardDisplay", "Board");
+                    return View("BoardDisplay", board);
                 }
                 if(model.ChipState == ChipState.Random && model.TileIsRandom == true)
                 {
                     Board board = BoardLogic.Random();
-                    return RedirectToAction("BoardDisplay", "Board");
+                    return View("BoardDisplay", board);
                 }
                 if(model.ChipState == ChipState.Random && model.TileIsRandom == false)
                 {
                     Board board = BoardLogic.RandomChips();
-                    return RedirectToAction("BoardDisplay", "Board");
+                    return View("BoardDisplay", board);
                 }
                 if(model.ChipState == ChipState.Psuedo && model.TileIsRandom == true)
                 {
                     Board board = BoardLogic.PseudoRandom();
-                    return RedirectToAction("BoardDisplay", "Board");
+                    return View("BoardDisplay", board);
                 }
                 if(model.ChipState == ChipState.Psuedo && model.TileIsRandom == false)
                 {
                     Board board = BoardLogic.PseudoChips();
-                    return RedirectToAction("BoardDisplay", "Board");
+                    return View("BoardDisplay", board);
                 }
             }
             else
