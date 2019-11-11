@@ -21,7 +21,7 @@ namespace Catan.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(model.ChipIsRandom && model.TileIsRandom == true)
+                if(model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
                 {
                     return RedirectToAction("Random","Board");
                 }
@@ -29,9 +29,13 @@ namespace Catan.Controllers
                 {
                     return RedirectToAction("RandomResources", "Board");
                 }
-                if (model.ChipIsRandom == true)
+                if (model.ChipState == ChipState.Random)
                 {
                     return RedirectToAction("RandomChips", "Board");
+                }
+                if (model.ChipState == ChipState.Psuedo)
+                {
+                    return RedirectToAction("PsuedoChips", "Board");
                 }
                 else
                 {

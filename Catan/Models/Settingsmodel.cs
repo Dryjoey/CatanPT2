@@ -10,9 +10,15 @@ namespace Catan.Models
     {
         public bool TileIsRandom { get; set; }
 
-        public bool ChipIsRandom { get; set; }
-
         public bool IsSmallBoard { get; set; }
 
+        public ChipState ChipState { get; set; }
     }
+
+    public enum ChipState
+    {
+        Random,
+        Fixed,
+        Psuedo
+    };
 }
