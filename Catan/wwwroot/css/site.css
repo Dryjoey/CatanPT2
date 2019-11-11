@@ -1,4 +1,12 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+﻿* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
     background-color: #5eb28f;
@@ -56,6 +64,23 @@ body{
     list-style-type: none;
 }
 
-.board-partial{
+.board-partial {
     margin: 50px;
 }
+
+
+.li-spacer {
+    height:340px;
+    width: 420px;
+}
+
+.li-horizontal {
+    float: left;
+    position: absolute;
+    margin: 0 0 0 45px;
+}
+
+.horizontal-spacer {
+    margin: 0 45px 0 0;
+}
+

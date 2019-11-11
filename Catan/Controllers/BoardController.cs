@@ -10,7 +10,6 @@ namespace Catan.Controllers
 {
     public class BoardController : Controller
     {
-
         public IActionResult BoardDisplay()
         {
             Board board = BoardLogic.PseudoRandom();
