@@ -7,6 +7,7 @@ using System.Web;
 using Microsoft.AspNetCore.Http;
 using Catan.Models;
 using Logic;
+using Models;
 
 namespace Catan.Controllers
 {
@@ -23,22 +24,32 @@ namespace Catan.Controllers
             {
                 if(model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
                 {
-                    return RedirectToAction("Random","Board");
+                    Board board = BoardLogic.RandomTiles();
+                    return RedirectToAction("BoardDisplay","Board");
                 }
-                if (model.TileIsRandom == true)
+                if (model.ChipState == ChipState.Fixed && model.TileIsRandom == false)
                 {
-                    return RedirectToAction("RandomResources", "Board");
+                    Board board = BoardLogic.Normal();
+                    return RedirectToAction("BoardDisplay", "Board");
                 }
-                if (model.ChipState == ChipState.Random)
+                if(model.ChipState == ChipState.Random && model.TileIsRandom == true)
                 {
-                    return RedirectToAction("RandomChips", "Board");
+                    Board board = BoardLogic.Random();
+                    return RedirectToAction("BoardDisplay", "Board");
                 }
-                if (model.ChipState == ChipState.Psuedo)
+                if(model.ChipState == ChipState.Random && model.TileIsRandom == false)
                 {
-                    return RedirectToAction("PsuedoChips", "Board");
+                    Board board = BoardLogic.RandomChips();
+                    return RedirectToAction("BoardDisplay", "Board");
                 }
-                else
+                if(model.ChipState == ChipState.Psuedo && model.TileIsRandom == true)
                 {
+                    Board board = BoardLogic.PseudoRandom();
+                    return RedirectToAction("BoardDisplay", "Board");
+                }
+                if(model.ChipState == ChipState.Psuedo && model.TileIsRandom == false)
+                {
+                    Board board = BoardLogic.PseudoChips();
                     return RedirectToAction("BoardDisplay", "Board");
                 }
             }
