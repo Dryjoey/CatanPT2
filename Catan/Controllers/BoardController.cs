@@ -10,7 +10,7 @@ namespace Catan.Controllers
 {
     public class BoardController : Controller
     {
-        public IActionResult BoardDisplay()
+        public IActionResult BoardDisplay(Board board)
         {
             Board board = BoardLogic.Normal();
             return View(board);
