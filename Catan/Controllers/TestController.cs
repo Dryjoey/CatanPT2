@@ -19,5 +19,12 @@ namespace Catan.Controllers
            
             return View("Views/TestView.cshtml", board);
         }
+
+        public void GekkeTest()
+        {
+            Board board = BigBoardLogic.Normal();
+            BoardController controller = new BoardController();
+            controller.BoardDisplay(board);
+        }
     }
 }
