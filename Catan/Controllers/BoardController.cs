@@ -5,14 +5,53 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Logic;
 using Models;
+using Catan.Models;
 
 namespace Catan.Controllers
 {
     public class BoardController : Controller
     {
-        [HttpGet]
-        public IActionResult BoardDisplay()
+        [HttpPost]
+        public IActionResult BoardDisplay(Settingsmodel model)
         {
+            Board board;
+            if (ModelState.IsValid)
+            {
+                if (model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
+                {
+                    board = BoardLogic.RandomTiles();
+                    return View(board);
+                }
+                if (model.ChipState == ChipState.Fixed && model.TileIsRandom == false)
+                {
+                    board = BoardLogic.Normal();
+                    return View(board);
+                }
+                if (model.ChipState == ChipState.Random && model.TileIsRandom == true)
+                {
+                    board = BoardLogic.Random();
+                    return View(board);
+                }
+                if (model.ChipState == ChipState.Random && model.TileIsRandom == false)
+                {
+                    board = BoardLogic.RandomChips();
+                    return View(board);
+                }
+                if (model.ChipState == ChipState.Psuedo && model.TileIsRandom == true)
+                {
+                    board = BoardLogic.PseudoRandom();
+                    return View(board);
+                }
+                if (model.ChipState == ChipState.Psuedo && model.TileIsRandom == false)
+                {
+                    board = BoardLogic.PseudoChips();
+                    return View(board);
+                }
+            }
+            else
+            {
+
+            }
             return View();
         }
     }

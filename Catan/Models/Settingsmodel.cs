@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace Catan.Models
 {
-    [Serializable]
     public class Settingsmodel
     {
         public bool TileIsRandom { get; set; }
