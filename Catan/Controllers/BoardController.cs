@@ -43,11 +43,6 @@ namespace Catan.Controllers
                     board = BoardLogic.PseudoRandom();
                     return View(board);
                 }
-                if (model.ChipState == ChipState.Psuedo && model.TileIsRandom == false)
-                {
-                    board = BoardLogic.Normal();
-                    return View(board);
-                }
             }
             else
             {
