@@ -20,7 +20,7 @@ namespace Catan.Controllers
             {
                 if (model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
                 {
-                    board = BoardLogic.RandomTiles();
+                    board = BoardLogic.RandomResources();
                     return View(board);
                 }
                 if (model.ChipState == ChipState.Fixed && model.TileIsRandom == false)
@@ -45,7 +45,7 @@ namespace Catan.Controllers
                 }
                 if (model.ChipState == ChipState.Psuedo && model.TileIsRandom == false)
                 {
-                    board = BoardLogic.PseudoChips();
+                    board = BoardLogic.Normal();
                     return View(board);
                 }
             }
