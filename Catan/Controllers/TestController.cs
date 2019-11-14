@@ -17,7 +17,7 @@ namespace Catan.Controllers
         public IActionResult TestView()
         {
 
-            return View("Views/TestView.cshtml", BigBoardLogic.Normal());
+            return View("Views/Board/BoardDisplay.cshtml", BigBoardLogic.Normal());
         }
     }
 }

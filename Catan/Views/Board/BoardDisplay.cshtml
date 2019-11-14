@@ -1,7 +1,14 @@
-﻿
-    <div class="board-partial">
+﻿    <div class="board-partial">
+    @if (Model.Resources.Count <= 19)
+    {
         <partial name="Partial/_SmallBoard.cshtml" />
-    </div>
+    }
+    else
+    {
+        <partial name="Partial/_BigBoard.cshtml" />
+    }
+
+</div>
     <ul class="main-menu-list">
         <li>
             <div>
