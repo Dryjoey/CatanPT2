@@ -6,6 +6,11 @@
     margin: 0 auto;
     top: 300px;
 }
+.container > input[type="radio"] {
+        border: 0px;
+        width: 100%;
+        height: 2em;
+}
 .custom-control-input{
     width: 30px;
     height: 30px;
@@ -44,11 +49,20 @@
 }
 .submitbutton{
     position:absolute;
-    bottom: 0;
+    bottom: 250px;
     right: 600px;
 }
 .settingsGear{
     position: absolute;
     height: 40px;
     width: 40px;
+}
+#BigRadio {
+    border: 0px;
+    width: 100%;
+    height: 0.4em;
+}
+.checkbox-size{
+    height: 2em;
+    width: 100%;
 }
