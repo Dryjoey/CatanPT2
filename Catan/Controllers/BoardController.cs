@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Logic;
 using Models;
 using Catan.Models;
+using Hanssens.Net;
 
 namespace Catan.Controllers
 {
@@ -19,7 +20,7 @@ namespace Catan.Controllers
             {
                 if (model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
                 {
-                    board = BoardLogic.RandomTiles();
+                    board = BoardLogic.RandomResources();
                     return View(board);
                 }
                 if (model.ChipState == ChipState.Fixed && model.TileIsRandom == false)
@@ -27,7 +28,11 @@ namespace Catan.Controllers
                     board = BoardLogic.Normal();
                     return View(board);
                 }
-                 
+                if (model.ChipState == ChipState.Random && model.TileIsRandom == true)
+                {
+                    board = BoardLogic.Random();
+                    return View(board);
+                }
                 if (model.ChipState == ChipState.Random && model.TileIsRandom == false)
                 {
                     board = BoardLogic.RandomChips();
@@ -38,7 +43,6 @@ namespace Catan.Controllers
                     board = BoardLogic.PseudoRandom();
                     return View(board);
                 }
-                 
             }
             else
             {

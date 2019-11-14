@@ -8,14 +8,15 @@ using Catan.Models;
 using Logic;
 using Models;
 using DAO;
+using Hanssens.Net;
 
 namespace Catan.Controllers
 {
     public class TestController : Controller
     {
-        public IActionResult ViewTest()
-        {   
-            
+        public IActionResult TestView()
+        {
+
             return View("Views/TestView.cshtml", BigBoardLogic.Normal());
         }
     }
