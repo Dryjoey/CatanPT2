@@ -14,8 +14,9 @@ namespace Catan.Controllers
     public class TestController : Controller
     {
         public IActionResult ViewTest()
-        {           
-            return View("Views/TestView.cshtml");
+        {   
+            
+            return View("Views/TestView.cshtml", BigBoardLogic.Normal());
         }
     }
 }

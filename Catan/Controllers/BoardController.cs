@@ -27,11 +27,7 @@ namespace Catan.Controllers
                     board = BoardLogic.Normal();
                     return View(board);
                 }
-                if (model.ChipState == ChipState.Random && model.TileIsRandom == true)
-                {
-                    board = BoardLogic.Random();
-                    return View(board);
-                }
+                 
                 if (model.ChipState == ChipState.Random && model.TileIsRandom == false)
                 {
                     board = BoardLogic.RandomChips();
@@ -42,11 +38,7 @@ namespace Catan.Controllers
                     board = BoardLogic.PseudoRandom();
                     return View(board);
                 }
-                if (model.ChipState == ChipState.Psuedo && model.TileIsRandom == false)
-                {
-                    board = BoardLogic.PseudoChips();
-                    return View(board);
-                }
+                 
             }
             else
             {
