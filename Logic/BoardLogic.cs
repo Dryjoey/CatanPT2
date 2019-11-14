@@ -73,6 +73,8 @@ namespace Logic
         {
             Board board = new Board();
             List<Tile> tiles = CreateNewEmptyTileList();
+            List<Port> ports = CreateNewEmptyPortList();
+            board.Ports = FillRandomPorts(ports);
             board.Tiles = FillRandomTiles(tiles);
             AddRandomDesert(board);
             return board;
@@ -82,7 +84,9 @@ namespace Logic
         {
             Board board = new Board();
             List<Tile> tiles = CreateNewEmptyTileList();
+            List<Port> ports = CreateNewEmptyPortList();
             board.Tiles = FillRandomChipsTiles(tiles);
+            board.Ports = FillPorts(ports);
             AddDesert(board);
             return board;
         }
