@@ -69,7 +69,7 @@ namespace Logic
         }
 
 
-        public static Board Random()
+        public static Board RandomTiles()
         {
             Board board = new Board();
             List<Tile> tiles = CreateNewEmptyTileList();
