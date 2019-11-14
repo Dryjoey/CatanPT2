@@ -131,8 +131,6 @@ namespace Logic
             Tile tile1 = new Tile(7, "desert");
             board.Tiles.Insert(19, tile);
             board.Tiles.Insert(25, tile);
-
-            
         }
 
 
