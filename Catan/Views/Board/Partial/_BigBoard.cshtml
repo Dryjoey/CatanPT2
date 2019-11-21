@@ -34,17 +34,18 @@
 
     <div class="border scaled">
         <div class="board-container">
-            <ol class="even">
+
+            <ol class="even"> 
                 <li class='hex spacer'></li>
                 <li class='hex water'></li>
                 <li class='hex water'>
-                    <div class='harbor two-one wood'>
+                    <div class='harbor @Model.Ports[0].Conversion'>
                         <div class='harbor-piece br'></div>
                     </div>
                 </li>
                 <li class='hex water'></li>
                 <li class='hex water'>
-                    <div class='harbor three-one wood'>
+                    <div class='harbor @Model.Ports[1].Conversion'>
                         <div class='harbor-piece bl'></div>
                     </div>
                 </li>
@@ -54,7 +55,7 @@
             <ol class="odd">
                 <li class='hex spacer'></li>
                 <li class='hex water'>
-                    <div class='harbor three-one sheep'>
+                    <div class='harbor @Model.Ports[10].Conversion'>
                         <div class='harbor-piece br'></div>
                     </div>
                 </li>
@@ -74,7 +75,11 @@
                 <li class='hex @Model.Tiles[3].Resource'>
                     <div class='@NumberToString(Model.Tiles[3].Chip)'></div>
                 </li>
-                <li class='hex water'></li>
+                <li class='hex water'>
+                    <div class='harbor @Model.Ports[2].Conversion'>
+                        <div class='harbor-piece bl'></div>
+                    </div>
+                </li>
             </ol>
 
             <ol class="even">
@@ -99,16 +104,13 @@
                 <li class='hex @Model.Tiles[8].Resource'>
                     <div class='@NumberToString(Model.Tiles[8].Chip)'></div>
                 </li>
-                <li class='hex water'>
-                    <div class='harbor three-one brick'>
-                        <div class='harbor-piece l'></div>
-                    </div>
-                </li>
+                <li class='hex water'></li>
             </ol>
 
             <ol class="odd">
                 <li class='hex water'>
-                    <div class='harbor three-one sheep'>
+                    <div class='harbor @Model.Ports[9].Conversion'>
+                        <div class='harbor-piece r'></div>
                     </div>
                 </li>
                 <!--Tile position 9-->
@@ -136,8 +138,12 @@
                     <div class='@NumberToString(Model.Tiles[14].Chip)'></div>
                 </li>
                 <li class='hex water'>
+                    <div class='harbor @Model.Ports[3].Conversion'>
+                        <div class='harbor-piece l'></div>
+                    </div>
                 </li>
             </ol>
+
             <ol class="even">
                 <li class='hex water'></li>
                 <!--Tile position 15-->
@@ -165,16 +171,14 @@
                     <div class='@NumberToString(Model.Tiles[20].Chip)'></div>
                 </li>
                 <li class='hex water'>
-                    <div class='harbor three-one brick'>
-                        <div class='harbor-piece l'></div>
-                    </div>
                 </li>
             </ol>
+
             <ol class="odd">
                 <li class='hex spacer'></li>
                 <li class='hex water'>
-                    <div class='harbor two-one any'>
-                        <div class='harbor-piece tr'></div>
+                    <div class='harbor @Model.Ports[8].Conversion'>
+                        <div class='harbor-piece r'></div>
                     </div>
                 </li>
                 <!--Tile position 21-->
@@ -197,15 +201,16 @@
                 <li class='hex @Model.Tiles[25].Resource'>
                     <div class='@NumberToString(Model.Tiles[25].Chip)'></div>
                 </li>
-                <li class='hex water'></li>
-            </ol>
-            <ol class="even">
-                <li class='hex spacer'></li>
                 <li class='hex water'>
-                    <div class='harbor three-one sheep'>
-                        <div class='harbor-piece br'></div>
+                    <div class='harbor @Model.Ports[4].Conversion'>
+                        <div class='harbor-piece l'></div>
                     </div>
                 </li>
+            </ol>
+
+            <ol class="even">
+                <li class='hex spacer'></li>
+                <li class='hex water'></li>
                 <!--Tile position 26-->
                 <li class='hex @Model.Tiles[26].Resource'>
                     <div class='@NumberToString(Model.Tiles[26].Chip)'></div>
@@ -224,22 +229,27 @@
                 </li>
                 <li class='hex water'></li>
             </ol>
+
             <ol class="odd">
                 <li class='hex spacer'></li>
                 <li class='hex spacer'></li>
-                <li class='hex water'></li>
                 <li class='hex water'>
-                    <div class='harbor two-one any'>
+                    <div class='harbor @Model.Ports[7].Conversion'>
                         <div class='harbor-piece tr'></div>
                     </div>
                 </li>
                 <li class='hex water'></li>
                 <li class='hex water'>
-                    <div class='harbor three-one wood'>
+                    <div class='harbor @Model.Ports[6].Conversion'>
                         <div class='harbor-piece tl'></div>
                     </div>
                 </li>
                 <li class='hex water'></li>
+                <li class='hex water'>
+                    <div class='harbor @Model.Ports[5].Conversion'>
+                        <div class='harbor-piece tl'></div>
+                    </div>
+                </li>
             </ol>
         </div>
     </div>

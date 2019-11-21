@@ -8,8 +8,9 @@ namespace Logic
 {
     public static class BigBoardLogic
     {
-        public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11, 3, 5, 6, 8, 2, 11, 10, 10, 5, 12};
-        public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27};
+        public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11, 3, 5, 6, 8, 2, 11, 10, 10, 5, 12 };
+        public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27 };
+        public static string[] Ports = new string[] { "two-one brick", "two-one wool", "two-one wood", "two-one wheat", "two-one ore","two-one brick", "two-one wool", "two-one wood", "two-one wheat", "two-one ore", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any" };
         public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore", "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", };
         public static int[][] adjecent = new int[][]
         {
@@ -49,7 +50,9 @@ namespace Logic
         {
             Board board = new Board();
             List<Tile> tiles = CreateNewEmptyTileList();
+            List<Port> ports = CreateNewEmptyPortList();
             board.Tiles = FillTiles(tiles);
+            board.Ports = FillPorts(ports);
             AddDesert(board);
             return board;
         }
@@ -61,8 +64,10 @@ namespace Logic
             while (check == false)
             {
                 List<Tile> tiles = CreateNewEmptyTileList();
-                board.Tiles = tiles;
+                List<Port> ports = CreateNewEmptyPortList();
+                board.Ports = FillRandomPorts(ports);
                 RandomizeTiles(tiles);
+                board.Tiles = tiles;
                 AddRandomDesert(board);
                 check = CheckRedTiles(board.Tiles);
             }
@@ -108,6 +113,15 @@ namespace Logic
                 tileList.Add(new Tile());
             }
             return tileList;
+        }
+        public static List<Port> CreateNewEmptyPortList()
+        {
+            List<Port> PortList = new List<Port>();
+            foreach (string port in Ports)
+            {
+                PortList.Add(new Port());
+            }
+            return PortList;
         }
         public static List<Tile> FillRandomTiles(List<Tile> tiles)
         {
@@ -206,6 +220,24 @@ namespace Logic
                 }
             }
             return true;
+        }
+        public static List<Port> FillRandomPorts(List<Port> port)
+        {
+            port = SetPorts(port, shuffle(Ports));
+            return port;
+        }
+        public static List<Port> FillPorts(List<Port> port)
+        {
+            port = SetPorts(port, Ports);
+            return port;
+        }
+        public static List<Port> SetPorts(List<Port> ports, string[] Ports)
+        {
+            for (int i = 0; i < Ports.Length; i++)
+            {
+                ports[i].Conversion = Ports[i];
+            }
+            return ports;
         }
     }
 }
