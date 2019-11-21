@@ -6,19 +6,23 @@ namespace DAO
 {
    public class UserDAO :DAO
     {
-        public int GetUser()
+        public int GetLastUser()
         {
+            int user = 0;
             con.Open();
             string query = "Select MAX(id) FROM Users";
             using (SqlCommand command = new SqlCommand(query, con))
             {
-                command.ExecuteNonQuery();
-
+                SqlDataReader read = command.ExecuteReader();
+                while (read.Read())
+                {
+                    read.GetInt32(0);
+                     read.GetInt32(1);
+                }
                 con.Close();
-
-                return result;
+                
             }
-            return 0;
+            return user;
         }
     }
 }
