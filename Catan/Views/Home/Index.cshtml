@@ -3,7 +3,7 @@
     <p></p>
     <div class="image">
         <img src="~/images/Banner.png" />
-        <h2 class="image-titel">Board Generator</h2>
+        <label class="image-titel"><span class="lang" key="Boardgenerator"></span></label>
     </div>
     <div class="main-menu-container">
         <ul class="main-menu-list">
@@ -11,10 +11,10 @@
                 <div>
                     @using (Html.BeginForm("index", "Settings"))
                     {
-                        <button type="submit" class="main-menu-btn">Generate Board</button>
+                        <button type="submit" class="main-menu-btn"><p class="lang" key="Generateboard"></p></button>
                     }
                 </div>
-            </li>
+            </li>213
             <li>
                 <div>
                     @using (Html.BeginForm("BoardTest", "Board"))

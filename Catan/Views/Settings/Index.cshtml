@@ -3,7 +3,7 @@
     <link href="~/css/Settings.css" rel="stylesheet" type="text/css" />
 </head>
 <title>Generator Settings</title>
-<h1 class="gentitle">
+<h1 class="gentitle" lang="en" key="gSettings">
     Generator Settings
 </h1>
 @using (Html.BeginForm("SetSettings", "Settings", FormMethod.Post))
@@ -14,7 +14,7 @@
             <input class="btn btn-primary btn-lg no-padding submitbutton" type="submit" id="submit-btn" value="Create" onclick='@Url.Action("Setsettings","SetSetting")' ; />
             <div class="row align-items-center">
                 <div class="col-xs-6"></div>
-                <div class="col-xs-2"><label class="checkdesc">Random</label></div>
+                <div class="col-xs-2"><label class="checkdesc"><span class="lang" key="Random"></span></label></div>
                 <div class="col-xs-2"><label class="checkdesc">Fixed</label></div>
             </div>
             <div class="row align-items-center">

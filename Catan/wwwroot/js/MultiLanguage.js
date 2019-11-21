@@ -1,15 +1,42 @@
 ﻿var arrLang = {
     "en": {
+        'Boardgenerator': 'Board Generator',
         'DarkMode': 'Dark Mode',
         'Generateboard': 'Generate Board',
         'Languages': 'Change Languages to Dutch',
-        'Library': 'Library'
+        'Library': 'Library',
+        'gSettings': 'Generator settings',
+        'Random': 'Random',
+        'Fixed': 'Fixed',
+        'TilePlacement': 'Tile Placement',
+        'ChipPlacement': 'Chip Placement',
+        'Player': 'Number of Players',
+        'MainMenu': 'Main Menu',
+        'GenSameSettings': 'Generate same settings',
+        'GenNewSettings': 'Generate new settings',
+        'SaveImage': 'Save as Image',
+        'SaveLibrary': 'Save in Library',
+
+
     },
     "nl": {
+        'Boardgenerator': 'Bord Generator',
         'DarkMode': 'Donkere Modes',
         'Generateboard': 'Genereer Bord',
         'Languages': 'Verander Taal naar engels',
-        'Library': 'Bibliotheek'
+        'Library': 'Bibliotheek',
+        'gSettings': 'Generator opties',
+        'Random': 'Willekeurig',
+        'Fixed': 'Statisch',
+        'TilePlacement': 'Velden positie',
+        'ChipPlacement': 'Fiche positie',
+        'Player': 'Aantal spelers',
+        'MainMenu': 'Hoofd menu',
+        'GenSameSettings': 'Genereer met dezelfde opties',
+        'GenNewSettings': 'Genereer met nieuwe opties',
+        'SaveImage': 'Sla op als afbeelding',
+        'SaveLibrary': 'Sla op in collectie'
+
     }
 };
 var lang = sessionStorage.getItem('lang');
