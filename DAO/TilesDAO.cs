@@ -12,46 +12,40 @@ namespace DAO
 
         public List<Tile> GetAllTilesFromBoard(int boardId)
         {
-            con.Open();
-
-            string query = "SELECT * FROM Tiles WHERE BoardId = @BoardId";
-            List<Tile> result = new List<Tile>();
-
-            using (SqlCommand command = new SqlCommand(query, con))
+            using (SqlConnection SqlCon = con)
             {
-                
-                command.Parameters.Add("@BoardId", SqlDbType.Int);
-                command.Parameters["@BoardId"].Value = boardId   ;
-               
-                SqlDataReader Reader = command.ExecuteReader();
+                string query = "SELECT * FROM Tiles WHERE BoardId = @BoardId";
+                List<Tile> result = new List<Tile>();
 
-                while (Reader.Read())
+                using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
-                    Tile tile = new Tile(Reader.GetInt32(1), Reader.GetString(2), Reader.GetInt32(3));
-                   
-                    // all tiles in list
-                    result.Add(tile);
+                    command.Parameters.Add("@BoardId", SqlDbType.Int);
+                    command.Parameters["@BoardId"].Value = boardId;
+
+                    using (SqlDataReader Reader = command.ExecuteReader())
+                    {
+                        while (Reader.Read())
+                        {
+                            Tile tile = new Tile(Reader.GetInt32(1), Reader.GetString(2), Reader.GetInt32(3));
+
+                            // all tiles in list
+                            result.Add(tile);
+                        }
+                    }
+                    SqlCon.Close();
                 }
-
-                con.Close();
-
                 return result;
             }
         }
 
-        public void InsertTiles(List<Tile> tiles, int boardId)
+        public void InsertTiles(Tile tile, int boardId)
         {
-            //all tiles need to be filled
-            foreach (Tile tile in tiles)
+            // adding all tiles in tiles with all their specification
+            using (SqlConnection SqlCon = con)
             {
-                // adding all tiles in tiles with all their specification
-                con.Open();
-                string query =
+                string query = "INSERT INTO Tiles (BoardId, TilePosition, Resource, Chip) VALUES(@Boardid, @Tileposition, @Resource, @chip)";
 
-                    "INSERT INTO Tiles (BoardId, TilePosition, Resource, Chip) " +
-                    "VALUES(@Boardid, @Tileposition, @Resource, @chip)";
-
-                using (SqlCommand command = new SqlCommand(query, con))
+                using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
                     command.Parameters["board.Id"].Value = boardId;
@@ -67,7 +61,7 @@ namespace DAO
 
                     command.ExecuteNonQuery();
 
-                    con.Close();
+                    SqlCon.Close();
                 }
             }
         }
@@ -75,18 +69,19 @@ namespace DAO
         public void DeleteTiles(int boardId)
         {
             //deleting al tiles from one board
-            con.Open();
-            string query =
-            "DELETE * FROM Tiles Where BoardId = @BoardId";
-
-            using (SqlCommand command = new SqlCommand(query, con))
+            using (SqlConnection SqlCon = con)
             {
-                command.Parameters.Add("@BoardId", SqlDbType.Int);
-                command.Parameters["board.Id"].Value = boardId;
+                string query = "DELETE * FROM Tiles Where BoardId = @BoardId";
 
-                command.ExecuteNonQuery();
+                using (SqlCommand command = new SqlCommand(query, SqlCon))
+                {
+                    command.Parameters.Add("@BoardId", SqlDbType.Int);
+                    command.Parameters["board.Id"].Value = boardId;
 
-                con.Close();
+                    command.ExecuteNonQuery();
+
+                    SqlCon.Close();
+                }
             }
         }
     }

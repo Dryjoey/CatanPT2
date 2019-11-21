@@ -4,23 +4,20 @@ using System.Text;
 using System.Data.SqlClient;
 namespace DAO
 {
-   public class UserDAO :DAO
+    public class UserDAO : DAO
     {
         public int GetLastUser()
         {
             int user = 0;
-            con.Open();
-            string query = "Select MAX(id) FROM Users";
-            using (SqlCommand command = new SqlCommand(query, con))
+            using (SqlConnection SqlCon = con)
             {
-                SqlDataReader read = command.ExecuteReader();
-                while (read.Read())
+                string query = "Select MAX(id) FROM Users";
+                using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
-                    read.GetInt32(0);
-                     read.GetInt32(1);
+                    user = (int)command.ExecuteScalar() + 1;
+
                 }
-                con.Close();
-                
+                SqlCon.Close();
             }
             return user;
         }
