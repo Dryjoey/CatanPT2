@@ -59,9 +59,9 @@ namespace Logic
             {
                 List<Tile> tiles = CreateNewEmptyTileList();
                 List<Port> ports = CreateNewEmptyPortList();
-                FillRandomPorts(ports);
-                RandomizeTiles(tiles);
+                board.Ports = FillRandomPorts(ports);
                 board.Tiles = tiles;
+                RandomizeTiles(tiles);
                 AddRandomDesert(board);
                 check = CheckRedTiles(board.Tiles);
             }
@@ -73,6 +73,8 @@ namespace Logic
         {
             Board board = new Board();
             List<Tile> tiles = CreateNewEmptyTileList();
+            List<Port> ports = CreateNewEmptyPortList();
+            board.Ports = FillRandomPorts(ports);
             board.Tiles = FillRandomTiles(tiles);
             AddRandomDesert(board);
             return board;
@@ -82,7 +84,9 @@ namespace Logic
         {
             Board board = new Board();
             List<Tile> tiles = CreateNewEmptyTileList();
+            List<Port> ports = CreateNewEmptyPortList();
             board.Tiles = FillRandomChipsTiles(tiles);
+            board.Ports = FillPorts(ports);
             AddDesert(board);
             return board;
         }
@@ -205,15 +209,7 @@ namespace Logic
             }
             return true;
         }
-        /****************************************************
-        * Position                                          *
-        * ------------------------------------------------- *
-        * Return Value: Void                                *
-        * Description:                                      *
-        * Removes Adjacent Tiles from possible useable      *  
-        * positions list                                    *
-        * State: Bleeding                                   *
-        *****************************************************/
+
         public static List<Tile> Position(List<Tile> tiles)
         {
             foreach (Tile tile in tiles)
