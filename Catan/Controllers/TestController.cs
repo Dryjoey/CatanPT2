@@ -9,7 +9,6 @@ using Logic;
 using Models;
 using DAO;
 using Hanssens.Net;
-using DAO.Util;
 
 namespace Catan.Controllers
 {
