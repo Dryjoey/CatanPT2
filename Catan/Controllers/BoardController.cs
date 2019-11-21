@@ -30,7 +30,7 @@ namespace Catan.Controllers
                 }
                 if (model.ChipState == ChipState.Random && model.TileIsRandom == true)
                 {
-                    board = BoardLogic.Random();
+                    board = BoardLogic.PseudoRandom();
                     return View(board);
                 }
                 if (model.ChipState == ChipState.Random && model.TileIsRandom == false)
