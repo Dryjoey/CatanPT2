@@ -84,6 +84,12 @@ namespace DAO
                     command.ExecuteNonQuery();
 
                     con.Close();
+                    
+                    con.Open();
+                    con.Open();
+                     query = "SELECT TOP 1 * FROM Board ORDER BY Id DESC";
+                    int boardid = (int)command.ExecuteScalar();
+                    con.Close();
                     foreach (Port harbor in board.Ports)
                     {
                         port.InsertPort(board.BoardId, harbor);
