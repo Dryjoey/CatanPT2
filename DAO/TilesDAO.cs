@@ -11,15 +11,11 @@ namespace DAO
     public class TilesDAO
     {
         private readonly DatabaseConnection _db;
+        readonly SqlConnection con = new SqlConnection("Server=198.71.226.6,1433;Database=CatanDB;User Id=CatanAdmin;Password = CatanAdmin!@1;");
 
-        public TilesDAO(DatabaseConnection db)
-        {
-            _db = db;
-        }
         public List<Tile> GetAllTilesFromBoard(int boardId)
         {
-            using (var con = _db.SqlConnection)
-            {
+           
                 string query = "SELECT * FROM Tiles WHERE BoardId = @BoardId";
                 List<Tile> result = new List<Tile>();
 
@@ -42,15 +38,14 @@ namespace DAO
                     con.Close();
                 }
                 return result;
-            }
+            
         }
 
         public void InsertTiles(Tile tile, int boardId)
         {
             // adding all tiles in tiles with all their specification
-            using (var con = _db.SqlConnection)
-            {
-                string query = "INSERT INTO Tiles (BoardId, TilePosition, Resource, Chip) VALUES (@Boardid, @Tileposition, @Resource, @chip)";
+            
+                string query = "INSERT INTO Tiles (BoardId, Position, Resource, Chip) VALUES (@Boardid, @Tileposition, @Resource, @chip)";
 
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
@@ -71,14 +66,13 @@ namespace DAO
 
                     con.Close();
                 }
-            }
+            
         }
 
         public void DeleteTiles(int boardId)
         {
             //deleting al tiles from one board
-            using (var con = _db.SqlConnection)
-            {
+           
                 string query = "DELETE * FROM Tiles Where BoardId = @BoardId";
 
                 using (SqlCommand command = new SqlCommand(query, con))
@@ -91,7 +85,7 @@ namespace DAO
 
                     con.Close();
                 }
-            }
+            
         }
     }
 }

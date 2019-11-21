@@ -11,17 +11,17 @@ namespace DAO
     public class PortDAO
     {
         private readonly DatabaseConnection _db;
-        public PortDAO(DatabaseConnection db)
+        public PortDAO()
         {
-            _db = db;
+            
         }
+        readonly SqlConnection con = new SqlConnection("Server=198.71.226.6,1433;Database=CatanDB;User Id=CatanAdmin;Password = CatanAdmin!@1;");
         public void InsertPort(int boardId, Port port)
         {
 
             //inserting all ports into database from board
-            using (var con = _db.SqlConnection)
-            {
-                string query = "INSERT INTO Port (BoardId, Converserion, Position) VALUES(@BoardId, @Conversion, @Placement)";
+            
+                string query = "INSERT INTO Port (BoardId, Conversion, Position) VALUES(@BoardId, @Conversion, @Placement)";
 
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
@@ -36,14 +36,13 @@ namespace DAO
                 }
 
                 con.Close();
-            }
+            
         }
 
         public List<Port> GetAllPortsFromBoard(int boardId)
         {
             List<Port> result = new List<Port>();
-            using (var con = _db.SqlConnection)
-            {
+            
 
                 string query = "SELECT * FROM Port WHERE BoardId = @BoardId";
                 using (SqlCommand command = new SqlCommand(query, con))
@@ -63,14 +62,12 @@ namespace DAO
                     con.Close();
                 }
                 return result;
-            }
         }
 
         public void DeletePorts(int boardId)
         {
             //deleting al ports from one board
-            using (var con = _db.SqlConnection)
-            {
+            
                 string query = "DELETE * FROM Port Where BoardId = @BoardId";
 
                 using (SqlCommand command = new SqlCommand(query, con))
@@ -81,7 +78,7 @@ namespace DAO
                     command.ExecuteNonQuery();
                 }
                 con.Close();
-            }
+            
         }
     }
 }

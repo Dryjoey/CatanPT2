@@ -13,18 +13,16 @@ namespace DAO
         PortDAO port;
         List<Board> boards = new List<Board>();
 
-        private readonly DatabaseConnection _db;
-
-        public BoardDAO(DatabaseConnection db)
+        readonly SqlConnection con = new SqlConnection("Server=198.71.226.6,1433;Database=CatanDB;User Id=CatanAdmin;Password = CatanAdmin!@1;");
+        public BoardDAO()
         {
-            _db = db;
-            port = new PortDAO(_db);
-            tile = new TilesDAO(_db);
+            
+            port = new PortDAO();
+            tile = new TilesDAO();
         }
         public List<Board> GetAllBoardsFromUser(int userId)
         {
-            using (var con = _db.SqlConnection)
-            {
+           
                 // where needs to be added
                 string query = "SELECT * FROM Board WHERE UserId = @userid";
                 List<Board> boards = new List<Board>();
@@ -47,13 +45,12 @@ namespace DAO
                     con.Close();
                 }
                 return boards;
-            }
+            
         }
         public Board GetBoard(int boardId)
         {
             Board returnBoard = new Board();
-            using (var con = _db.SqlConnection)
-            {
+           
                 // where needs to be added
                 string query = "SELECT * FROM Board WHERE Id= @Id";
                 using (SqlCommand command = new SqlCommand(query, con))
@@ -77,13 +74,12 @@ namespace DAO
                 return returnBoard;
 
                 //daarna ga naar tiles en port en haal alle gegevens op
-            }
+            
 
         }
         public void InsertBoard(Board board, int userId)
         {
-            using (var con = _db.SqlConnection)
-            {
+            
 
                 string query = "INSERT INTO Board (UserId) Values (@UserId)";
 
@@ -107,14 +103,13 @@ namespace DAO
                         tile.InsertTiles(tilehex, board.BoardId);
                     }
                 }
-            }
+            
         }
 
         public int GetBoardId()
         {
             int boardid = 0;
-            using (var con = _db.SqlConnection)
-            {
+           
                 con.Open();
                 string query = "SELECT TOP 1 * FROM Board ORDER BY Id DESC";
                 using (SqlCommand command = new SqlCommand(query, con))
@@ -123,14 +118,13 @@ namespace DAO
                     boardid = (int)command.ExecuteScalar();
                 }
                 con.Close();
-            }
+            
             return boardid;
         }
 
         public void DeleteBoard(int boardId)
         {
-            using (var con = _db.SqlConnection)
-            {
+          
                 // delete port and delete tiles first 
                 port.DeletePorts(boardId);
                 tile.DeleteTiles(boardId);
@@ -147,7 +141,7 @@ namespace DAO
                     con.Close();
 
                 }
-            }
+            
         }
     }
 }

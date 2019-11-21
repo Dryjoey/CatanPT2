@@ -10,16 +10,9 @@ namespace Logic
     public class IOLogic
     {
 
-        private BoardDAO boardDao;
-        private UserDAO userDao;
+        private BoardDAO boardDao = new BoardDAO();
+        private UserDAO userDao = new UserDAO();
 
-        private readonly DatabaseConnection _db;
-        public IOLogic(DatabaseConnection db)
-        {
-            _db = db;
-            userDao = new UserDAO(_db);
-            boardDao = new BoardDAO(_db);
-        }
 
         //Saves recent generated Board with UserID | Save board || Checked ||
         public void SaveBoard(Board board, int UserId) => boardDao.InsertBoard(board, UserId);

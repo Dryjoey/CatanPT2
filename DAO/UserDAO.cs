@@ -10,10 +10,7 @@ namespace DAO
     public class UserDAO
     {
         private readonly DatabaseConnection _db;
-        public UserDAO(DatabaseConnection db)
-        {
-            _db = db;
-        }
+        readonly SqlConnection con = new SqlConnection("Server=198.71.226.6,1433;Database=CatanDB;User Id=CatanAdmin;Password = CatanAdmin!@1;");
         private void InsertUser(int user)
         {
             using (var con = _db.SqlConnection)
