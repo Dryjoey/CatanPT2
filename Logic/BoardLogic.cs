@@ -59,9 +59,8 @@ namespace Logic
             {
                 List<Tile> tiles = CreateNewEmptyTileList();
                 List<Port> ports = CreateNewEmptyPortList();
-                FillRandomPorts(ports);
-                RandomizeTiles(tiles);
-                board.Tiles = tiles;
+                board.Ports = FillRandomPorts(ports);
+                board.Tiles = FillRandomTiles(tiles);
                 AddRandomDesert(board);
                 check = CheckRedTiles(board.Tiles);
             }

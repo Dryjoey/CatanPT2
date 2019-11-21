@@ -18,35 +18,62 @@ namespace Catan.Controllers
             Board board;
             if (ModelState.IsValid)
             {
-                if (model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
+                if (model.IsSmallBoard == true)
                 {
-                    board = BoardLogic.RandomResources();
-                    return View(board);
+                    if (model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
+                    {
+                        board = BoardLogic.RandomResources();
+                        return View(board);
+                    }
+                    if (model.ChipState == ChipState.Fixed && model.TileIsRandom == false)
+                    {
+                        board = BoardLogic.Normal();
+                        return View(board);
+                    }
+                    if (model.ChipState == ChipState.Random && model.TileIsRandom == true)
+                    {
+                        board = BoardLogic.PseudoRandom();
+                        return View(board);
+                    }
+                    if (model.ChipState == ChipState.Random && model.TileIsRandom == false)
+                    {
+                        board = BoardLogic.RandomChips();
+                        return View(board);
+                    }
+                    if (model.ChipState == ChipState.Psuedo && model.TileIsRandom == true)
+                    {
+                        board = BoardLogic.PseudoRandom();
+                        return View(board);
+                    }
                 }
-                if (model.ChipState == ChipState.Fixed && model.TileIsRandom == false)
+                else
                 {
-                    board = BoardLogic.Normal();
-                    return View(board);
+                    if (model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
+                    {
+                        board = BigBoardLogic.RandomResources();
+                        return View(board);
+                    }
+                    if (model.ChipState == ChipState.Fixed && model.TileIsRandom == false)
+                    {
+                        board = BigBoardLogic.Normal();
+                        return View(board);
+                    }
+                    if (model.ChipState == ChipState.Random && model.TileIsRandom == true)
+                    {
+                        board = BigBoardLogic.PseudoRandom();
+                        return View(board);
+                    }
+                    if (model.ChipState == ChipState.Random && model.TileIsRandom == false)
+                    {
+                        board = BigBoardLogic.RandomChips();
+                        return View(board);
+                    }
+                    if (model.ChipState == ChipState.Psuedo && model.TileIsRandom == true)
+                    {
+                        board = BigBoardLogic.PseudoRandom();
+                        return View(board);
+                    }
                 }
-                if (model.ChipState == ChipState.Random && model.TileIsRandom == true)
-                {
-                    board = BoardLogic.Random();
-                    return View(board);
-                }
-                if (model.ChipState == ChipState.Random && model.TileIsRandom == false)
-                {
-                    board = BoardLogic.RandomChips();
-                    return View(board);
-                }
-                if (model.ChipState == ChipState.Psuedo && model.TileIsRandom == true)
-                {
-                    board = BoardLogic.PseudoRandom();
-                    return View(board);
-                }
-            }
-            else
-            {
-
             }
             return View();
         }
