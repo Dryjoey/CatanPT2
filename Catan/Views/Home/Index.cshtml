@@ -1,6 +1,10 @@
 ﻿@using Models
 <body>
     <p></p>
+    <div class="image">
+        <img src="~/images/Banner.png" />
+        <h2 class="image-titel">Board Generator</h2>
+    </div>
     <div class="main-menu-container">
         <ul class="main-menu-list">
             <li>
@@ -27,9 +31,14 @@
                     }
                 </div>
             </li>
-        </ul>
-        
-        
-        
+        </ul>       
+    </div>
+    <div class="footer">
+        <div class="Button-lower-Right">
+             @using (Html.BeginForm("index", "Options"))
+            {
+                <input type="image" src="images/Gear.png" />
+            }
+        </div>
     </div>
 </body> 
