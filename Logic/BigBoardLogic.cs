@@ -8,9 +8,9 @@ namespace Logic
 {
     public static class BigBoardLogic
     {
-        public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11, 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9 };
-        public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 };
-        public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore", "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep" };
+        public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11, 3, 5, 6, 8, 2, 11, 10, 10, 5, 12};
+        public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27};
+        public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore", "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", };
         public static int[][] adjecent = new int[][]
         {
             new int[]{1, 4, 5},
@@ -61,10 +61,8 @@ namespace Logic
             while (check == false)
             {
                 List<Tile> tiles = CreateNewEmptyTileList();
-                 
-                 
-                RandomizeTiles(tiles);
                 board.Tiles = tiles;
+                RandomizeTiles(tiles);
                 AddRandomDesert(board);
                 check = CheckRedTiles(board.Tiles);
             }
@@ -173,9 +171,8 @@ namespace Logic
 
         public static void AddRandomDesert(Board board)
         {
-
-            Tile tile = new Tile(7, "desert");
-            board.Tiles.Insert(rng.Next(37), tile);
+            board.Tiles.Insert(rng.Next(13), new Tile(7, "desert"));
+            board.Tiles.Insert(rng.Next(14, 29), new Tile(7, "desert"));
         }
 
         public static void AddDesert(Board board)

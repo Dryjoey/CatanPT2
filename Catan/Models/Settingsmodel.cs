@@ -9,6 +9,8 @@ namespace Catan.Models
     {
         public bool TileIsRandom { get; set; }
 
+        public bool FullyPseudoRandom { get; set; }
+
         public bool IsSmallBoard { get; set; }
 
         public ChipState ChipState { get; set; }

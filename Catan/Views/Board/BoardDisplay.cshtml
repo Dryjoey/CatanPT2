@@ -1,16 +1,34 @@
-﻿
-    <div class="board-partial">
+﻿@{
+    string size;
+    if(Model.Tiles.Count <= 19)
+    {
+        size = "small";
+    } else
+    {
+        size = "big";
+    }
+}
+
+<div class="board-partial">
+    @if (size == "small")
+    {   
         <partial name="Partial/_SmallBoard.cshtml" />
-    </div>
-    <ul class="main-menu-list">
+    }
+    else
+    {
+        <partial name="Partial/_BigBoard.cshtml" />
+    }
+
+</div>
+    <ul class="main-menu-list ul-vertical-@size">
         <li>
             <div>
-                 <button type="submit" class="main-menu-btn">Save as Image</button>
+                 <button type="button" class="main-menu-btn">Save as Image</button>
             </div>
         </li>
         <li>
             <div>
-                  <button type="submit" class="main-menu-btn">Save in Library</button>
+                  <button type="button" class="main-menu-btn">Save in Library</button>
             </div>
         </li>
         <li>
@@ -20,7 +38,7 @@
             <div>
                 @using (Html.BeginForm("Index", "Home"))
                 {
-                    <button type="submit" class="main-menu-btn">Main Menu</button>
+                    <button type="button" class="main-menu-btn">Main Menu</button>
                 }
             </div>
         </li>
@@ -28,10 +46,10 @@
 
     <div>
         <ul class="main-menu-list">
-            <li class="li-horizontal">
+            <li class="li-horizontal-@size">
                 <div>
-                      <button onClick="GoToSettings()" type="submit" class="main-menu-btn horizontal-spacer">Generate New Settings</button>
-                      <button onClick="Refresh()" type="submit" class="main-menu-btn">Generate Same Settings</button>
+                      <button onClick="GoToSettings()" type="button" class="main-menu-btn horizontal-spacer">Generate New Settings</button>
+                      <button onClick="Refresh()" type="button" class="main-menu-btn">Generate Same Settings</button>
                 </div>
             </li>
         </ul>

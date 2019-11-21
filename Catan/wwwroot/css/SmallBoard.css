@@ -19,7 +19,7 @@
 
 .centering {
     display: table;
-    margin: 0 auto;
+    margin: 0 0 0 65px;
     flex-direction: column;
     justify-content: center;
 }
@@ -233,15 +233,15 @@ ol.odd {
 }
 
 .harbor.wood::after {
-    content: "lumber";
+    content: "wood";
 }
 
-.harbor.coal::after {
+.harbor.ore::after {
     content: "ore";
 }
 
-.harbor.sheep::after {
-    content: "sheep";
+.harbor.wool::after {
+    content: "wool";
 }
 
 .harbor.brick::after {
