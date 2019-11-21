@@ -12,12 +12,13 @@ namespace DAO
         public void InsertPort(int boardId, Port port)
         {
             //inserting all ports into database from board
-            using (SqlConnection SqlCon = con)
+            using (con)
             {
                 string query = "INSERT INTO Port (BoardId, Converserion, Position) VALUES(@BoardId, @Conversion, @Placement)";
 
-                using (SqlCommand command = new SqlCommand(query, SqlCon))
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    con.Open();
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
                     command.Parameters["@BoardId"].Value = boardId;
                     command.Parameters.Add("@Conversion", SqlDbType.VarChar);
@@ -27,19 +28,20 @@ namespace DAO
                     command.ExecuteNonQuery();
                 }
 
-                SqlCon.Close();
+                con.Close();
             }
         }
 
         public List<Port> GetAllPortsFromBoard(int boardId)
         {
             List<Port> result = new List<Port>();
-            using (SqlConnection SqlCon = con)
+            using (con)
             {
 
                 string query = "SELECT * FROM Port WHERE BoardId = @BoardId";
-                using (SqlCommand command = new SqlCommand(query, SqlCon))
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
+                      con.Open();
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
                     command.Parameters["@BoardId"].Value = boardId;
                     using (SqlDataReader Reader = command.ExecuteReader())
@@ -51,7 +53,7 @@ namespace DAO
                             result.Add(port);
                         }
                     }
-                    SqlCon.Close();
+                    con.Close();
                 }
                 return result;
             }
@@ -60,17 +62,18 @@ namespace DAO
         public void DeletePorts(int boardId)
         {
             //deleting al ports from one board
-            using (SqlConnection SqlCon = con)
+            using (con)
             {
                 string query = "DELETE * FROM Port Where BoardId = @BoardId";
 
-                using (SqlCommand command = new SqlCommand(query, SqlCon))
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    con.Open();
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
                     command.Parameters["@board.Id"].Value = boardId;
                     command.ExecuteNonQuery();
                 }
-                SqlCon.Close();
+                    con.Close();
             }
         }
     }

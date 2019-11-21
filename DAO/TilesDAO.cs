@@ -12,13 +12,14 @@ namespace DAO
 
         public List<Tile> GetAllTilesFromBoard(int boardId)
         {
-            using (SqlConnection SqlCon = con)
+            using (con)
             {
                 string query = "SELECT * FROM Tiles WHERE BoardId = @BoardId";
                 List<Tile> result = new List<Tile>();
 
-                using (SqlCommand command = new SqlCommand(query, SqlCon))
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    con.Open();
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
                     command.Parameters["@BoardId"].Value = boardId;
 
@@ -32,7 +33,7 @@ namespace DAO
                             result.Add(tile);
                         }
                     }
-                    SqlCon.Close();
+                    con.Close();
                 }
                 return result;
             }
@@ -41,12 +42,13 @@ namespace DAO
         public void InsertTiles(Tile tile, int boardId)
         {
             // adding all tiles in tiles with all their specification
-            using (SqlConnection SqlCon = con)
+            using (con)
             {
                 string query = "INSERT INTO Tiles (BoardId, TilePosition, Resource, Chip) VALUES (@Boardid, @Tileposition, @Resource, @chip)";
 
-                using (SqlCommand command = new SqlCommand(query, SqlCon))
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    con.Open();
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
                     command.Parameters["@BoardId"].Value = boardId;
 
@@ -61,7 +63,7 @@ namespace DAO
 
                     command.ExecuteNonQuery();
 
-                    SqlCon.Close();
+                    con.Close();
                 }
             }
         }
@@ -69,18 +71,19 @@ namespace DAO
         public void DeleteTiles(int boardId)
         {
             //deleting al tiles from one board
-            using (SqlConnection SqlCon = con)
+            using (con)
             {
                 string query = "DELETE * FROM Tiles Where BoardId = @BoardId";
 
-                using (SqlCommand command = new SqlCommand(query, SqlCon))
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    con.Open();
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
                     command.Parameters["@BoardId"].Value = boardId;
 
                     command.ExecuteNonQuery();
 
-                    SqlCon.Close();
+                    con.Close();
                 }
             }
         }

@@ -14,14 +14,15 @@ namespace DAO
 
         public List<Board> GetAllBoardsFromUser(int userId)
         {
-            using (SqlConnection SqlCon = con)
+            using (con)
             {
                 // where needs to be added
                 string query = "SELECT * FROM Board WHERE UserId = @userid";
                 List<Board> boards = new List<Board>();
 
-                using (SqlCommand command = new SqlCommand(query, SqlCon))
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    con.Open();
                     command.Parameters.Add("@userid", SqlDbType.Int);
                     command.Parameters["@userId"].Value = userId;
                     using (SqlDataReader read = command.ExecuteReader())
@@ -42,12 +43,13 @@ namespace DAO
         public Board GetBoard(int boardId)
         {
             Board returnBoard = new Board();
-            using (SqlConnection SqlCon = con)
+            using (con)
             {
                 // where needs to be added
                 string query = "SELECT * FROM Board WHERE Id= @Id";
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    con.Open();
                     command.Parameters.Add(new SqlParameter("@Id", boardId));
                     command.Parameters["@Id"].Value = boardId;
                     //command.Parameters["Id"].Value = boardId;
@@ -71,25 +73,23 @@ namespace DAO
         }
         public void InsertBoard(Board board, int userId)
         {
-            using (SqlConnection SqlCon = con)
+            using (con)
             {
 
-                string query = "INSERT INTO Board(UserId)";
+                string query = "INSERT INTO Board (UserId) Values (@UserId)";
 
-                using (SqlCommand command = new SqlCommand(query, SqlCon))
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    con.ConnectionString = ("Server = 198.71.226.6,1433; Database = CatanDB; User Id = CatanAdmin; Password = CatanAdmin!@1;");
+                    con.Open();
                     command.Parameters.Add("@UserId", SqlDbType.Int);
                     command.Parameters["@UserId"].Value = userId;
 
                     command.ExecuteNonQuery();
 
                     con.Close();
-                    
-                    con.Open();
-                    con.Open();
-                     query = "SELECT TOP 1 * FROM Board ORDER BY Id DESC";
-                    int boardid = (int)command.ExecuteScalar();
-                    con.Close();
+                    board.BoardId = GetBoardId();
+
                     foreach (Port harbor in board.Ports)
                     {
                         port.InsertPort(board.BoardId, harbor);
@@ -103,17 +103,35 @@ namespace DAO
 
         }
 
+        public int GetBoardId()
+        {
+            int boardid = 0;
+            using (con)
+            {
+                con.Open();
+                string query = "SELECT TOP 1 * FROM Board ORDER BY Id DESC";
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    
+                    boardid = (int)command.ExecuteScalar();
+                }
+                con.Close();
+            }
+            return boardid;
+        }
+
         public void DeleteBoard(int boardId)
         {
-            using (SqlConnection SqlCon = con)
+            using (con)
             {
                 // delete port and delete tiles first 
                 port.DeletePorts(boardId);
                 tile.DeleteTiles(boardId);
 
                 string query = "DELETE FROM Board WHERE Id = @Id";
-                using (SqlCommand command = new SqlCommand(query, SqlCon))
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    con.Open();
                     command.Parameters.Add("@Id", SqlDbType.Int);
                     command.Parameters["board.Id"].Value = boardId;
 
