@@ -74,11 +74,27 @@ body{
     width: 420px;
 }
 
-.li-horizontal {
+.ul-vertical-small{
+
+}
+
+.ul-vertical-big {
+    left: -300px;
+    position: relative;
+}
+
+.li-horizontal-small{
     float: left;
     position: absolute;
     margin: 0 0 0 45px;
 }
+
+.li-horizontal-big {
+    float: left;
+    position: absolute;
+    margin: 250px 0 0 45px;
+}
+
 
 .horizontal-spacer {
     margin: 0 45px 0 0;

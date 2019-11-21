@@ -1,5 +1,16 @@
-﻿    <div class="board-partial">
-    @if (Model.Tiles.Count <= 19)
+﻿@{
+    string size;
+    if(Model.Tiles.Count <= 19)
+    {
+        size = "small";
+    } else
+    {
+        size = "big";
+    }
+}
+
+<div class="board-partial">
+    @if (size == "small")
     {   
         <partial name="Partial/_SmallBoard.cshtml" />
     }
@@ -9,7 +20,7 @@
     }
 
 </div>
-    <ul class="main-menu-list">
+    <ul class="main-menu-list ul-vertical-@size">
         <li>
             <div>
                  <button type="submit" class="main-menu-btn">Save as Image</button>
@@ -35,7 +46,7 @@
 
     <div>
         <ul class="main-menu-list">
-            <li class="li-horizontal">
+            <li class="li-horizontal-@size">
                 <div>
                       <button onClick="GoToSettings()" type="submit" class="main-menu-btn horizontal-spacer">Generate New Settings</button>
                       <button onClick="Refresh()" type="submit" class="main-menu-btn">Generate Same Settings</button>
