@@ -12,43 +12,40 @@ namespace Catan.Controllers
 {
     public class BoardController : Controller
     {
-        [HttpPost]
+        [HttpGet]
         public IActionResult BoardDisplay(Settingsmodel model)
         {
             Board board;
+
             if (ModelState.IsValid)
             {
-                if (model.ChipState == ChipState.Fixed && model.TileIsRandom == true)
+                if (model.FullyPseudoRandom && model.IsSmallBoard) // 3-4 (Pseudo)Random
                 {
-                    board = BoardLogic.RandomResources();
-                    return View(board);
+                    board = BoardLogic.PseudoRandom();
                 }
-                if (model.ChipState == ChipState.Fixed && model.TileIsRandom == false)
+                else if (!model.FullyPseudoRandom && model.IsSmallBoard) // 3-4 Fixed
                 {
                     board = BoardLogic.Normal();
-                    return View(board);
                 }
-                if (model.ChipState == ChipState.Random && model.TileIsRandom == true)
+                else if (model.FullyPseudoRandom && !model.IsSmallBoard) // 5-6 (Pseudo)Random
                 {
-                    board = BoardLogic.PseudoRandom();
-                    return View(board);
+                    board = BigBoardLogic.PseudoRandom();
                 }
-                if (model.ChipState == ChipState.Random && model.TileIsRandom == false)
+                else if (!model.FullyPseudoRandom && !model.IsSmallBoard) // 5-6 Fixed
                 {
-                    board = BoardLogic.RandomChips();
-                    return View(board);
+                    board = BigBoardLogic.Normal();
                 }
-                if (model.ChipState == ChipState.Psuedo && model.TileIsRandom == true)
+                else
                 {
-                    board = BoardLogic.PseudoRandom();
-                    return View(board);
+                    board = BoardLogic.Normal(); // fake it till you make it
                 }
             }
             else
             {
-
+                board = BoardLogic.Normal();
             }
-            return View();
+
+            return View(board);
         }
     }
 }

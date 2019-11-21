@@ -19,7 +19,7 @@
 
 .centering {
     display: table;
-    margin: 0 auto;
+    margin: 0 0 0 65px;
     flex-direction: column;
     justify-content: center;
 }

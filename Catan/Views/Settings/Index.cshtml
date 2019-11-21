@@ -6,9 +6,9 @@
 <h1 class="gentitle">
     Generator Settings
 </h1>
-@using (Html.BeginForm("BoardDisplay", "Board", FormMethod.Post))
+@using (Html.BeginForm("BoardDisplay", "Board", FormMethod.Get))
 {
-<form action="" method="post" class="form-inline vertical-center">
+<form action="" method="get" class="form-inline vertical-center">
     <div class="container text-center">
         <div class="options">
             <input class="btn btn-primary btn-lg no-padding submitbutton" type="submit" id="submit-btn" value="Create" onclick='@Url.Action("BoardDisplay","Board")' ; />
@@ -18,22 +18,9 @@
                 <div class="col-xs-2"><label class="checkdesc">Fixed</label></div>
             </div>
             <div class="row align-items-center">
-                <div class="col-xs-6"><label class="label" for="TilePlacement">Tile Placement</label></div>
-                <div class="col-xs-2">@Html.RadioButtonFor(m => m.TileIsRandom, true, new { id = "BigRadio" })</div>
-                <div class="col-xs-2">@Html.RadioButtonFor(m => m.TileIsRandom, false, new { id = "BigRadio" })</div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-xs-6"></div>
-                <div class="col-xs-2"><label class="checkdesc">Random</label></div>
-                <div class="col-xs-2"><label class="checkdesc">Fixed</label></div>
-                <div class="col-xs-2"><label class="checkdesc">Psuedo</label></div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-xs-6"><label class="label" for="ChipPlacement">Chip Placement</label></div>
-                <div class="col-xs-2"><div class="checkbox-size">@Html.RadioButtonFor(m => m.ChipState, 0, new { id = "BigRadio" })</div></div>
-                <div class="col-xs-2">@Html.RadioButtonFor(m => m.ChipState, 1, new { id = "BigRadio" })</div>
-                <div class="col-xs-2">@Html.RadioButtonFor(m => m.ChipState, 2, new { id = "BigRadio" })</div>
-                <br />
+                <div class="col-xs-6"><label class="label" for="TilePlacement">Tiles and Chips</label></div>
+                <div class="col-xs-2">@Html.RadioButtonFor(m => m.FullyPseudoRandom, true, new { id = "BigRadio" })</div>
+                <div class="col-xs-2">@Html.RadioButtonFor(m => m.FullyPseudoRandom, false, new { id = "BigRadio" })</div>
             </div>
             <div class="row align-items-center">
                 <div class="col-xs-6"></div>

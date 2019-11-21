@@ -25,7 +25,7 @@ html, body{
 }
 
 .scaled {
-    transform: scale(0.7);
+    transform: scale(0.55);
     transform-origin: top left;
 }
 
