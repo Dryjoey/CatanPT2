@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DAO.Util;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,15 +7,23 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-    public class BoardDAO : DAO
+    public class BoardDAO
     {
-        TilesDAO tile = new TilesDAO();
-        PortDAO port = new PortDAO();
+        TilesDAO tile;
+        PortDAO port;
         List<Board> boards = new List<Board>();
 
+        private readonly DatabaseConnection _db;
+
+        public BoardDAO(DatabaseConnection db)
+        {
+            _db = db;
+            port = new PortDAO(_db);
+            tile = new TilesDAO(_db);
+        }
         public List<Board> GetAllBoardsFromUser(int userId)
         {
-            using (con)
+            using (var con = _db.SqlConnection)
             {
                 // where needs to be added
                 string query = "SELECT * FROM Board WHERE UserId = @userid";
@@ -43,7 +52,7 @@ namespace DAO
         public Board GetBoard(int boardId)
         {
             Board returnBoard = new Board();
-            using (con)
+            using (var con = _db.SqlConnection)
             {
                 // where needs to be added
                 string query = "SELECT * FROM Board WHERE Id= @Id";
@@ -73,14 +82,13 @@ namespace DAO
         }
         public void InsertBoard(Board board, int userId)
         {
-            using (con)
+            using (var con = _db.SqlConnection)
             {
 
                 string query = "INSERT INTO Board (UserId) Values (@UserId)";
 
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    con.ConnectionString = ("Server = 198.71.226.6,1433; Database = CatanDB; User Id = CatanAdmin; Password = CatanAdmin!@1;");
                     con.Open();
                     command.Parameters.Add("@UserId", SqlDbType.Int);
                     command.Parameters["@UserId"].Value = userId;
@@ -100,13 +108,12 @@ namespace DAO
                     }
                 }
             }
-
         }
 
         public int GetBoardId()
         {
             int boardid = 0;
-            using (con)
+            using (var con = _db.SqlConnection)
             {
                 con.Open();
                 string query = "SELECT TOP 1 * FROM Board ORDER BY Id DESC";
@@ -122,7 +129,7 @@ namespace DAO
 
         public void DeleteBoard(int boardId)
         {
-            using (con)
+            using (var con = _db.SqlConnection)
             {
                 // delete port and delete tiles first 
                 port.DeletePorts(boardId);

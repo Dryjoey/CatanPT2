@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DAO.Util;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,16 @@ namespace Logic
     public class IOLogic
     {
 
-        private BoardDAO boardDao = new BoardDAO();
-        private UserDAO userDao = new UserDAO();
+        private BoardDAO boardDao;
+        private UserDAO userDao;
+
+        private readonly DatabaseConnection _db;
+        public IOLogic(DatabaseConnection db)
+        {
+            _db = db;
+            userDao = new UserDAO(_db);
+            boardDao = new BoardDAO(_db);
+        }
 
         //Saves recent generated Board with UserID | Save board || Checked ||
         public void SaveBoard(Board board, int UserId) => boardDao.InsertBoard(board, UserId);
@@ -20,7 +29,7 @@ namespace Logic
         public void DeleteBoard(int BoardId) => boardDao.DeleteBoard(BoardId);
         //Gets specific board via BoardID | Returns Board || Checked ||
         public Board GetBoard(int BoardId) => boardDao.GetBoard(BoardId);
-        //Checks what last User in DB  | Creates new User/Returns UserID || Checked ||
+        //Checks what last User in DB  | Creates new User/Returns UserID || Checked ||E
         public int GetLastUser() => userDao.GetLastUser();
     }
 }

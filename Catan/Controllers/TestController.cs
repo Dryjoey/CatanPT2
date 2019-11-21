@@ -9,12 +9,19 @@ using Logic;
 using Models;
 using DAO;
 using Hanssens.Net;
+using DAO.Util;
 
 namespace Catan.Controllers
 {
     public class TestController : Controller
     {
-        private IOLogic io = new IOLogic();
+        private IOLogic io;
+        private readonly DatabaseConnection _db;
+        public TestController(DatabaseConnection db)
+        {
+            _db = db;
+            io = new IOLogic(_db);
+        }
         public IActionResult TestView()
         {
             int userid = 4;

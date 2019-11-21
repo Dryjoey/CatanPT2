@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAO.Util;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +31,10 @@ namespace Catan
                 so.Cookie.HttpOnly = true;
                 so.Cookie.IsEssential = true;
             });
+
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddTransient(_ => new DatabaseConnection(connectionString));
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.

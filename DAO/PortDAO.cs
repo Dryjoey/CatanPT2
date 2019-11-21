@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DAO.Util;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,12 +8,18 @@ using System.Text;
 
 namespace DAO
 {
-    public class PortDAO : DAO
+    public class PortDAO
     {
+        private readonly DatabaseConnection _db;
+        public PortDAO(DatabaseConnection db)
+        {
+            _db = db;
+        }
         public void InsertPort(int boardId, Port port)
         {
+
             //inserting all ports into database from board
-            using (con)
+            using (var con = _db.SqlConnection)
             {
                 string query = "INSERT INTO Port (BoardId, Converserion, Position) VALUES(@BoardId, @Conversion, @Placement)";
 
@@ -35,13 +42,13 @@ namespace DAO
         public List<Port> GetAllPortsFromBoard(int boardId)
         {
             List<Port> result = new List<Port>();
-            using (con)
+            using (var con = _db.SqlConnection)
             {
 
                 string query = "SELECT * FROM Port WHERE BoardId = @BoardId";
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
-                      con.Open();
+                    con.Open();
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
                     command.Parameters["@BoardId"].Value = boardId;
                     using (SqlDataReader Reader = command.ExecuteReader())
@@ -62,7 +69,7 @@ namespace DAO
         public void DeletePorts(int boardId)
         {
             //deleting al ports from one board
-            using (con)
+            using (var con = _db.SqlConnection)
             {
                 string query = "DELETE * FROM Port Where BoardId = @BoardId";
 
@@ -73,7 +80,7 @@ namespace DAO
                     command.Parameters["@board.Id"].Value = boardId;
                     command.ExecuteNonQuery();
                 }
-                    con.Close();
+                con.Close();
             }
         }
     }

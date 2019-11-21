@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using DAO.Util;
 
 namespace DAO
 {
-    public class UserDAO : DAO
+    public class UserDAO
     {
+        private readonly DatabaseConnection _db;
+        public UserDAO(DatabaseConnection db)
+        {
+            _db = db;
+        }
         private void InsertUser(int user)
         {
-            using (con)
+            using (var con = _db.SqlConnection)
             {
                 string query = "INSERT INTO Users(UserId) VALUES (@UserId)";
                 using (SqlCommand command = new SqlCommand(query, con))
@@ -27,7 +33,7 @@ namespace DAO
         public int GetLastUser()
         {
             int user = 0;
-            using (con)
+            using (var con = _db.SqlConnection)
             {
                 string query = "Select MAX(id) FROM Users";
                 using (SqlCommand command = new SqlCommand(query, con))
