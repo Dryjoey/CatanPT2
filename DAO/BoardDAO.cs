@@ -68,14 +68,16 @@ namespace DAO
             }
 
         }
-        public void InsertBoard(Board board,int userId)
+        public void InsertBoard(Board board, int userId)
         {
+            PortDAO PortDAO = new PortDAO();
+            TilesDAO TilesDAO = new TilesDAO();
             using (SqlConnection SqlCon = con)
             {
 
                 string query = "INSERT INTO Board(UserId)";
 
-                using (SqlCommand command = new SqlCommand(query, con))
+                using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
                     command.Parameters.Add("@UserId", SqlDbType.Int);
                     command.Parameters["@UserId"].Value = userId;
@@ -83,6 +85,14 @@ namespace DAO
                     command.ExecuteNonQuery();
 
                     con.Close();
+                    foreach (Port port in board.Ports)
+                    {
+                        PortDAO.InsertPort(board.BoardId, port);
+                    }
+                    foreach (Tile tile in board.Tiles)
+                    {
+                        TilesDAO.InsertTiles(tile, board.BoardId);
+                    }
                 }
             }
 
@@ -90,10 +100,17 @@ namespace DAO
 
         public void DeleteBoard(int boardId)
         {
+            PortDAO portDAO = new PortDAO();
+            TilesDAO tilesDAO = new TilesDAO();
+
             using (SqlConnection SqlCon = con)
             {
+                // delete port and delete tiles first 
+                portDAO.DeletePorts(boardId);
+                tilesDAO.DeleteTiles(boardId);
+
                 string query = "DELETE FROM Board WHERE Id = @Id";
-                using (SqlCommand command = new SqlCommand(query, con))
+                using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
                     command.Parameters.Add("@Id", SqlDbType.Int);
                     command.Parameters["board.Id"].Value = boardId;
@@ -101,6 +118,7 @@ namespace DAO
                     command.ExecuteNonQuery();
 
                     con.Close();
+
                 }
             }
         }
