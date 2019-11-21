@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Catan.Models;
 using Logic;
 using Models;
+using Hanssens.Net;
 
 namespace Catan.Controllers
 {
@@ -14,6 +15,8 @@ namespace Catan.Controllers
     {
         public IActionResult Index()
         {
+            var key = "CatanUid";
+
             return View();
         }
 
