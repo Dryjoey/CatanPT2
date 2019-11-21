@@ -51,13 +51,13 @@ namespace DAO
                     command.Parameters["board.Id"].Value = boardId;
 
                     command.Parameters.Add("@Tileposition", SqlDbType.Int);
-                    command.Parameters["tile.id"].Value = tile.Position;
+                    command.Parameters["@Tileposition"].Value = tile.Position;
 
                     command.Parameters.Add("@Resource", SqlDbType.VarChar);
-                    command.Parameters["tile.tilecategorie"].Value = tile.Resource;
+                    command.Parameters["@Resource"].Value = tile.Resource;
 
                     command.Parameters.Add("@chip", SqlDbType.Int);
-                    command.Parameters["tile.chip"].Value = tile.Chip;
+                    command.Parameters["@chip"].Value = tile.Chip;
 
                     command.ExecuteNonQuery();
 
@@ -76,7 +76,7 @@ namespace DAO
                 using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
-                    command.Parameters["board.Id"].Value = boardId;
+                    command.Parameters["@BoardId"].Value = boardId;
 
                     command.ExecuteNonQuery();
 

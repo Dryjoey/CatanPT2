@@ -19,11 +19,11 @@ namespace DAO
                 using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
-                    command.Parameters["board.Id"].Value = boardId;
-                    command.Parameters.Add("@conversion", SqlDbType.VarChar);
-                    command.Parameters["port.Conversion"].Value = port.Conversion;
+                    command.Parameters["@BoardId"].Value = boardId;
+                    command.Parameters.Add("@Conversion", SqlDbType.VarChar);
+                    command.Parameters["@Conversion"].Value = port.Conversion;
                     command.Parameters.Add("@Placement", SqlDbType.Int);
-                    command.Parameters["port.Placement"].Value = port.Placement;
+                    command.Parameters["@Placement"].Value = port.Placement;
                     command.ExecuteNonQuery();
                 }
 
@@ -68,7 +68,7 @@ namespace DAO
                 using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
-                    command.Parameters["board.Id"].Value = boardId;
+                    command.Parameters["@board.Id"].Value = boardId;
                     command.ExecuteNonQuery();
                 }
                 SqlCon.Close();
