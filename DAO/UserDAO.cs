@@ -8,7 +8,7 @@ namespace DAO
 {
     public class UserDAO : DAO
     {
-        public void InsertUser(int user)
+        private void InsertUser(int user)
         {
             using (SqlConnection SqlCon = con)
             {
@@ -33,6 +33,7 @@ namespace DAO
 
                 }
                 SqlCon.Close();
+                InsertUser(user);
             }
             return user;
         }

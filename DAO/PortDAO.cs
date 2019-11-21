@@ -33,12 +33,11 @@ namespace DAO
 
         public List<Port> GetAllPortsFromBoard(int boardId)
         {
+            List<Port> result = new List<Port>();
             using (SqlConnection SqlCon = con)
             {
 
                 string query = "SELECT * FROM Port WHERE BoardId = @BoardId";
-                List<Port> result = new List<Port>();
-
                 using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
                     command.Parameters.Add("@BoardId", SqlDbType.Int);

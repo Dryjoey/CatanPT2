@@ -8,6 +8,8 @@ namespace DAO
 {
     public class BoardDAO : DAO
     {
+        TilesDAO tile = new TilesDAO();
+        PortDAO port = new PortDAO();
         List<Board> boards = new List<Board>();
 
         public List<Board> GetAllBoardsFromUser(int userId)
@@ -28,6 +30,7 @@ namespace DAO
                         {
                             Board board = new Board();
                             board.BoardId = read.GetInt32(0);
+                            board.UserId = read.GetInt32(1);
                             boards.Add(board);
                         }
                     }
@@ -38,8 +41,6 @@ namespace DAO
         }
         public Board GetBoard(int boardId)
         {
-            TilesDAO til = new TilesDAO();
-            PortDAO port = new PortDAO();
             Board returnBoard = new Board();
             using (SqlConnection SqlCon = con)
             {
@@ -59,7 +60,7 @@ namespace DAO
                         }
                     }
                     con.Close();
-                    returnBoard.Tiles = til.GetAllTilesFromBoard(boardId);
+                    returnBoard.Tiles = tile.GetAllTilesFromBoard(boardId);
                     returnBoard.Ports = port.GetAllPortsFromBoard(boardId);
                 }
                 return returnBoard;
@@ -70,8 +71,6 @@ namespace DAO
         }
         public void InsertBoard(Board board, int userId)
         {
-            PortDAO PortDAO = new PortDAO();
-            TilesDAO TilesDAO = new TilesDAO();
             using (SqlConnection SqlCon = con)
             {
 
@@ -85,13 +84,13 @@ namespace DAO
                     command.ExecuteNonQuery();
 
                     con.Close();
-                    foreach (Port port in board.Ports)
+                    foreach (Port harbor in board.Ports)
                     {
-                        PortDAO.InsertPort(board.BoardId, port);
+                        port.InsertPort(board.BoardId, harbor);
                     }
-                    foreach (Tile tile in board.Tiles)
+                    foreach (Tile tilehex in board.Tiles)
                     {
-                        TilesDAO.InsertTiles(tile, board.BoardId);
+                        tile.InsertTiles(tilehex, board.BoardId);
                     }
                 }
             }
@@ -100,14 +99,11 @@ namespace DAO
 
         public void DeleteBoard(int boardId)
         {
-            PortDAO portDAO = new PortDAO();
-            TilesDAO tilesDAO = new TilesDAO();
-
             using (SqlConnection SqlCon = con)
             {
                 // delete port and delete tiles first 
-                portDAO.DeletePorts(boardId);
-                tilesDAO.DeleteTiles(boardId);
+                port.DeletePorts(boardId);
+                tile.DeleteTiles(boardId);
 
                 string query = "DELETE FROM Board WHERE Id = @Id";
                 using (SqlCommand command = new SqlCommand(query, SqlCon))

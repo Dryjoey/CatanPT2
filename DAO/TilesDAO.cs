@@ -43,12 +43,12 @@ namespace DAO
             // adding all tiles in tiles with all their specification
             using (SqlConnection SqlCon = con)
             {
-                string query = "INSERT INTO Tiles (BoardId, TilePosition, Resource, Chip) VALUES(@Boardid, @Tileposition, @Resource, @chip)";
+                string query = "INSERT INTO Tiles (BoardId, TilePosition, Resource, Chip) VALUES (@Boardid, @Tileposition, @Resource, @chip)";
 
                 using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
-                    command.Parameters["board.Id"].Value = boardId;
+                    command.Parameters["@BoardId"].Value = boardId;
 
                     command.Parameters.Add("@Tileposition", SqlDbType.Int);
                     command.Parameters["@Tileposition"].Value = tile.Position;
