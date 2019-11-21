@@ -100,8 +100,15 @@ namespace DAO
 
         public void DeleteBoard(int boardId)
         {
+            PortDAO portDAO = new PortDAO();
+            TilesDAO tilesDAO = new TilesDAO();
+
             using (SqlConnection SqlCon = con)
             {
+                // delete port and delete tiles first 
+                portDAO.DeletePorts(boardId);
+                tilesDAO.DeleteTiles(boardId);
+
                 string query = "DELETE FROM Board WHERE Id = @Id";
                 using (SqlCommand command = new SqlCommand(query, SqlCon))
                 {
