@@ -1,36 +1,37 @@
 ﻿@using Models
-<body>
-    <p></p>
-    <div class="image">
-        <img src="~/images/Banner.png" />
-        <label class="image-titel"><span class="lang" key="Boardgenerator"></span></label>
-    </div>
-    <div class="main-menu-container">
-        <ul class="main-menu-list">
-            <li>
-                <div>
-                    @using (Html.BeginForm("index", "Settings"))
-                    {
-                        <button type="submit" class="main-menu-btn"><p class="lang" key="Generateboard"></p></button>
-                    }
-                    @using (Html.BeginForm("TestView", "Test"))
-                    {
-                        <button type="submit" class="main-menu-btn"><span class="lang" key="Test"></span></button>
-                    }
-                    @using (Html.BeginForm("index","Library"))
-                    {
-                        <button type="submit" class="main-menu-btn"><span class="lang" key="Library"></span></button>
-                    }
-                </div>
-            </li>
-        </ul>       
-    </div>
-    <div class="footer">
-        <div class="Button-lower-Right">
-             @using (Html.BeginForm("index", "Options"))
-            {
-                <input type="image" src="images/Gear.png" />
-            }
+    <body>
+        <nav class="navbar navbar-fixed-top">
+            <div class="image">
+                <img src="~/images/Banner.png" />
+                <label class="image-titel"><span class="lang" key="Boardgenerator"></span></label>
+            </div>
+        </nav>
+        <div class="main-menu-container">
+            <ul class="main-menu-list">
+                <li>
+                    <div>
+                        @using (Html.BeginForm("index", "Settings"))
+                        {
+                            <button type="submit" class="main-menu-btn"><p class="lang" key="Generateboard"></p></button>
+                        }
+                        @using (Html.BeginForm("TestView", "Test"))
+                        {
+                            <button type="submit" class="main-menu-btn"><span class="lang" key="Test"></span></button>
+                        }
+                        @using (Html.BeginForm("index", "Library"))
+                        {
+                            <button type="submit" class="main-menu-btn"><span class="lang" key="Library"></span></button>
+                        }
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
-</body> 
+        <nav class="navbar navbar-custom navbar-fixed-bottom">
+            <div class="Button-lower-Right">
+                @using (Html.BeginForm("index", "Options"))
+                {
+                    <input type="image" src="images/Gear.png" />
+                }
+            </div>
+        </nav>
+    </body> 

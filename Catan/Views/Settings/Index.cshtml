@@ -3,7 +3,9 @@
     <link href="~/css/Settings.css" rel="stylesheet" type="text/css" />
 </head>
 <title class="lang" key="gSettings"></title>
-<h1 class="gentitle" lang="en" key="gSettings"><span class="lang" key="gSettings"></span></h1>
+<nav class="navbar navbar-fixed-top">
+    <h1 class="gentitle" lang="en" key="gSettings"><span class="lang" key="gSettings"></span></h1>
+</nav>
 @using (Html.BeginForm("BoardDisplay", "Board", FormMethod.Get))
 {
 <form action="" method="get" class="form-inline vertical-center">
@@ -36,14 +38,11 @@
     <input class="btn btn-primary btn-lg no-padding submitbutton" type="submit" id="submit-btn" value="" onclick='@Url.Action("BoardDisplay", "Board")' ; />
 </form>
 }
-
-<div class="bfooter">
-    <div class="row align-items-center">
+<nav class="navbar navbar-custom navbar-fixed-bottom">
     <div class="Button-lower-Left">
         @using (Html.BeginForm("index", "Home"))
         {
             <input type="image" src="images/Return.png" />
         }
     </div>
-        </div>
-</div>
+</nav>
