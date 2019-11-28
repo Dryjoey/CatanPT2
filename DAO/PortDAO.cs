@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DAO.Util;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,72 +8,77 @@ using System.Text;
 
 namespace DAO
 {
-   public class PortDAO :DAO
+    public class PortDAO
     {
+        private readonly DatabaseConnection _db;
+        public PortDAO()
+        {
+            
+        }
+        readonly SqlConnection con = new SqlConnection("Server=198.71.226.6,1433;Database=CatanDB;User Id=CatanAdmin;Password = CatanAdmin!@1;");
         public void InsertPort(int boardId, Port port)
         {
+
             //inserting all ports into database from board
-            con.Open();
+            
+                string query = "INSERT INTO Port (BoardId, Conversion, Position) VALUES(@BoardId, @Conversion, @Placement)";
 
-           string query = "INSERT INTO Port (BoardId, Converserion, Position) VALUES(@BoardId, @Conversion, @Placement)";
-           
-            using (SqlCommand command = new SqlCommand(query, con))
-            {
-                command.Parameters.Add("@BoardId", SqlDbType.Int);
-                command.Parameters["board.Id"].Value = boardId;
-                command.Parameters.Add("@conversion", SqlDbType.VarChar);
-                command.Parameters["port.Conversion"].Value = port.Conversion;
-                command.Parameters.Add("@Placement", SqlDbType.Int);
-                command.Parameters["port.Placement"].Value = port.Placement;
-            }
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    con.Open();
+                    command.Parameters.Add("@BoardId", SqlDbType.Int);
+                    command.Parameters["@BoardId"].Value = boardId;
+                    command.Parameters.Add("@Conversion", SqlDbType.VarChar);
+                    command.Parameters["@Conversion"].Value = port.Conversion;
+                    command.Parameters.Add("@Placement", SqlDbType.Int);
+                    command.Parameters["@Placement"].Value = port.Placement;
+                    command.ExecuteNonQuery();
+                }
 
-            con.Open();
+                con.Close();
+            
         }
 
         public List<Port> GetAllPortsFromBoard(int boardId)
         {
-            con.Open();
-
-            string query = "SELECT * FROM Port WHERE BoardId = @BoardId";
             List<Port> result = new List<Port>();
+            
 
-            using (SqlCommand command = new SqlCommand(query, con))
-            {
-                
-                command.Parameters.Add("@BoardId", SqlDbType.Int);
-                command.Parameters["@BoardId"].Value = boardId;
-                SqlDataReader Reader = command.ExecuteReader();
-
-                while (Reader.Read())
+                string query = "SELECT * FROM Port WHERE BoardId = @BoardId";
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    Port port = new Port(Reader.GetString(1), Reader.GetInt32(2));
-                
-                    // result is every port from that board
-                    result.Add(port);
+                    con.Open();
+                    command.Parameters.Add("@BoardId", SqlDbType.Int);
+                    command.Parameters["@BoardId"].Value = boardId;
+                    using (SqlDataReader Reader = command.ExecuteReader())
+                    {
+                        while (Reader.Read())
+                        {
+                            Port port = new Port(Reader.GetString(1), Reader.GetInt32(2));
+                            // result is every port from that board
+                            result.Add(port);
+                        }
+                    }
+                    con.Close();
                 }
-
-                con.Close();
-
                 return result;
-            }
         }
 
         public void DeletePorts(int boardId)
         {
             //deleting al ports from one board
-            con.Open();
-            string query =
-            "DELETE * FROM Port Where BoardId = @BoardId";
+            
+                string query = "DELETE * FROM Port Where BoardId = @BoardId";
 
-            using (SqlCommand command = new SqlCommand(query, con))
-            {
-                command.Parameters.Add("@BoardId", SqlDbType.Int);
-                command.Parameters["board.Id"].Value = boardId;
-
-                command.ExecuteNonQuery();
-
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    con.Open();
+                    command.Parameters.Add("@BoardId", SqlDbType.Int);
+                    command.Parameters["@board.Id"].Value = boardId;
+                    command.ExecuteNonQuery();
+                }
                 con.Close();
-            }
+            
         }
     }
 }

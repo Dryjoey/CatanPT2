@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DAO.Util;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,101 +7,141 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-    public class BoardDAO: DAO
+    public class BoardDAO
     {
+        TilesDAO tile;
+        PortDAO port;
         List<Board> boards = new List<Board>();
 
+        readonly SqlConnection con = new SqlConnection("Server=198.71.226.6,1433;Database=CatanDB;User Id=CatanAdmin;Password = CatanAdmin!@1;");
+        public BoardDAO()
+        {
+            
+            port = new PortDAO();
+            tile = new TilesDAO();
+        }
         public List<Board> GetAllBoardsFromUser(int userId)
         {
-            con.Open();
-            // where needs to be added
-            string query = "SELECT * FROM Board WHERE UserId = @userid";
-            List<Board> result = new List<Board>();
+           
+                // where needs to be added
+                string query = "SELECT * FROM Board WHERE UserId = @userid";
+                List<Board> boards = new List<Board>();
 
-            using (SqlCommand command = new SqlCommand(query, con))
-            {
-                command.ExecuteNonQuery();
-
-                SqlDataReader read = command.ExecuteReader();
-
-                while (read.Read())
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    Board board = new Board();
-                    board.BoardId = read.GetInt32(0);
-                    result.Add(board);
+                    con.Open();
+                    command.Parameters.Add("@userid", SqlDbType.Int);
+                    command.Parameters["@userId"].Value = userId;
+                    using (SqlDataReader read = command.ExecuteReader())
+                    {
+                        while (read.Read())
+                        {
+                            Board board = new Board();
+                            board.BoardId = read.GetInt32(0);
+                            board.UserId = read.GetInt32(1);
+                            boards.Add(board);
+                        }
+                    }
+                    con.Close();
                 }
-
-                con.Close();
-
-                return result;
-            }
+                return boards;
+            
         }
         public Board GetBoard(int boardId)
         {
-            TilesDAO til = new TilesDAO();
-            PortDAO port = new PortDAO();
             Board returnBoard = new Board();
-            con.Open();
-            // where needs to be added
-            string query = "SELECT * FROM Board WHERE Id= @Id";
-            using (SqlCommand command = new SqlCommand(query, con))
-            {
-                command.Parameters.Add(new SqlParameter("@Id", boardId));
-                //command.Parameters["Id"].Value = boardId;
-                command.ExecuteNonQuery();
-                SqlDataReader read = command.ExecuteReader();
-               
-                while (read.Read())
+           
+                // where needs to be added
+                string query = "SELECT * FROM Board WHERE Id= @Id";
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    read.GetInt32(0);
-                    read.GetInt32(1);
+                    con.Open();
+                    command.Parameters.Add(new SqlParameter("@Id", boardId));
+                    command.Parameters["@Id"].Value = boardId;
+                    //command.Parameters["Id"].Value = boardId;
+                    using (SqlDataReader read = command.ExecuteReader())
+                    {
+                        while (read.Read())
+                        {
+                            returnBoard.BoardId = read.GetInt32(0);
+                            returnBoard.UserId = read.GetInt32(1);
+                        }
+                    }
+                    con.Close();
+                    returnBoard.Tiles = tile.GetAllTilesFromBoard(boardId);
+                    returnBoard.Ports = port.GetAllPortsFromBoard(boardId);
                 }
-
-                con.Close();
-                returnBoard.Tiles = til.GetAllTilesFromBoard(boardId); 
-                returnBoard.Ports = port.GetAllPortsFromBoard(boardId); 
                 return returnBoard;
-               
+
                 //daarna ga naar tiles en port en haal alle gegevens op
-            }
+            
 
         }
-        public void InsertBoard(int userId)
+        public void InsertBoard(Board board, int userId)
         {
-            //inserting board
-            con.Open();
-
-            string query =
-
-                "INSERT INTO Board(UserId)";
-
-            using (SqlCommand command = new SqlCommand(query, con))
-            {
-                command.Parameters.Add("@UserId", SqlDbType.Int);
-                command.Parameters["board.UserId"].Value = userId;
-    
-                command.ExecuteNonQuery();
-
-                con.Close();
-            }
             
+
+                string query = "INSERT INTO Board (UserId) Values (@UserId)";
+
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    con.Open();
+                    command.Parameters.Add("@UserId", SqlDbType.Int);
+                    command.Parameters["@UserId"].Value = userId;
+
+                    command.ExecuteNonQuery();
+
+                    con.Close();
+                    board.BoardId = GetBoardId();
+
+                    foreach (Port harbor in board.Ports)
+                    {
+                        port.InsertPort(board.BoardId, harbor);
+                    }
+                    foreach (Tile tilehex in board.Tiles)
+                    {
+                        tile.InsertTiles(tilehex, board.BoardId);
+                    }
+                }
+            
+        }
+
+        public int GetBoardId()
+        {
+            int boardid = 0;
+           
+                con.Open();
+                string query = "SELECT TOP 1 * FROM Board ORDER BY Id DESC";
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    
+                    boardid = (int)command.ExecuteScalar();
+                }
+                con.Close();
+            
+            return boardid;
         }
 
         public void DeleteBoard(int boardId)
         {
-            con.Open();
+          
+                // delete port and delete tiles first 
+                port.DeletePorts(boardId);
+                tile.DeleteTiles(boardId);
 
-            string query = 
-                "DELETE FROM Board WHERE Id = @Id";
-            using (SqlCommand command = new SqlCommand(query, con))
-            {
-                command.Parameters.Add("@Id", SqlDbType.Int);
-                command.Parameters["board.Id"].Value = boardId;
+                string query = "DELETE FROM Board WHERE Id = @Id";
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    con.Open();
+                    command.Parameters.Add("@Id", SqlDbType.Int);
+                    command.Parameters["board.Id"].Value = boardId;
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
 
-                con.Close();
-            }
+                    con.Close();
+
+                }
+            
         }
     }
 }

@@ -13,21 +13,13 @@
                     {
                         <button type="submit" class="main-menu-btn"><p class="lang" key="Generateboard"></p></button>
                     }
-                </div>
-            </li>
-            <li>
-                <div>
-                    @using (Html.BeginForm("BoardTest", "Board"))
+                    @using (Html.BeginForm("TestView", "Test"))
                     {
-                        <button type="submit" class="main-menu-btn">SmallBoard Test</button>
+                        <button type="submit" class="main-menu-btn">Test</button>
                     }
-                </div>
-            </li>
-            <li>
-                <div>
-                    @using (Html.BeginForm("BoardDisplay", "Board"))
+                    @using (Html.BeginForm("index","Library"))
                     {
-                        <button type="submit" class="main-menu-btn">Test Page</button>
+                        <button type="submit" class="main-menu-btn">Library</button>
                     }
                 </div>
             </li>

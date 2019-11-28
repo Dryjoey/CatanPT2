@@ -8,16 +8,21 @@ using Catan.Models;
 using Logic;
 using Models;
 using DAO;
+using Hanssens.Net;
 
 namespace Catan.Controllers
 {
     public class TestController : Controller
     {
-        public IActionResult ViewTest()
+        private IOLogic io = new IOLogic();
+        
+        public IActionResult TestView()
         {
-            Board board = BoardLogic.Random();
-           
-            return View("Views/TestView.cshtml", board);
+            int userid = 4;
+            //int userid = io.GetLastUser();
+            Board board = io.GetBoard(1);
+            io.SaveBoard(board, userid);
+            return View("Views/TestView.cshtml", BigBoardLogic.Normal());
         }
     }
 }
