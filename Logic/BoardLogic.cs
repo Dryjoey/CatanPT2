@@ -88,7 +88,12 @@ namespace Logic
         {
             for(int x = 0; x < TSJAdjecent.Length; x++)
             {
-
+                int ThreeStepJumpValue = 0;
+                for (int y = 0; y < TSJAdjecent[x].Length; y++)
+                {
+                    ThreeStepJumpValue += board.Tiles[TSJAdjecent[x][y]].Stars;
+                }
+                board.ThreeStepJumpValues.Add(ThreeStepJumpValue);
             }
         }
 

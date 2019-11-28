@@ -73,6 +73,7 @@ namespace Logic
             }
             return board;
         }
+
         public static Board Random()
         {
             Board board = new Board();
@@ -81,6 +82,61 @@ namespace Logic
             AddRandomDesert(board);
             return board;
 
+        }
+
+        public static void SetStars(List<Tile> tiles)
+        {
+            foreach (Tile tile in tiles)
+            {
+                switch (tile.Chip)
+                {
+
+                    case 2:
+                        tile.Stars = 1;
+                        break;
+                    case 3:
+                        tile.Stars = 2;
+                        break;
+                    case 4:
+                        tile.Stars = 3;
+                        break;
+                    case 5:
+                        tile.Stars = 4;
+                        break;
+                    case 6:
+                        tile.Stars = 6;
+                        break;
+                    case 8:
+                        tile.Stars = 6;
+                        break;
+                    case 9:
+                        tile.Stars = 4;
+                        break;
+                    case 10:
+                        tile.Stars = 3;
+                        break;
+                    case 11:
+                        tile.Stars = 2;
+                        break;
+                    case 12:
+                        tile.Stars = 1;
+                        break;
+
+                }
+            }
+        }
+
+        public static void FillThreeStepJumpValues(Board board)
+        {
+            for (int x = 0; x < TSJAdjecent.Length; x++)
+            {
+                int ThreeStepJumpValue = 0;
+                for (int y = 0; y < TSJAdjecent[x].Length; y++)
+                {
+                    ThreeStepJumpValue += board.Tiles[TSJAdjecent[x][y]].Stars;
+                }
+                board.ThreeStepJumpValues.Add(ThreeStepJumpValue);
+            }
         }
         public static Board RandomChips()
         {
