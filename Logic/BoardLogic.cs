@@ -10,9 +10,12 @@ namespace Logic
     public static class BoardLogic
     {
         public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11 };
-        public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+
+        public static int NumberOfTiles = 18;
+        public static int NumberOfThreeStepJumps = 20;
+
         public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
-        public static int[] ThreeStepJump = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+        
         public static string[] Ports = new string[] { "two-one brick", "two-one wool", "two-one wood", "two-one wheat", "two-one ore", "three-one any", "three-one any", "three-one any", "three-one any" };
         public static int[][] adjecent = new int[][]
         {
@@ -36,51 +39,17 @@ namespace Logic
         new int[]{ 13, 14, 16, 18 },
         new int[]{ 14, 15, 17 }
         };
+
         public static int[][] TSJAdjecent = new int[][]
         {
             new int[]{0, 3, 4},
             new int[]{}
         };
+
         public static int chip = 1;
-        public static void SetStars(List<Tile> tiles)
-        {
-            foreach(Tile tile in tiles)
-            {
-                switch (tile.Chip)
-                {
-
-                    case 2:
-                        tile.Stars = 1;
-                        break;
-                    case 3: tile.Stars = 2;
-                        break;
-                    case 4: tile.Stars = 3;
-                        break;
-                    case 5: tile.Stars = 4;
-                        break;
-                    case 6: tile.Stars = 6;
-                        break;
-                    case 8: tile.Stars = 6;
-                        break;
-                    case 9: tile.Stars = 4;
-                        break;
-                    case 10: tile.Stars = 3;
-                        break;
-                    case 11: tile.Stars = 2;
-                        break;
-                    case 12: tile.Stars = 1;
-                        break;
-
-                }
-            }
-            
-        }
-
         
-
         private static HashSet<int> exclude = new HashSet<int>();
         private static Random rng = new Random();
-
 
         public static Board Normal()
         {
@@ -91,6 +60,7 @@ namespace Logic
             board.Tiles = FillTiles(tiles);
             AddDesert(board);
             SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
         }
 
@@ -109,9 +79,18 @@ namespace Logic
                 AddRandomDesert(board);
                 check = CheckRedTiles(board.Tiles);
             }
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
         }
 
+        public static void FillThreeStepJumpValues(Board board)
+        {
+            for(int x = 0; x < TSJAdjecent.Length; x++)
+            {
+
+            }
+        }
 
         public static Board RandomTiles()
         {
@@ -149,7 +128,7 @@ namespace Logic
         public static List<Tile> CreateNewEmptyTileList()
         {
             List<Tile> tileList = new List<Tile>();
-            foreach (int tile in Tiles)
+            for (int i = 0; i < NumberOfTiles; i++)
             {
                 tileList.Add(new Tile());
             }
@@ -180,46 +159,54 @@ namespace Logic
             return tiles;
             
         }
+
         public static void RandomizeTiles(List<Tile> tiles)
         {            
             tiles = SetChips(tiles, shuffle(Chips));
             tiles = SetResources(tiles, shuffle(Resources));
             
         }
+
         public static List<Port> FillRandomPorts(List<Port> port)
         {
             port = SetPorts(port, shuffle(Ports));
             return port;
         }
+
         public static List<Port> FillPorts(List<Port> port)
         {
             port = SetPorts(port, Ports);
             return port;
         }
+
         public static List<Tile> FillRandomTiles(List<Tile> tiles)
         {
             tiles = SetChips(tiles, shuffle (Chips));
             tiles = SetResources(tiles, shuffle(Resources));
             return tiles;
         }
+
         public static List<Tile> FillRandomResourceTiles(List<Tile> tiles)
         {
             tiles = SetChips(tiles, (Chips));
             tiles = SetResources(tiles, shuffle(Resources));
             return tiles;
         }
+
         public static List<Tile> FillRandomChipsTiles(List<Tile> tiles)
         {
             tiles = SetChips(tiles, shuffle(Chips));
             tiles = SetResources(tiles, (Resources));
             return tiles;
         }
+
         public static List<Tile> FillTiles(List<Tile> tiles)
         {
             tiles = SetChips(tiles, Chips);
             tiles = SetResources(tiles, Resources);
             return tiles;
         }
+
         public static string[] shuffle(string[] array)
         {
             return array.OrderBy(x => rng.Next()).ToArray();
@@ -229,6 +216,7 @@ namespace Logic
         {
             return array.OrderBy(x => rng.Next()).ToArray();
         }
+
         public static bool CheckRedTiles(List<Tile> tiles)
         {
             for (int x = 0; x < tiles.Count; x++)
@@ -269,14 +257,7 @@ namespace Logic
             }
             return tiles;
         }
-        /****************************************************
-        * PositionRed                                       *
-        * ------------------------------------------------- *
-        * Return Value: Void                                *
-        * Description:                                      *
-        * Position Tiles in board if they are an 8 or an 6  *
-        * State: Bleeding                                   *
-        *****************************************************/
+
         private static void PositionRed(Tile tile)
         {
             List<int> emptyPositions = new List<int>()
@@ -297,15 +278,7 @@ namespace Logic
                 RemoveAdjacent(placeable, newPosition);
             }
         }
-        /****************************************************
-        * RemoveAdjecent                                    *
-        * ------------------------------------------------- *
-        * Return Value: Void                                *
-        * Description:                                      *
-        * Removes Adjacent Tiles from possible useable      *  
-        * positions list                                    *
-        * State: Bleeding                                   *
-        *****************************************************/
+
         private static void RemoveAdjacent(List<int> placeable, int position)
         {
             foreach (int x in adjecent[position])
@@ -315,28 +288,12 @@ namespace Logic
                 if (!exclude.Contains(x)) exclude.Add(x);
             }
         }
-        /****************************************************
-        * Place Rest                                        *
-        * ------------------------------------------------- *
-        * Return Value: Void                                *
-        * Description:                                      *
-        * Give Tile it's position                           *
-        * State: Bleeding                                   *
-        *****************************************************/
+
         private static void PositionRest(Tile tile)
         {
             tile.Position = GetNewPositionValue();
         }
-        /****************************************************
-        * GetNewPositionValue                               *
-        * ------------------------------------------------- *
-        * Return Value: Int32                               *
-        * Description:                                      *
-        * Returns the next possible Position within the     *
-        * board, checking which PLAIN position has been     *
-        * used already to give a new position               *
-        * State: Bleeding                                   *
-        *****************************************************/
+
         private static int GetNewPositionValue()
         {
             var range = Enumerable.Range(0, 18).Where(i => !exclude.Contains(i));
@@ -354,6 +311,7 @@ namespace Logic
             }
             return tiles;
         }
+
         public static List<Port> SetPorts(List<Port> ports, string[] Ports)
         {
             for (int i = 0; i < Ports.Length; i++)
@@ -373,6 +331,7 @@ namespace Logic
             }
             return tiles.ToList();
         }
+
         public static List<Tile> SetChips(List<Tile> tiles, int[] chips)
         {
             for (int i = 0; i < chips.Length; i++)
@@ -381,7 +340,6 @@ namespace Logic
             }
             return tiles.ToList();
         }
-         
 
         public static void AddRandomDesert(Board board)
         {
@@ -400,6 +358,48 @@ namespace Logic
         {
             Tile tile = new Tile(7, "desert");
             board.Tiles.Insert(9, tile);
+        }
+
+        public static void SetStars(List<Tile> tiles)
+        {
+            foreach (Tile tile in tiles)
+            {
+                switch (tile.Chip)
+                {
+
+                    case 2:
+                        tile.Stars = 1;
+                        break;
+                    case 3:
+                        tile.Stars = 2;
+                        break;
+                    case 4:
+                        tile.Stars = 3;
+                        break;
+                    case 5:
+                        tile.Stars = 4;
+                        break;
+                    case 6:
+                        tile.Stars = 6;
+                        break;
+                    case 8:
+                        tile.Stars = 6;
+                        break;
+                    case 9:
+                        tile.Stars = 4;
+                        break;
+                    case 10:
+                        tile.Stars = 3;
+                        break;
+                    case 11:
+                        tile.Stars = 2;
+                        break;
+                    case 12:
+                        tile.Stars = 1;
+                        break;
+
+                }
+            }
         }
     }
 }
