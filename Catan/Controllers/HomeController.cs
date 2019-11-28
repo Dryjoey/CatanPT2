@@ -13,6 +13,7 @@ namespace Catan.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             var key = "CatanUid";
