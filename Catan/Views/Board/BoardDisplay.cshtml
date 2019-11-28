@@ -18,7 +18,6 @@
     {
         <partial name="Partial/_BigBoard.cshtml" />
     }
-
 </div>
 <ul class="main-menu-list ul-vertical-@size">
     <li>
@@ -36,14 +35,10 @@
     </li>
     <li>
         <div>
-            @using (Html.BeginForm("Index", "Home"))
-            {
                 <button type="button" class="main-menu-btn"><span class="lang" key="Menu"></span></button>
-            }
         </div>
     </li>
 </ul>
-
 <div>
     <ul class="main-menu-list">
         <li class="li-horizontal-@size">
@@ -62,5 +57,5 @@
     }
     function GoToSettings() {
         window.location = '../Settings';
-    }
+	}
 </script>

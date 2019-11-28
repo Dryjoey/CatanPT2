@@ -13,10 +13,18 @@ namespace Catan.Controllers
 {
     public class HomeController : Controller
     {
+        IOLogic iologic = new IOLogic();
         public IActionResult Index()
         {
-            var key = "CatanUid";
+            UserViewModel CatanUser = new UserViewModel();
+            using (var storage = new LocalStorage())
+            {
+                var key = "UserIDKey";
+                CatanUser.UserId = iologic.GetLastUser();
+                storage.Store(key, CatanUser.UserId);
+                storage.Persist();
 
+            }
             return View();
         }
 
