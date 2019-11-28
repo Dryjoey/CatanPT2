@@ -54,6 +54,9 @@ namespace Logic
             board.Tiles = FillTiles(tiles);
             board.Ports = FillPorts(ports);
             AddDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
+
             return board;
         }
         public static Board PseudoRandom()
@@ -71,6 +74,8 @@ namespace Logic
                 AddRandomDesert(board);
                 check = CheckRedTiles(board.Tiles);
             }
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
         }
 
@@ -80,6 +85,8 @@ namespace Logic
             List<Tile> tiles = CreateNewEmptyTileList();
             board.Tiles = FillRandomTiles(tiles);
             AddRandomDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
 
         }
@@ -135,7 +142,42 @@ namespace Logic
                 {
                     ThreeStepJumpValue += board.Tiles[TSJAdjecent[x][y]].Stars;
                 }
-                board.ThreeStepJumpValues.Add(ThreeStepJumpValue);
+                board.ThreeStepJumps.ThreeStepJumpValues.Add(ThreeStepJumpValue);
+            }
+
+            SetHighestValue(board);
+        }
+
+        public static void SetHighestValue(Board board)
+        { 
+            for (int i = 0; i < board.ThreeStepJumps.ThreeStepJumpValues.Count; i++)
+            {
+                if(board.ThreeStepJumps.ThreeStepJumpValues[i] > board.ThreeStepJumps.HighestFirst)
+                {
+                    board.ThreeStepJumps.HighestThird = board.ThreeStepJumps.HighestSecond;
+                    board.ThreeStepJumps.HighestThirdIndex = board.ThreeStepJumps.HighestSecondIndex;
+
+                    board.ThreeStepJumps.HighestSecond = board.ThreeStepJumps.HighestFirst;
+                    board.ThreeStepJumps.HighestSecondIndex = board.ThreeStepJumps.HighestFirstIndex;
+                    
+                    board.ThreeStepJumps.HighestFirst = board.ThreeStepJumps.ThreeStepJumpValues[i];
+                    board.ThreeStepJumps.HighestFirstIndex = i;
+                }
+                else if(board.ThreeStepJumps.ThreeStepJumpValues[i] > board.ThreeStepJumps.HighestSecond)
+                {
+                    board.ThreeStepJumps.HighestThird = board.ThreeStepJumps.HighestSecond;
+                    board.ThreeStepJumps.HighestThirdIndex = board.ThreeStepJumps.HighestSecondIndex;
+
+                    board.ThreeStepJumps.HighestSecond = board.ThreeStepJumps.ThreeStepJumpValues[i];
+                    board.ThreeStepJumps.HighestSecondIndex = i;
+
+                    
+                }
+                else if (board.ThreeStepJumps.ThreeStepJumpValues[i] > board.ThreeStepJumps.HighestThird)
+                {
+                    board.ThreeStepJumps.HighestThird = board.ThreeStepJumps.ThreeStepJumpValues[i];
+                    board.ThreeStepJumps.HighestThirdIndex = i;
+                }
             }
         }
         public static Board RandomChips()
@@ -144,6 +186,8 @@ namespace Logic
             List<Tile> tiles = CreateNewEmptyTileList();
             board.Tiles = FillRandomChipsTiles(tiles);
             AddDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
         }
 
@@ -153,6 +197,8 @@ namespace Logic
             List<Tile> tiles = CreateNewEmptyTileList();
             board.Tiles = FillRandomResourceTiles(tiles);
             AddRandomDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
         }
         public static void RandomizeTiles(List<Tile> tiles)
@@ -243,7 +289,7 @@ namespace Logic
         {
 
             Tile tile = new Tile(7, "desert");
-            board.Tiles.Insert(rng.Next(37), tile);
+            board.Tiles.Insert(rng.Next(board.Tiles.Count), tile);
         }
 
         public static void AddDesert(Board board)

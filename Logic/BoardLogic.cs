@@ -11,9 +11,6 @@ namespace Logic
     {
         public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11 };
 
-        public static int NumberOfTiles = 18;
-        public static int NumberOfThreeStepJumps = 20;
-
         public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore" };
         
         public static string[] Ports = new string[] { "two-one brick", "two-one wool", "two-one wood", "two-one wheat", "two-one ore", "three-one any", "three-one any", "three-one any", "three-one any" };
@@ -40,63 +37,7 @@ namespace Logic
         new int[]{ 14, 15, 17 }
         };
 
-        public static int[][] TSJAdjecent = new int[][]
-        {
-            new int[]{0},
-            new int[]{0},
-            new int[]{0, 1},
-            new int[]{1},
-            new int[]{1, 2},
-            new int[]{2},
-            new int[]{2},
-            new int[]{3},
-            new int[]{0, 3},
-            new int[]{0, 3, 4},
-            new int[]{0, 1, 4},
-            new int[]{1, 4, 5},
-            new int[]{1, 2, 5},
-            new int[]{2, 5, 6},
-            new int[]{2, 6},
-            new int[]{6},
-            new int[]{7},
-            new int[]{3, 7},
-            new int[]{3, 7, 8},
-            new int[]{3, 4, 8},
-            new int[]{4, 8, 9},
-            new int[]{4, 5, 9},
-            new int[]{5, 9, 10},
-            new int[]{5, 6, 10},
-            new int[]{6, 10, 11},
-            new int[]{6, 11},
-            new int[]{11},
-            new int[]{7},
-            new int[]{7, 12},
-            new int[]{7, 8, 12},
-            new int[]{8, 12, 13},
-            new int[]{8, 9, 13},
-            new int[]{9, 13, 14},
-            new int[]{9, 10, 14},
-            new int[]{10, 14, 15},
-            new int[]{10, 11, 15},
-            new int[]{11, 15},
-            new int[]{11},
-            new int[]{12},
-            new int[]{12, 16},
-            new int[]{12, 13, 16},
-            new int[]{13, 16, 17},
-            new int[]{13, 14, 17},
-            new int[]{14, 17, 18},
-            new int[]{14, 15, 18},
-            new int[]{15, 18},
-            new int[]{15},
-            new int[]{16},
-            new int[]{16},
-            new int[]{16, 17},
-            new int[]{17},
-            new int[]{17, 18},
-            new int[]{18},
-            new int[]{18}
-        };
+       
 
         public static int chip = 1;
         
@@ -145,7 +86,7 @@ namespace Logic
                 {
                     ThreeStepJumpValue += board.Tiles[TSJAdjecent[x][y]].Stars;
                 }
-                board.ThreeStepJumpValues.Add(ThreeStepJumpValue);
+                board.ThreeStepJumps.ThreeStepJumpValues.Add(ThreeStepJumpValue);
             }
         }
 
@@ -157,6 +98,8 @@ namespace Logic
             board.Ports = FillRandomPorts(ports);
             board.Tiles = FillRandomTiles(tiles);
             AddRandomDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
 
         }
@@ -168,6 +111,8 @@ namespace Logic
             board.Tiles = FillRandomChipsTiles(tiles);
             board.Ports = FillPorts(ports);
             AddDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
         }
 
@@ -179,13 +124,15 @@ namespace Logic
             board.Tiles = FillRandomResourceTiles(tiles);
             board.Ports = FillRandomPorts(ports);
             AddRandomDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
         }
         
         public static List<Tile> CreateNewEmptyTileList()
         {
             List<Tile> tileList = new List<Tile>();
-            for (int i = 0; i < NumberOfTiles; i++)
+            for (int i = 0; i < Resources.Count(); i++)
             {
                 tileList.Add(new Tile());
             }
@@ -458,5 +405,63 @@ namespace Logic
                 }
             }
         }
+
+       public static int[][] TSJAdjecent = new int[][]
+       {
+            new int[]{0},
+            new int[]{0},
+            new int[]{0, 1},
+            new int[]{1},
+            new int[]{1, 2},
+            new int[]{2},
+            new int[]{2},
+            new int[]{3},
+            new int[]{0, 3},
+            new int[]{0, 3, 4},
+            new int[]{0, 1, 4},
+            new int[]{1, 4, 5},
+            new int[]{1, 2, 5},
+            new int[]{2, 5, 6},
+            new int[]{2, 6},
+            new int[]{6},
+            new int[]{7},
+            new int[]{3, 7},
+            new int[]{3, 7, 8},
+            new int[]{3, 4, 8},
+            new int[]{4, 8, 9},
+            new int[]{4, 5, 9},
+            new int[]{5, 9, 10},
+            new int[]{5, 6, 10},
+            new int[]{6, 10, 11},
+            new int[]{6, 11},
+            new int[]{11},
+            new int[]{7},
+            new int[]{7, 12},
+            new int[]{7, 8, 12},
+            new int[]{8, 12, 13},
+            new int[]{8, 9, 13},
+            new int[]{9, 13, 14},
+            new int[]{9, 10, 14},
+            new int[]{10, 14, 15},
+            new int[]{10, 11, 15},
+            new int[]{11, 15},
+            new int[]{11},
+            new int[]{12},
+            new int[]{12, 16},
+            new int[]{12, 13, 16},
+            new int[]{13, 16, 17},
+            new int[]{13, 14, 17},
+            new int[]{14, 17, 18},
+            new int[]{14, 15, 18},
+            new int[]{15, 18},
+            new int[]{15},
+            new int[]{16},
+            new int[]{16},
+            new int[]{16, 17},
+            new int[]{17},
+            new int[]{17, 18},
+            new int[]{18},
+            new int[]{18}
+       };
     }
 }
