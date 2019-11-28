@@ -257,12 +257,12 @@ ol.odd {
     content: "wood";
 }
 
-.harbor.coal::after {
-    content: "coal";
+.harbor.ore::after {
+    content: "ore";
 }
 
-.harbor.sheep::after {
-    content: "sheep";
+.harbor.wool::after {
+    content: "wool";
 }
 
 .harbor.brick::after {
