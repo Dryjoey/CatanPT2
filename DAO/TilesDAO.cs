@@ -73,7 +73,7 @@ namespace DAO
         {
             //deleting al tiles from one board
            
-                string query = "DELETE * FROM Tiles Where BoardId = @BoardId";
+                string query = "DELETE FROM Tiles Where BoardId = @BoardId";
 
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
