@@ -16,6 +16,7 @@ namespace Models
 
         }
 
+        public List<int> ThreeStepJumpValues { get; set; }
         public int BoardId { get; set; }
         public int UserId { get; set; }
         public List<Tile> Tiles { get; set; }
