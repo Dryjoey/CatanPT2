@@ -32,6 +32,7 @@ namespace Models
         */
         public string Resource { get; set; }
         public int Position { get; set; }
+        public int Stars { get; set; }
 
     }
 }
