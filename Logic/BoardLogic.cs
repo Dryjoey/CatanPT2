@@ -36,11 +36,7 @@ namespace Logic
         new int[]{ 13, 14, 16, 18 },
         new int[]{ 14, 15, 17 }
         };
-        public static int[][] TSJAdjecent = new int[][]
-        {
-            new int[]{0, 3, 4},
-            new int[]{}
-        };
+        
         public static int chip = 1;
         public static void SetStars(List<Tile> tiles)
         {
@@ -401,5 +397,63 @@ namespace Logic
             Tile tile = new Tile(7, "desert");
             board.Tiles.Insert(9, tile);
         }
+
+        public static int[][] TSJAdjecent = new int[][]
+        {
+            new int[]{0},
+            new int[]{0},
+            new int[]{0, 1},
+            new int[]{1},
+            new int[]{1,2},
+            new int[]{2},
+            new int[]{2},
+            new int[]{3},
+            new int[]{0,3},
+            new int[]{0, 3, 4},
+            new int[]{0, 1, 4},
+            new int[]{1, 4, 5},
+            new int[]{1, 2, 5},
+            new int[]{2, 5, 6},
+            new int[]{2, 6},
+            new int[]{6},
+            new int[]{7},
+            new int[]{7, 3},
+            new int[]{3, 7, 8},
+            new int[]{3, 4, 8},
+            new int[]{4, 8, 9},
+            new int[]{4, 5, 9},
+            new int[]{5, 9, 10},
+            new int[]{5, 6, 10},
+            new int[]{6, 10, 11},
+            new int[]{6, 11},
+            new int[]{11},
+            new int[]{7},
+            new int[]{7, 12},
+            new int[]{7, 8, 12},
+            new int[]{8, 12, 13},
+            new int[]{8, 9, 13},
+            new int[]{9, 13, 14},
+            new int[]{9, 10, 14},
+            new int[]{10, 14, 15},
+            new int[]{10, 11, 15},
+            new int[]{11, 15},
+            new int[]{11},
+            new int[]{12},
+            new int[]{12, 16},
+            new int[]{12, 13, 16},
+            new int[]{13, 16, 17},
+            new int[]{13, 14, 17},
+            new int[]{14, 17, 18},
+            new int[]{14, 15, 18},
+            new int[]{15, 18},
+            new int[]{15},
+            new int[]{16},
+            new int[]{16},
+            new int[]{16, 17},
+            new int[]{17},
+            new int[]{17, 18},
+            new int[]{18},
+            new int[]{18}
+        };
     }
 }
