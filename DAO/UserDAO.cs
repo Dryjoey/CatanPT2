@@ -13,8 +13,7 @@ namespace DAO
         readonly SqlConnection con = new SqlConnection("Server=198.71.226.6,1433;Database=CatanDB;User Id=CatanAdmin;Password = CatanAdmin!@1;");
         private void InsertUser(int user)
         {
-            using (var con = _db.SqlConnection)
-            {
+           
                 string query = "INSERT INTO Users(UserId) VALUES (@UserId)";
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
@@ -24,14 +23,13 @@ namespace DAO
                     command.ExecuteNonQuery();
                     con.Close();
                 }
-            }
+            
         }
 
         public int GetLastUser()
         {
             int user = 0;
-            using (var con = _db.SqlConnection)
-            {
+           
                 string query = "Select MAX(id) FROM Users";
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
@@ -39,9 +37,8 @@ namespace DAO
                     user = (int)command.ExecuteScalar() + 1;
 
                 }
-                con.Close();
-                InsertUser(user);
-            }
+            con.Close();
+            InsertUser(user);
             return user;
         }
     }
