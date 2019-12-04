@@ -16,6 +16,10 @@
     transform: scale(0.7);
     transform-origin: top left;
 }
+.scaled smaller {
+		transform: scale(0.2);
+		transform-origin: top left;
+	}
 
 .centering {
     display: table;
@@ -608,4 +612,7 @@ ol.odd {
     text-align: center;
     border-radius: 10px;
     opacity: .85;
+}
+#savedText{
+	visibility:	hidden;
 }

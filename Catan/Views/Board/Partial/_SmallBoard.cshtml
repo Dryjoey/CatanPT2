@@ -30,7 +30,6 @@
         }
     }
 }
-
 <link rel="stylesheet" href="~/css/SmallBoard.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
@@ -190,3 +189,13 @@
         </ol>
     </div>
 </div>
+<script>
+	var node = document.getElementsByClassName("board-container scaled");
+	htmlToImage.toJpeg(document.getElementsByClassName("board-container scaled"), { quality: 0.95 })
+		.then(function (dataUrl) {
+			var link = document.creatElement('a');
+			link.download = 'Catan-Board.jpeg';
+			link.href = dataUrl;
+			link.click();
+
+</script>

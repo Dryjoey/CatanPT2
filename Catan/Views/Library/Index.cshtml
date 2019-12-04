@@ -1,0 +1,30 @@
+﻿@model DummyCollectionViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Boards)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Boards) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoardId)</td>
+				<partial name="Partial/_SmallBoardThumbnail.cshtml" />
+			<td>
+				@Html.DisplayFor(modelItem => item.Tiles)
+			</td>
+        </tr>
+}
+    </tbody>
+</table>
