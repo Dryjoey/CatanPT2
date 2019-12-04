@@ -14,6 +14,12 @@ namespace Catan.Models
         public bool IsSmallBoard { get; set; }
 
         public ChipState ChipState { get; set; }
+
+        public Settingsmodel() //needed for the default settings in the settings menu
+        {
+            FullyPseudoRandom = true;
+            IsSmallBoard = true;
+        }
     }
 
     public enum ChipState

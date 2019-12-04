@@ -37,7 +37,6 @@ body{
 
 .main-menu-container {
     display: flex;
-    min-height: 40em;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
@@ -72,10 +71,6 @@ body{
 .li-spacer {
     height:340px;
     width: 420px;
-}
-
-.ul-vertical-small{
-
 }
 
 .ul-vertical-big {

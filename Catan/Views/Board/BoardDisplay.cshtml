@@ -22,12 +22,13 @@
 <ul class="main-menu-list ul-vertical-@size">
     <li>
         <div>
-            <button type="button" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
+            <button type="button" onClick="ToImage()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
         </div>
     </li>
     <li>
         <div>
-            <button type="button" class="main-menu-btn"><span class="lang" key="SaveLibrary"></span></button>
+            <button type="button" class="main-menu-btn" onclick="Unhide()"><span class="lang" key="SaveLibrary"></span></button>
+			<h5 id="savedText" class="lang" key="SaveLibText"></h5>
         </div>
     </li>
     <li>
@@ -51,11 +52,18 @@
 </div>
 
 <script>
-    function Refresh() {
-        window.location.reload();
+	function Refresh() {
+		window.location.reload();
 
-    }
-    function GoToSettings() {
-        window.location = '../Settings';
+	}
+	function GoToSettings() {
+		window.location = '../Settings';
+	}
+
+	function Unhide() {
+		var hid = document.getElementById("savedText");
+
+		hid[0].style.visibility = "visible";
+
 	}
 </script>

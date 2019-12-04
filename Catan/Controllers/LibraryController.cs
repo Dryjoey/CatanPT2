@@ -12,12 +12,10 @@ namespace Catan.Controllers
 {
     public class LibraryController : Controller
     {
-        public IActionResult Index(LocalStorage localstorage)
+        public IActionResult Index()
         {
-            IOLogic io = new IOLogic();
-            io.GetBoardsFromUser(localstorage.Get(key));
-
-            return View();
+            List<Board> ListOfBoards = new List<Board>();
+            return View(new DummyCollectionViewModel(ListOfBoards));
         }
     }
 }

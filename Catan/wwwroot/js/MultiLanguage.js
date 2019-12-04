@@ -22,7 +22,8 @@
         'Test': 'Test',
         'Sheep': 'sheep',
         'Brick': 'brick',
-        'Any': 'any',
+		'Any': 'any',
+		'SaveLibText': 'Board Saved to Library!',
 
 
     },
@@ -48,7 +49,8 @@
         'Test': 'Test',
         'Sheep': 'schaap',
         'Brick': 'baksteen',
-        'Any' : 'elke',
+		'Any': 'elke',
+		'SaveLibText': 'Board opgeslagen in collectie!',
 
     }
 };

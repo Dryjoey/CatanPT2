@@ -3,7 +3,7 @@
 	<link href="~/css/Settings.css" rel="stylesheet" type="text/css" />
 </head>
 <title class="lang" key="gSettings"></title>
-<nav class="navbar navbar-fixed-top">
+<nav class="navbar navbar-custom">
 	<h1 class="gentitle" lang="en" key="gSettings"><span class="lang" key="gSettings"></span></h1>
 </nav>
 @using (Html.BeginForm("BoardDisplay", "Board", FormMethod.Get))
@@ -18,7 +18,7 @@
 				</div>
 				<div class="row align-items-center">
 					<div class="col-xs-6"><label class="label" for="TilePlacement"><span class="lang" key="TilesAndChips"></span></label></div>
-					<div class="col-xs-2">@Html.RadioButtonFor(m => m.FullyPseudoRandom, true, new { id = "BigRadio" })</div>
+					<div class="col-xs-2">@Html.RadioButtonFor(m => m.FullyPseudoRandom, true, new { id = "BigRadio"})</div>
 					<div class="col-xs-2">@Html.RadioButtonFor(m => m.FullyPseudoRandom, false, new { id = "BigRadio" })</div>
 				</div>
 				<div class="row align-items-center">
@@ -28,7 +28,7 @@
 				</div>
 				<div class="row align-items-center">
 					<div class="col-xs-6"><label class="label" for="NumberofPlayers"><span class="lang" key="Player"></span></label></div>
-					<div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, true, new { id = "BigRadio" })</div>
+					<div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, true, new { id = "BigRadio" , Checked = "checked" })</div>
 					<div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, false, new { id = "BigRadio" })</div>
 					<br />
 				</div>
@@ -39,7 +39,7 @@
 			</div>
 	</form>
 }
-<nav class="navbar navbar-custom navbar-fixed-bottom">
+<nav class="navbar navbar-custom">
 	<div class="Button-lower-Left">
 		@using (Html.BeginForm("index", "Home"))
 		{
