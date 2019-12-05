@@ -12,10 +12,13 @@ namespace Catan.Controllers
 {
     public class BoardController : Controller
     {
+        LocalStorage storage = new LocalStorage();
+        IOLogic iologic = new IOLogic();
+        static Board board;
         [HttpGet]
         public IActionResult BoardDisplay(Settingsmodel model)
         {
-            Board board;
+           
 
             if (ModelState.IsValid)
             {
@@ -46,6 +49,16 @@ namespace Catan.Controllers
             }
 
             return View(board);
+        }
+        [HttpPost]
+        public IActionResult SaveToDatabase( UserViewModel user)
+        {
+            
+            var key = "first";
+            var value = board;
+            storage.Store(key, value);
+            iologic.SaveBoard(board, user.UserId);
+            return View();
         }
     }
 }
