@@ -8,7 +8,7 @@ namespace Logic
 {
     public static class BigBoardLogic
     {
-        public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11, 3, 5, 6, 8, 2, 11, 10, 10, 5, 12};
+        public static int[] Chips = new int[] { 6, 5, 3, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11, 3, 5, 6, 8, 2, 11, 10, 10, 5, 12};
         public static string[] Ports = new string[] { "two-one brick", "two-one wool", "two-one wood", "two-one wheat", "two-one ore",  "three-one any", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any" };
         public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore", "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore" };
         public static int[][] adjecent = new int[][]
@@ -297,8 +297,8 @@ namespace Logic
         {
             Tile tile = new Tile(7, "desert");
             Tile tile1 = new Tile(7, "desert");
-            board.Tiles.Insert(19, tile);
-            board.Tiles.Insert(25, tile);
+            board.Tiles.Insert(5, tile);
+            board.Tiles.Insert(24, tile);
         }
 
         public static bool CheckRedTiles(List<Tile> tiles)
