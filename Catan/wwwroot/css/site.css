@@ -37,7 +37,6 @@ body{
 
 .main-menu-container {
     display: flex;
-    min-height: 40em;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
@@ -74,10 +73,6 @@ body{
     width: 420px;
 }
 
-.ul-vertical-small{
-
-}
-
 .ul-vertical-big {
     left: -300px;
     position: relative;
@@ -99,4 +94,53 @@ body{
 .horizontal-spacer {
     margin: 0 45px 0 0;
 }
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
 
+.Button-lower-Right {
+    position: relative;
+    width: 95px;
+    height: 95px;
+    float: right;
+    margin-top: 0px;
+    margin-right: 0px;
+}
+
+.Button-lower-Left {
+    position: relative;
+    width: 95px;
+    height: 95px;
+    float: left;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.image {
+    position: relative;
+    width: 145px;
+    height: 145px;
+    float: right;
+    margin-top: 5px;
+    margin-right: 50px;
+}
+
+.image-titel {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    color: #E6DE20;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.bfooter{
+    position: absolute;
+    right: 40px;
+
+}

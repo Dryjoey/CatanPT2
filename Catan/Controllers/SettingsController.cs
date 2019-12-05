@@ -13,9 +13,10 @@ namespace Catan.Controllers
 {
     public class SettingsController : Controller
     { 
-        public IActionResult Index()
+        public IActionResult Index(Settingsmodel settingsmodel)
         {
-            return View();
+            settingsmodel = new Settingsmodel();
+            return View(settingsmodel);
         }
     }
 }

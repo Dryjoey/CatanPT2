@@ -9,12 +9,15 @@ namespace Models
         {
             Tiles = tiles;
             Ports = ports;
+            ThreeStepJumps = new ThreeStepJumpCollector();
         }
 
         public Board()
         {
-
+            ThreeStepJumps = new ThreeStepJumpCollector();
         }
+
+        public ThreeStepJumpCollector ThreeStepJumps { get; set; }
 
         public int BoardId { get; set; }
         public int UserId { get; set; }

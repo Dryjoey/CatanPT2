@@ -8,10 +8,10 @@ namespace Logic
 {
     public static class BigBoardLogic
     {
-        public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11, 3, 5, 6, 8, 2, 11, 10, 10, 5, 12 };
-        public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27 };
-        public static string[] Ports = new string[] { "two-one brick", "two-one wool", "two-one wood", "two-one wheat", "two-one ore","two-one brick", "two-one wool", "two-one wood", "two-one wheat", "two-one ore", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any" };
-        public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore", "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", };
+        public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11, 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9 };
+        public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 };
+        public static string[] Ports = new string[] { "two-one brick", "two-one wool", "two-one wood", "two-one wheat", "two-one ore",  "three-one any", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any" };
+        public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore", "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep" };
         public static int[][] adjecent = new int[][]
         {
             new int[]{1, 4, 5},
@@ -54,6 +54,9 @@ namespace Logic
             board.Tiles = FillTiles(tiles);
             board.Ports = FillPorts(ports);
             AddDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
+
             return board;
         }
         public static Board PseudoRandom()
@@ -65,22 +68,117 @@ namespace Logic
             {
                 List<Tile> tiles = CreateNewEmptyTileList();
                 List<Port> ports = CreateNewEmptyPortList();
-                board.Ports = FillRandomPorts(ports);
+                FillRandomPorts(ports);
                 RandomizeTiles(tiles);
                 board.Tiles = tiles;
                 AddRandomDesert(board);
                 check = CheckRedTiles(board.Tiles);
             }
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
         }
+
         public static Board Random()
         {
             Board board = new Board();
             List<Tile> tiles = CreateNewEmptyTileList();
             board.Tiles = FillRandomTiles(tiles);
             AddRandomDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
 
+        }
+
+        public static void SetStars(List<Tile> tiles)
+        {
+            foreach (Tile tile in tiles)
+            {
+                switch (tile.Chip)
+                {
+
+                    case 2:
+                        tile.Stars = 1;
+                        break;
+                    case 3:
+                        tile.Stars = 2;
+                        break;
+                    case 4:
+                        tile.Stars = 3;
+                        break;
+                    case 5:
+                        tile.Stars = 4;
+                        break;
+                    case 6:
+                        tile.Stars = 6;
+                        break;
+                    case 8:
+                        tile.Stars = 6;
+                        break;
+                    case 9:
+                        tile.Stars = 4;
+                        break;
+                    case 10:
+                        tile.Stars = 3;
+                        break;
+                    case 11:
+                        tile.Stars = 2;
+                        break;
+                    case 12:
+                        tile.Stars = 1;
+                        break;
+
+                }
+            }
+        }
+
+        public static void FillThreeStepJumpValues(Board board)
+        {
+            for (int x = 0; x < TSJAdjecent.Length; x++)
+            {
+                int ThreeStepJumpValue = 0;
+                for (int y = 0; y < TSJAdjecent[x].Length; y++)
+                {
+                    ThreeStepJumpValue += board.Tiles[TSJAdjecent[x][y]].Stars;
+                }
+                board.ThreeStepJumps.ThreeStepJumpValues.Add(ThreeStepJumpValue);
+            }
+
+            SetHighestValue(board);
+        }
+
+        public static void SetHighestValue(Board board)
+        { 
+            for (int i = 0; i < board.ThreeStepJumps.ThreeStepJumpValues.Count; i++)
+            {
+                if(board.ThreeStepJumps.ThreeStepJumpValues[i] > board.ThreeStepJumps.HighestFirst)
+                {
+                    board.ThreeStepJumps.HighestThird = board.ThreeStepJumps.HighestSecond;
+                    board.ThreeStepJumps.HighestThirdIndex = board.ThreeStepJumps.HighestSecondIndex;
+
+                    board.ThreeStepJumps.HighestSecond = board.ThreeStepJumps.HighestFirst;
+                    board.ThreeStepJumps.HighestSecondIndex = board.ThreeStepJumps.HighestFirstIndex;
+                    
+                    board.ThreeStepJumps.HighestFirst = board.ThreeStepJumps.ThreeStepJumpValues[i];
+                    board.ThreeStepJumps.HighestFirstIndex = i;
+                }
+                else if(board.ThreeStepJumps.ThreeStepJumpValues[i] > board.ThreeStepJumps.HighestSecond)
+                {
+                    board.ThreeStepJumps.HighestThird = board.ThreeStepJumps.HighestSecond;
+                    board.ThreeStepJumps.HighestThirdIndex = board.ThreeStepJumps.HighestSecondIndex;
+
+                    board.ThreeStepJumps.HighestSecond = board.ThreeStepJumps.ThreeStepJumpValues[i];
+                    board.ThreeStepJumps.HighestSecondIndex = i;
+
+                    
+                }
+                else if (board.ThreeStepJumps.ThreeStepJumpValues[i] > board.ThreeStepJumps.HighestThird)
+                {
+                    board.ThreeStepJumps.HighestThird = board.ThreeStepJumps.ThreeStepJumpValues[i];
+                    board.ThreeStepJumps.HighestThirdIndex = i;
+                }
+            }
         }
         public static Board RandomChips()
         {
@@ -88,6 +186,8 @@ namespace Logic
             List<Tile> tiles = CreateNewEmptyTileList();
             board.Tiles = FillRandomChipsTiles(tiles);
             AddDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
         }
 
@@ -97,6 +197,8 @@ namespace Logic
             List<Tile> tiles = CreateNewEmptyTileList();
             board.Tiles = FillRandomResourceTiles(tiles);
             AddRandomDesert(board);
+            SetStars(board.Tiles);
+            FillThreeStepJumpValues(board);
             return board;
         }
         public static void RandomizeTiles(List<Tile> tiles)
@@ -185,8 +287,9 @@ namespace Logic
 
         public static void AddRandomDesert(Board board)
         {
-            board.Tiles.Insert(rng.Next(13), new Tile(7, "desert"));
-            board.Tiles.Insert(rng.Next(14, 29), new Tile(7, "desert"));
+
+            Tile tile = new Tile(7, "desert");
+            board.Tiles.Insert(rng.Next(board.Tiles.Count), tile);
         }
 
         public static void AddDesert(Board board)
@@ -239,5 +342,89 @@ namespace Logic
             }
             return ports;
         }
+
+        public static int[][] TSJAdjecent = new int[][]
+        {
+             new int[]{3},
+             new int[]{3},
+             new int[]{2},
+             new int[]{2, 3},
+             new int[]{3, 8},
+             new int[]{8},
+             new int[]{1},
+             new int[]{1, 2},
+             new int[]{3, 2, 7},
+             new int[]{3, 7, 8},
+             new int[]{8, 14},
+             new int[]{14},
+             new int[]{0},
+             new int[]{0, 1},
+             new int[]{1, 2, 6},
+             new int[]{2, 6, 7},
+             new int[]{7, 8, 13},
+             new int[]{8, 13, 14},
+             new int[]{14, 20},
+             new int[]{20},
+             new int[]{0},
+             new int[]{0, 1, 5},
+             new int[]{1, 5, 6},
+             new int[]{6, 7, 12},
+             new int[]{7, 12, 13},
+             new int[]{13, 14, 19},
+             new int[]{14, 19, 20},
+             new int[]{20},
+             new int[]{0, 4},
+             new int[]{0, 4, 5},
+             new int[]{5, 6, 11},
+             new int[]{6, 11, 12},
+             new int[]{12, 13, 18},
+             new int[]{13, 18, 19},
+             new int[]{19, 20, 25},
+             new int[]{20, 25},
+             new int[]{4},
+             new int[]{4, 5, 10},
+             new int[]{5, 10, 11},
+             new int[]{11, 12, 17},
+             new int[]{12, 17, 18},
+             new int[]{18, 19, 24},
+             new int[]{19, 24, 25},
+             new int[]{25},
+             new int[]{4, 9},
+             new int[]{4, 9, 10},
+             new int[]{10, 11, 16},
+             new int[]{11, 16, 17},
+             new int[]{17, 18, 23},
+             new int[]{18, 23, 24},
+             new int[]{24, 25, 29},
+             new int[]{25, 29},
+             new int[]{9},
+             new int[]{9, 10, 15},
+             new int[]{10, 15, 16},
+             new int[]{16, 17, 22},
+             new int[]{17, 22, 23},
+             new int[]{23, 24, 28},
+             new int[]{24, 28, 29},
+             new int[]{29},
+             new int[]{9},
+             new int[]{9, 15},
+             new int[]{15, 16, 21},
+             new int[]{16, 21, 22},
+             new int[]{22, 23, 27},
+             new int[]{23, 27, 28},
+             new int[]{28, 29},
+             new int[]{29},
+             new int[]{15},
+             new int[]{15, 21},
+             new int[]{21, 22, 26},
+             new int[]{22, 26, 27},
+             new int[]{27, 28},
+             new int[]{28},
+             new int[]{21},
+             new int[]{21, 26},
+             new int[]{26, 27},
+             new int[]{27},
+             new int[]{26},
+             new int[]{26}
+        };
     }
 }
