@@ -36,7 +36,7 @@
     </li>
     <li>
         <div>
-                <button type="button" class="main-menu-btn"><span class="lang" key="Menu"></span></button>
+                <button type="button" class="main-menu-btn" onclick="GoToHome()"><span class="lang" key="Menu"></span></button>
         </div>
     </li>
 </ul>
@@ -65,5 +65,8 @@
 
 		hid[0].style.visibility = "visible";
 
-	}
+    }
+    function GoToHome() {
+        window.location.href = "/Home";
+    }
 </script>

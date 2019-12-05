@@ -49,9 +49,6 @@
     padding: 0px;
 }
 #submit-btn{
-    position:absolute;
-    bottom: 250px;
-    right: 600px;
 	color: black;
 	font-size: 18px;
 	border-radius: 8px;
@@ -81,4 +78,8 @@
 }
 .navbar-background{
     background-color: #5EB28F;
+}
+#SpacingRow{
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
