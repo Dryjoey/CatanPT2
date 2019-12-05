@@ -10,33 +10,38 @@
 {
 	<form action="" method="get" class="form-inline vertical-center">
 		<div class="container text-center">
-			<div class="options">
-				<div class="row align-items-center">
-					<div class="col-xs-6"></div>
-					<div class="col-xs-2"><label class="checkdesc"><span class="lang" key="Random"></span></label></div>
-					<div class="col-xs-2"><label class="checkdesc"><span class="lang" key="Fixed"></span></label></div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col-xs-6"><label class="label" for="TilePlacement"><span class="lang" key="TilesAndChips"></span></label></div>
-					<div class="col-xs-2">@Html.RadioButtonFor(m => m.FullyPseudoRandom, true, new { id = "BigRadio"})</div>
-					<div class="col-xs-2">@Html.RadioButtonFor(m => m.FullyPseudoRandom, false, new { id = "BigRadio" })</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col-xs-6"></div>
-					<div class="col-xs-2"><label class="checkdesc">3 - 4</label></div>
-					<div class="col-xs-2"><label class="checkdesc">5 - 6</label></div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col-xs-6"><label class="label" for="NumberofPlayers"><span class="lang" key="Player"></span></label></div>
-					<div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, true, new { id = "BigRadio" , Checked = "checked" })</div>
-					<div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, false, new { id = "BigRadio" })</div>
-					<br />
-				</div>
-			</div>
+            <div class="options">
+                <div class="row align-items-center">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-2"><label class="checkdesc"><span class="lang" key="Random"></span></label></div>
+                    <div class="col-xs-2"><label class="checkdesc"><span class="lang" key="Fixed"></span></label></div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-xs-6"><label class="label" for="TilePlacement"><span class="lang" key="TilesAndChips"></span></label></div>
+                    <div class="col-xs-2">@Html.RadioButtonFor(m => m.FullyPseudoRandom, true, new { id = "BigRadio" })</div>
+                    <div class="col-xs-2">@Html.RadioButtonFor(m => m.FullyPseudoRandom, false, new { id = "BigRadio" })</div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-2"><label class="checkdesc">3 - 4</label></div>
+                    <div class="col-xs-2"><label class="checkdesc">5 - 6</label></div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-xs-6"><label class="label" for="NumberofPlayers"><span class="lang" key="Player"></span></label></div>
+                    <div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, true, new { id = "BigRadio", Checked = "checked" })</div>
+                    <div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, false, new { id = "BigRadio" })</div>
+                    <br />
+                </div>
+                <div class="row-align-items-center" id="spacingRow">
+
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-2"><div class="submitbutton"><input type="submit" id="submit-btn" onclick='@Url.Action("BoardDisplay", "Board")' /></div></div>
+                </div>
+            </div>
 		</div>
-		<div class="submitbutton">
-				<input type="submit" id="submit-btn"  onclick='@Url.Action("BoardDisplay", "Board")' />
-			</div>
 	</form>
 }
 <nav class="navbar navbar-fixed-bottom">
