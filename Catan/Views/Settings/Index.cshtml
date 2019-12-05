@@ -35,11 +35,11 @@
 			</div>
 		</div>
 		<div class="submitbutton">
-				<input type="submit" id="submit-btn" class="lang" key="Create" onclick='@Url.Action("BoardDisplay", "Board")' />
+				<input type="submit" id="submit-btn"  onclick='@Url.Action("BoardDisplay", "Board")' />
 			</div>
 	</form>
 }
-<nav class="navbar navbar-custom">
+<nav class="navbar navbar-fixed-bottom">
 	<div class="Button-lower-Left">
 		@using (Html.BeginForm("index", "Home"))
 		{
