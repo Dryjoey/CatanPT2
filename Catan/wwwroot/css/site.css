@@ -14,11 +14,12 @@ body {
     font-style: normal;
     font-weight: normal;
     color: white;
-
+    overflow: hidden;
 }
+
 html,
-body{
- height: 100%;
+body {
+    height: 100%;
 }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -46,7 +47,7 @@ body{
     font-family: Roboto;
     width: 200px;
     background-color: white;
-    border: 3px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     color: black;
     padding-bottom: 15px;
@@ -63,13 +64,36 @@ body{
     list-style-type: none;
 }
 
+.main-menu-list-horizontal {
+    height: 210px;
+    margin: -50px 0 0 5px;
+    width: 250px;
+}
+
+.main-menu-list-vertical {
+    margin: 0 0 0 -150px;
+}
+
 .board-partial {
     margin: 50px;
 }
+ul.vertical {
+    z-index: 50;
+    float: left;
+    margin: -20px 0 0 800px;
+    list-style: none;
+    display: block;
+}
 
+ul.horizontal{
+    z-index: 50;
+    position: absolute;
+    margin: 650px 0 0 50px;
+
+}
 
 .li-spacer {
-    height:340px;
+    height: 340px;
     width: 420px;
 }
 
@@ -78,22 +102,33 @@ body{
     position: relative;
 }
 
-.li-horizontal-small{
+.ul-vetical-small {
+    width: 250px;
+}
+
+.li-horizontal-small {
     float: left;
-    position: absolute;
-    margin: 0 0 0 45px;
+    list-style: none;
+    /*margin: 0 0 0 45px;*/
+}
+ul.horizontal li-horizontal-small {
+    display: inline-block;
 }
 
 .li-horizontal-big {
     float: left;
     position: absolute;
-    margin: 0px 0 0 45px;
+    /*    margin: 0px 0 0 45px;*/
 }
-
+.centered {
+    margin: 0 auto;
+    width: 1000px;
+}
 
 .horizontal-spacer {
     margin: 0 45px 0 0;
 }
+
 .footer {
     position: fixed;
     left: 0;
@@ -139,8 +174,8 @@ body{
     color: #E6DE20;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-.bfooter{
+
+.bfooter {
     position: absolute;
     right: 40px;
-
 }
