@@ -12,10 +12,10 @@ namespace Catan.Controllers
 {
     public class BoardController : Controller
     {
+        public static Board board;
         [HttpGet]
         public IActionResult BoardDisplay(Settingsmodel model)
         {
-            Board board;
 
             if (ModelState.IsValid)
             {
@@ -46,6 +46,14 @@ namespace Catan.Controllers
             }
 
             return View(board);
+        }
+
+        public IActionResult SaveBoardToLibrary()
+        {
+            int UserID = 0;
+            IOLogic iologic = new IOLogic();
+            iologic.SaveBoard(board, UserID);
+            return Redirect("BoardController/BoardDisplay");
         }
     }
 }
