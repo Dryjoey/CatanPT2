@@ -12,15 +12,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.FullBoard)
             </th>
-            <th></th>
+            <th></th> 
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.FullBoard) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.BoardId)</td>
+                @Html.DisplayFor(modelIte,m => item.BoardId)</td>
 			<td>
+                <button onClick=""></button>
 			</td>
         </tr>
 }
