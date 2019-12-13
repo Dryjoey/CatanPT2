@@ -18,7 +18,7 @@ namespace Catan.Controllers
         
         public IActionResult TestView()
         {
-            int userid = 4;
+            int userid = 0;
             //int userid = io.GetLastUser();
             Board board = io.GetBoard(21);
             return View("Views/TestView.cshtml", BigBoardLogic.Normal());
