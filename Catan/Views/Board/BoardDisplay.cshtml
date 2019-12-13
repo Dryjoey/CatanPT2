@@ -9,48 +9,48 @@
         size = "big";
     }
 }
-    <div class="centered">
-        <div class="board-partial">
-            @if (size == "small")
-            {
-                <partial name="Partial/_SmallBoard.cshtml" />
-            }
-            else
-            {
-                <partial name="Partial/_BigBoard.cshtml" />
-            }
-        </div>
-        <ul class="vertical">
-            <li>
-                <div>
-                    <button type="button" onClick="ToImage()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <button type="button" class="main-menu-btn" onclick="Unhide()"><span class="lang" key="SaveLibrary"></span></button>
-                    <h5 id="savedText" class="lang" key="SaveLibText"></h5>
-                </div>
-            </li>
-            <li>
-                <div class="li-spacer" />
-            </li>
-            <li>
-                <div>
-                    <button type="button" class="main-menu-btn" onclick="GoToHome()"><span class="lang" key="Menu"></span></button>
-                </div>
-            </li>
-        </ul>
-        <ul class="horizontal">
-            <li class="li-horizontal-@size">
-                <div>
-                    <button onClick="GoToSettings()" type="button" class="main-menu-btn horizontal-spacer"><span class="lang" key="GenNewSettings"></span></button>
-                    <button onClick="Refresh()" type="button" class="main-menu-btn"><span class="lang" key="GenSameSettings"></span></button>
-                </div>
-            </li>
-        </ul>
-
+<div class="centered-@size">
+    <div class="board-partial">
+        @if (size == "small")
+        {
+            <partial name="Partial/_SmallBoard.cshtml" />
+        }
+        else
+        {
+            <partial name="Partial/_BigBoard.cshtml" />
+        }
     </div>
+    <ul class="vertical-@size">
+        <li>
+            <div>
+                <button type="button" onClick="ToImage()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
+            </div>
+        </li>
+        <li>
+            <div>
+                <button type="button" class="main-menu-btn" onclick="Unhide()"><span class="lang" key="SaveLibrary"></span></button>
+                <h5 id="savedText" class="lang" key="SaveLibText"></h5>
+            </div>
+        </li>
+        <li>
+            <div class="li-spacer-@size" />
+        </li>
+        <li>
+            <div>
+                <button type="button" class="main-menu-btn" onclick="GoToHome()"><span class="lang" key="Menu"></span></button>
+            </div>
+        </li>
+    </ul>
+    <ul class="horizontal">
+        <li class="li-horizontal-@size">
+            <div>
+                <button onClick="GoToSettings()" type="button" class="main-menu-btn horizontal-spacer"><span class="lang" key="GenNewSettings"></span></button>
+                <button onClick="Refresh()" type="button" class="main-menu-btn"><span class="lang" key="GenSameSettings"></span></button>
+            </div>
+        </li>
+    </ul>
+
+</div>
 <script>
     function Refresh() {
         window.location.reload();
@@ -61,10 +61,15 @@
     }
 
     function Unhide() {
-        var hid = document.getElementById("savedText");
-
-        hid[0].style.visibility = "visible";
-
+        var hid = document.querySelector('#savedText');
+        var Hidstyle = getComputedStyle(hid);
+        if (Hidstyle.visibility == "hidden") {
+            document.getElementById("savedText").style.visibility = "visible";
+        }
+        setTimeout(
+            function () {
+                document.getElementById("savedText").style.visibility = "hidden";
+            }, 2000);
     }
     function GoToHome() {
         window.location.href = "/Home";
