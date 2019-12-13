@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     string size;
     if (Model.Tiles.Count <= 19)
     {
@@ -10,61 +9,61 @@
         size = "big";
     }
 }
-<div class="board-partial">
-    @if (size == "small")
-    {
-        <partial name="Partial/_SmallBoard.cshtml" />
-    }
-    else
-    {
-        <partial name="Partial/_BigBoard.cshtml" />
-    }
-</div>
-<ul class="main-menu-list ul-vertical-@size">
-    <li>
-        <div>
-            <button type="button" onClick="ToImage()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
+    <div class="centered">
+        <div class="board-partial">
+            @if (size == "small")
+            {
+                <partial name="Partial/_SmallBoard.cshtml" />
+            }
+            else
+            {
+                <partial name="Partial/_BigBoard.cshtml" />
+            }
         </div>
-    </li>
-    <li>
-        <div>
-            <button type="button" class="main-menu-btn" onclick="location.href='@Url.Action("SaveBoardToLibrary","Board")'"/><span class="lang" key="SaveLibrary"></span></button>
-			<label id="savedText" class="lang" key="SaveLibText"></label>
-        </div>
-    </li>
-    <li>
-        <div class="li-spacer" />
-    </li>
-    <li>
-        <div>
-                <button type="button" class="main-menu-btn" onclick="GoToHome()"><span class="lang" key="Menu"></span></button>
-        </div>
-    </li>
-</ul>
-<div>
-    <ul class="main-menu-list">
-        <li class="li-horizontal-@size">
-            <div>
-                <button onClick="GoToSettings()" type="button" class="main-menu-btn horizontal-spacer"><span class="lang" key="GenNewSettings"></span></button>
-                <button onClick="Refresh()" type="button" class="main-menu-btn"><span class="lang" key="GenSameSettings"></span></button>
-            </div>
-        </li>
-    </ul>
-</div>
+        <ul class="vertical">
+            <li>
+                <div>
+                    <button type="button" onClick="ToImage()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <button type="button" class="main-menu-btn" onclick="Unhide()"><span class="lang" key="SaveLibrary"></span></button>
+                    <h5 id="savedText" class="lang" key="SaveLibText"></h5>
+                </div>
+            </li>
+            <li>
+                <div class="li-spacer" />
+            </li>
+            <li>
+                <div>
+                    <button type="button" class="main-menu-btn" onclick="GoToHome()"><span class="lang" key="Menu"></span></button>
+                </div>
+            </li>
+        </ul>
+        <ul class="horizontal">
+            <li class="li-horizontal-@size">
+                <div>
+                    <button onClick="GoToSettings()" type="button" class="main-menu-btn horizontal-spacer"><span class="lang" key="GenNewSettings"></span></button>
+                    <button onClick="Refresh()" type="button" class="main-menu-btn"><span class="lang" key="GenSameSettings"></span></button>
+                </div>
+            </li>
+        </ul>
 
+    </div>
 <script>
-	function Refresh() {
-		window.location.reload();
+    function Refresh() {
+        window.location.reload();
 
-	}
-	function GoToSettings() {
-		window.location = '../Settings';
-	}
+    }
+    function GoToSettings() {
+        window.location = '../Settings';
+    }
 
-	function Unhide() {
-		var hid = document.getElementById("savedText");
+    function Unhide() {
+        var hid = document.getElementById("savedText");
 
-		hid[0].style.visibility = "visible";
+        hid[0].style.visibility = "visible";
 
     }
     function GoToHome() {

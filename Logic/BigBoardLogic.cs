@@ -8,10 +8,9 @@ namespace Logic
 {
     public static class BigBoardLogic
     {
-        public static int[] Chips = new int[] { 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11, 3, 5, 6, 8, 2, 11, 10, 10, 5, 12, 4, 9 };
-        public static int[] Tiles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 };
+        public static int[] Chips = new int[] { 6, 5, 3, 8, 2, 11, 10, 10, 5, 12, 4, 9, 8, 3, 6, 4, 9, 11, 3, 5, 6, 8, 2, 11, 10, 10, 5, 12};
         public static string[] Ports = new string[] { "two-one brick", "two-one wool", "two-one wood", "two-one wheat", "two-one ore",  "three-one any", "three-one any", "three-one any", "three-one any", "three-one any", "three-one any" };
-        public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore", "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat" };
+        public static string[] Resources = new string[] { "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore", "wheat", "sheep", "brick", "wheat", "ore", "wheat", "sheep", "ore", "lumber", "sheep", "lumber", "wheat", "lumber", "brick", "sheep", "brick", "lumber", "ore" };
         public static int[][] adjecent = new int[][]
         {
             new int[]{1, 4, 5},
@@ -68,7 +67,7 @@ namespace Logic
             {
                 List<Tile> tiles = CreateNewEmptyTileList();
                 List<Port> ports = CreateNewEmptyPortList();
-                FillRandomPorts(ports);
+                board.Ports = FillRandomPorts(ports);
                 RandomizeTiles(tiles);
                 board.Tiles = tiles;
                 AddRandomDesert(board);
@@ -210,7 +209,7 @@ namespace Logic
         public static List<Tile> CreateNewEmptyTileList()
         {
             List<Tile> tileList = new List<Tile>();
-            foreach (int tile in Tiles)
+            for (int i = 0; i < Resources.Count(); i++)
             {
                 tileList.Add(new Tile());
             }
@@ -288,16 +287,18 @@ namespace Logic
         public static void AddRandomDesert(Board board)
         {
 
-            Tile tile = new Tile(7, "desert");
-            board.Tiles.Insert(rng.Next(board.Tiles.Count), tile);
+            Tile dessertOne = new Tile(7, "desert");
+            board.Tiles.Insert(rng.Next(0, board.Tiles.Count/2), dessertOne);
+            Tile dessertTwo = new Tile(7, "desert");
+            board.Tiles.Insert(rng.Next(board.Tiles.Count/2, board.Tiles.Count), dessertTwo);
         }
 
         public static void AddDesert(Board board)
         {
             Tile tile = new Tile(7, "desert");
             Tile tile1 = new Tile(7, "desert");
-            board.Tiles.Insert(19, tile);
-            board.Tiles.Insert(25, tile);
+            board.Tiles.Insert(5, tile);
+            board.Tiles.Insert(24, tile);
         }
 
         public static bool CheckRedTiles(List<Tile> tiles)
