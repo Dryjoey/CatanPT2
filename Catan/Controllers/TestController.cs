@@ -20,8 +20,7 @@ namespace Catan.Controllers
         {
             int userid = 0;
             //int userid = io.GetLastUser();
-            Board board = io.GetBoard(1);
-            io.SaveBoard(board, userid);
+            Board board = io.GetBoard(21);
             return View("Views/TestView.cshtml", BigBoardLogic.Normal());
         }
     }

@@ -100,11 +100,11 @@ ol.odd {
     }
 
     .hex.sheep {
-        background-color: #ededed;
+        background-color: #61f649;
     }
 
     .hex.ore {
-        background-color: black;
+        background-color: #eee;
     }
 
     .hex.wheat {
@@ -112,11 +112,11 @@ ol.odd {
     }
 
     .hex.brick {
-        background-color: brown;
+        background-color: #e76016;
     }
 
     .hex.lumber {
-        background-color: green;
+        background-color: #2aa117;
     }
 
 /* end types of hexs */

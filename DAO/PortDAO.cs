@@ -68,13 +68,13 @@ namespace DAO
         {
             //deleting al ports from one board
             
-                string query = "DELETE * FROM Port Where BoardId = @BoardId";
+                string query = "DELETE FROM Port Where BoardId = @BoardId";
 
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
                     con.Open();
                     command.Parameters.Add("@BoardId", SqlDbType.Int);
-                    command.Parameters["@board.Id"].Value = boardId;
+                    command.Parameters["@BoardId"].Value = boardId;
                     command.ExecuteNonQuery();
                 }
                 con.Close();
