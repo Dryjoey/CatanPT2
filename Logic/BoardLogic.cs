@@ -88,6 +88,41 @@ namespace Logic
                 }
                 board.ThreeStepJumps.ThreeStepJumpValues.Add(ThreeStepJumpValue);
             }
+
+            SetHighestValue(board);
+        }
+
+        public static void SetHighestValue(Board board)
+        {
+            for (int i = 0; i < board.ThreeStepJumps.ThreeStepJumpValues.Count; i++)
+            {
+                if (board.ThreeStepJumps.ThreeStepJumpValues[i] > board.ThreeStepJumps.HighestFirst)
+                {
+                    board.ThreeStepJumps.HighestThird = board.ThreeStepJumps.HighestSecond;
+                    board.ThreeStepJumps.HighestThirdIndex = board.ThreeStepJumps.HighestSecondIndex;
+
+                    board.ThreeStepJumps.HighestSecond = board.ThreeStepJumps.HighestFirst;
+                    board.ThreeStepJumps.HighestSecondIndex = board.ThreeStepJumps.HighestFirstIndex;
+
+                    board.ThreeStepJumps.HighestFirst = board.ThreeStepJumps.ThreeStepJumpValues[i];
+                    board.ThreeStepJumps.HighestFirstIndex = i;
+                }
+                else if (board.ThreeStepJumps.ThreeStepJumpValues[i] > board.ThreeStepJumps.HighestSecond)
+                {
+                    board.ThreeStepJumps.HighestThird = board.ThreeStepJumps.HighestSecond;
+                    board.ThreeStepJumps.HighestThirdIndex = board.ThreeStepJumps.HighestSecondIndex;
+
+                    board.ThreeStepJumps.HighestSecond = board.ThreeStepJumps.ThreeStepJumpValues[i];
+                    board.ThreeStepJumps.HighestSecondIndex = i;
+
+
+                }
+                else if (board.ThreeStepJumps.ThreeStepJumpValues[i] > board.ThreeStepJumps.HighestThird)
+                {
+                    board.ThreeStepJumps.HighestThird = board.ThreeStepJumps.ThreeStepJumpValues[i];
+                    board.ThreeStepJumps.HighestThirdIndex = i;
+                }
+            }
         }
 
         public static Board RandomTiles()
