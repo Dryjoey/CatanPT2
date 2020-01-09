@@ -14,6 +14,7 @@ namespace Catan.Controllers
 {
     public class TestController : Controller
     {
+        
         private IOLogic io = new IOLogic();
         
         public IActionResult TestView()

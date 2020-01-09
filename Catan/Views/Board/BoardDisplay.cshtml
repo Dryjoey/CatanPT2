@@ -22,7 +22,7 @@
 <ul class="main-menu-list ul-vertical-@size">
     <li>
         <div>
-            <button type="button" onClick="ToImage()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
+            <button type="button" onClick="Screenshot()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
         </div>
     </li>
     <li>
@@ -69,4 +69,12 @@
     function GoToHome() {
         window.location.href = "/Home";
     }
-</script>
+    
+ 
+    function Screenshot()
+    {
+        var c = document.getElementById('board-partial');
+        var t = c.getContext('2d');
+        window.open('', document.getElementById('board-partial').toDataURL());
+    }
+ </script>
