@@ -18,8 +18,6 @@ namespace Catan.Controllers
         [HttpGet]
         public IActionResult BoardDisplay(Settingsmodel model)
         {
-           
-
             if (ModelState.IsValid)
             {
                 if (model.FullyPseudoRandom && model.IsSmallBoard) // 3-4 (Pseudo)Random
@@ -50,15 +48,22 @@ namespace Catan.Controllers
 
             return View(board);
         }
+        [HttpGet]
+        public IActionResult BoardDisplay(int boardId)
+        {
+            IOLogic ioLogic = new IOLogic();
+            Board board = ioLogic.GetBoard(boardId);
+            return View(board);
+        }
         [HttpPost]
-        public IActionResult SaveToDatabase( UserViewModel user)
+        public bool SaveToDatabase( UserViewModel user)
         {
             
             var key = "first";
             var value = board;
             storage.Store(key, value);
             iologic.SaveBoard(board, user.UserId);
-            return View();
+            return true;
         }
     }
 }

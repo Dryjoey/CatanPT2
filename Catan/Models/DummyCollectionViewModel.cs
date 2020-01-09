@@ -21,9 +21,6 @@ namespace Catan.Models
 
         public DummyCollectionViewModel(List<Board> boards)
         {
-            UserID = 0;
-            boards = logic.GetBoardsFromUser(UserID).ToList();
-            IDOnlyBoards = boards;
             foreach(Board board in IDOnlyBoards)
             {
                 FullBoard.Add(logic.GetBoard(board.BoardId));

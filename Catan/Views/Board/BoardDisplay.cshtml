@@ -28,7 +28,7 @@
         </li>
         <li>
             <div>
-                <button type="button" class="main-menu-btn" onclick="Unhide()"><span class="lang" key="SaveLibrary"></span></button>
+                <button type="button" class="main-menu-btn" onclick="UnHide()"><span class="lang" key="SaveLibrary"></span></button>
                 <h5 id="savedText" class="lang" key="SaveLibText"></h5>
             </div>
         </li>
@@ -60,10 +60,10 @@
         window.location = '../Settings';
     }
 
-    function Unhide() {
-        var hid = document.querySelector('#savedText');
-        var Hidstyle = getComputedStyle(hid);
-        if (Hidstyle.visibility == "hidden") {
+    function UnHide() {
+        var hide = document.querySelector('#savedText');
+        var hidestyle = getComputedStyle(hide);
+        if (hidestyle.visibility == "hidden") {
             document.getElementById("savedText").style.visibility = "visible";
         }
         setTimeout(

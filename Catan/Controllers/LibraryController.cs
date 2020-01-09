@@ -12,10 +12,21 @@ namespace Catan.Controllers
 {
     public class LibraryController : Controller
     {
-        public IActionResult Index()
+        private readonly IOLogic _ioLogic = new IOLogic();
+        public IActionResult Index(int userId)
         {
-            List<Board> ListOfBoards = new List<Board>();
+            List<Board> ListOfBoards = _ioLogic.GetBoardsFromUser(userId).ToList();
             return View(new DummyCollectionViewModel(ListOfBoards));
+        }
+        public RedirectToActionResult LoadBoard(int boardId)
+        {
+            Board loadedBoard = _ioLogic.GetBoard(boardId);
+            return RedirectToAction("BoardDisplay", "Board", new { loadedBoard });
+        }
+        public RedirectToActionResult SaveBoard(Board board, int userId)
+        {
+            _ioLogic.SaveBoard(board, userId);
+            return RedirectToAction("Index", "Library");
         }
     }
 }
