@@ -76,9 +76,16 @@ function Changelanguage(parameters) {
         sessionStorage.setItem('lang', 'nl');
     }
     else if (sessionStorage.getItem('lang') === 'nl') {
-        sessionStorage.setItem('lang',  'en');
+        sessionStorage.setItem('lang', 'en');
     }
     lang = sessionStorage.getItem('lang');
+    switch (lang) {
+        case "en":
+            $('submit-btn-en').css("display", "inline");
+            break;
+        case "nl":
+            $('submit-btn-nl').css("display", "inline");
+    }
     $('.lang').each(function (index, item) {
         $(this).text(arrLang[lang][$(this).attr('key')]);
     })
