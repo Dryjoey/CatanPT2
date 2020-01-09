@@ -1,5 +1,9 @@
-﻿@{
-    string size;
+﻿
+@{
+    string size = "";
+}
+@{
+
     if (Model.Tiles.Count <= 19)
     {
         size = "small";
@@ -9,8 +13,48 @@
         size = "big";
     }
 }
+<script>
+    function DownloadImage() {
+
+        html2canvas($('#board_partial')[0],
+            {
+                width: 1200,
+                height: 1200
+            }).then(function (canvas) {
+                canvas.toBlob(function (blob) {
+                   saveAs(blob, "Catan_Board.jpg");
+                });
+            });
+    }
+
+    function Refresh() {
+        window.location.reload();
+    }
+
+    function GoToSettings() {
+        window.location = '../Settings';
+    }
+
+    function UnHide() {
+        var hide = document.querySelector('#savedText');
+        var hidestyle = getComputedStyle(hide);
+        if (hidestyle.visibility == "hidden") {
+            document.getElementById("savedText").style.visibility = "visible";
+        }
+        setTimeout(
+            function () {
+                document.getElementById("savedText").style.visibility = "hidden";
+            }, 2000);
+    }
+    function GoToHome() {
+        window.location.href = "/Home";
+    }
+
+
+</script>
+
 <div class="centered-@size">
-    <div class="board-partial">
+    <div class="board-partial" id="board_partial">
         @if (size == "small")
         {
             <partial name="Partial/_SmallBoard.cshtml" />
@@ -23,7 +67,7 @@
     <ul class="vertical-@size">
         <li>
             <div>
-                <button type="button" onClick="ToImage()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
+                <button type="button" onClick="DownloadImage()" class="main-menu-btn" id="SaveButton"><span class="lang" key="SaveImage"></span></button>
             </div>
         </li>
         <li>
@@ -51,27 +95,4 @@
     </ul>
 
 </div>
-<script>
-    function Refresh() {
-        window.location.reload();
 
-    }
-    function GoToSettings() {
-        window.location = '../Settings';
-    }
-
-    function UnHide() {
-        var hide = document.querySelector('#savedText');
-        var hidestyle = getComputedStyle(hide);
-        if (hidestyle.visibility == "hidden") {
-            document.getElementById("savedText").style.visibility = "visible";
-        }
-        setTimeout(
-            function () {
-                document.getElementById("savedText").style.visibility = "hidden";
-            }, 2000);
-    }
-    function GoToHome() {
-        window.location.href = "/Home";
-    }
-</script>

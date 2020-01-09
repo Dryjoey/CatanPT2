@@ -48,13 +48,13 @@ namespace Catan.Controllers
 
             return View(board);
         }
-        [HttpGet]
-        public IActionResult BoardDisplay(int boardId)
-        {
-            IOLogic ioLogic = new IOLogic();
-            Board board = ioLogic.GetBoard(boardId);
-            return View(board);
-        }
+        //[HttpGet]
+        //public IActionResult BoardDisplay(int boardId)
+        //{
+        //    IOLogic ioLogic = new IOLogic();
+        //    Board board = ioLogic.GetBoard(boardId);
+        //    return View(board);
+        //}
         [HttpPost]
         public bool SaveToDatabase( UserViewModel user)
         {
@@ -64,6 +64,13 @@ namespace Catan.Controllers
             storage.Store(key, value);
             iologic.SaveBoard(board, user.UserId);
             return true;
+        }
+
+        public PartialViewResult BoardImage(Board board, string size)
+        {
+            if (size == "small")
+                return PartialView("Partial/_SmallBoard");
+            return PartialView("Partial/_BigBoard", board);
         }
     }
 }
