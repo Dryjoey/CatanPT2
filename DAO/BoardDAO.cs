@@ -134,7 +134,7 @@ namespace DAO
                 {
                     con.Open();
                     command.Parameters.Add("@Id", SqlDbType.Int);
-                    command.Parameters["board.Id"].Value = boardId;
+                    command.Parameters["@Id"].Value = boardId;
 
                     command.ExecuteNonQuery();
 

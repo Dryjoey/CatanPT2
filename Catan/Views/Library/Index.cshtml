@@ -7,22 +7,20 @@
 <h2>Index</h2>
 
 <table class="table">
-    <thead>
+    <thead class="table-responsive">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Boards)
+                @Html.DisplayNameFor(model => model.FullBoard)
             </th>
-            <th></th>
+            <th></th> 
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Boards) {
+@foreach (var item in Model.FullBoard) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.BoardId)</td>
-				<partial name="Partial/_SmallBoardThumbnail.cshtml" />
 			<td>
-				@Html.DisplayFor(modelItem => item.Tiles)
+                <button onClick=""></button>
 			</td>
         </tr>
 }

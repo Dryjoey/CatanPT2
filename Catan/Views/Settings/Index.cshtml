@@ -8,7 +8,7 @@
 </nav>
 @using (Html.BeginForm("BoardDisplay", "Board", FormMethod.Get))
 {
-	<form action="" method="get" class="form-inline vertical-center">
+	<form action="" method="get" class="form-inline vertical-center" lang="en">
 		<div class="container text-center">
             <div class="options">
                 <div class="row align-items-center">
@@ -32,13 +32,13 @@
                     <div class="col-xs-2">@Html.RadioButtonFor(m => m.IsSmallBoard, false, new { id = "BigRadio" })</div>
                     <br />
                 </div>
-                <div class="row-align-items-center" id="spacingRow">
+                <div class="row-align-items-center" id="spacing-row">
 
                 </div>
                 <div class="row align-items-center">
                     <div class="col-xs-6"></div>
                     <div class="col-xs-2"></div>
-                    <div class="col-xs-2"><div class="submitbutton"><input type="submit" id="submit-btn" onclick='@Url.Action("BoardDisplay", "Board")' /></div></div>
+                    <div class="col-xs-2"><div class="submitbutton"><input class="lang" key="Create" type="submit" id="submit-btn" onclick='@Url.Action("BoardDisplay", "Board")' /></div></div>
                 </div>
             </div>
 		</div>

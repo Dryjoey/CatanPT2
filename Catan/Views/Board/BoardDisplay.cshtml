@@ -9,39 +9,39 @@
         size = "big";
     }
 }
-<div class="board-partial">
-    @if (size == "small")
-    {
-        <partial name="Partial/_SmallBoard.cshtml" />
-    }
-    else
-    {
-        <partial name="Partial/_BigBoard.cshtml" />
-    }
-</div>
-<ul class="main-menu-list ul-vertical-@size">
-    <li>
-        <div>
-            <button type="button" onClick="Screenshot()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
-        </div>
-    </li>
-    <li>
-        <div>
-            <button type="button" class="main-menu-btn" onclick="Unhide()"><span class="lang" key="SaveLibrary"></span></button>
-			<h5 id="savedText" class="lang" key="SaveLibText"></h5>
-        </div>
-    </li>
-    <li>
-        <div class="li-spacer" />
-    </li>
-    <li>
-        <div>
+<div class="centered-@size">
+    <div class="board-partial">
+        @if (size == "small")
+        {
+            <partial name="Partial/_SmallBoard.cshtml" />
+        }
+        else
+        {
+            <partial name="Partial/_BigBoard.cshtml" />
+        }
+    </div>
+    <ul class="vertical-@size">
+        <li>
+            <div>
+                <button type="button" onClick="ToImage()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
+            </div>
+        </li>
+        <li>
+            <div>
+                <button type="button" class="main-menu-btn" onclick="Unhide()"><span class="lang" key="SaveLibrary"></span></button>
+                <h5 id="savedText" class="lang" key="SaveLibText"></h5>
+            </div>
+        </li>
+        <li>
+            <div class="li-spacer-@size" />
+        </li>
+        <li>
+            <div>
                 <button type="button" class="main-menu-btn" onclick="GoToHome()"><span class="lang" key="Menu"></span></button>
-        </div>
-    </li>
-</ul>
-<div>
-    <ul class="main-menu-list">
+            </div>
+        </li>
+    </ul>
+    <ul class="horizontal">
         <li class="li-horizontal-@size">
             <div>
                 <button onClick="GoToSettings()" type="button" class="main-menu-btn horizontal-spacer"><span class="lang" key="GenNewSettings"></span></button>
@@ -49,32 +49,29 @@
             </div>
         </li>
     </ul>
+
 </div>
-
 <script>
-	function Refresh() {
-		window.location.reload();
+    function Refresh() {
+        window.location.reload();
 
-	}
-	function GoToSettings() {
-		window.location = '../Settings';
-	}
+    }
+    function GoToSettings() {
+        window.location = '../Settings';
+    }
 
-	function Unhide() {
-		var hid = document.getElementById("savedText");
-
-		hid[0].style.visibility = "visible";
-
+    function Unhide() {
+        var hid = document.querySelector('#savedText');
+        var Hidstyle = getComputedStyle(hid);
+        if (Hidstyle.visibility == "hidden") {
+            document.getElementById("savedText").style.visibility = "visible";
+        }
+        setTimeout(
+            function () {
+                document.getElementById("savedText").style.visibility = "hidden";
+            }, 2000);
     }
     function GoToHome() {
         window.location.href = "/Home";
     }
-    
- 
-    function Screenshot()
-    {
-        var c = document.getElementById('board-partial');
-        var t = c.getContext('2d');
-        window.open('', document.getElementById('board-partial').toDataURL());
-    }
- </script>
+</script>

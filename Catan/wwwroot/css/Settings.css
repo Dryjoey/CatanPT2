@@ -58,10 +58,6 @@
 	padding: 15px 32px;
 	border: solid;
 }
-
-	.submitbutton:hover {
-		background-color: black;
-	}
 .settingsGear{
     position: absolute;
     height: 40px;
@@ -79,7 +75,7 @@
 .navbar-background{
     background-color: #5EB28F;
 }
-#SpacingRow{
+#spacing-row{
     padding-bottom: 10px;
     padding-top: 10px;
 }
