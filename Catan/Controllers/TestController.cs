@@ -16,7 +16,7 @@ namespace Catan.Controllers
     {        
         public IActionResult TestView()
         {
-            Board board = BoardLogic.Normal();
+            Board board = BoardLogic.PseudoRandom();
             return View("Views/Board/BoardDisplay.cshtml", board);
         }
     }
