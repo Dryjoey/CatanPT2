@@ -417,8 +417,8 @@ ol.odd {
 
     /* roof of the house */
     .house::before {
-        top: 2px;
-        left: 7px;
+        top: -3px;
+        left: 18px;
         border-width: 0 12px 12px 12px;
         border-color: transparent transparent #000000 transparent;
     }
@@ -453,104 +453,104 @@ ol.odd {
     .house.number_two::before {
         content: "2";
         color: white;
-        transform: rotate(0deg);
+        transform: rotate(30deg);
     }
 
 
     .house.number_three::before {
     content: "3";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     .house.number_four::before {
     content: "4";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     .house.number_five::before {
     content: "5";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     .house.number_six::before {
     content: "6";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     .house.number_seven::before {
         content: "7";
         color: white;
-        transform: rotate(0deg);
+        transform: rotate(30deg);
     }
 
     .house.number_eight::before {
     content: "8";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     .house.number_nine::before {
     content: "9";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     .house.number_ten::before {
     content: "10";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     .house.number_eleven::before {
     content: "11";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     .house.number_twelve::before {
     content: "12";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     .house.number_thirteen::before {
     content: "13";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     .house.number_fourteen::before {
     content: "14";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     house.number_fifteen::before {
     content: "15";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     house.number_sixteen::before {
     content: "16";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     house.number_seventeen::before {
     content: "17";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(30deg);
     }
 
     house.number_eighteen::before {
     content: "18";
     color: white;
-    transform: rotate(0deg);
+    transform: rotate(  );
     }
 
 
