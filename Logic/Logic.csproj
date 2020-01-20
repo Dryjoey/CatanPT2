@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>

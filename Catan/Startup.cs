@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SixLabors.ImageSharp.Web.DependencyInjection;
 
 namespace Catan
 {
@@ -34,6 +35,7 @@ namespace Catan
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddTransient(_ => new DatabaseConnection(connectionString));
+            services.AddImageSharp();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
