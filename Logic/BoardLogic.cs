@@ -419,10 +419,10 @@ namespace Logic
                         tile.Stars = 4;
                         break;
                     case 6:
-                        tile.Stars = 6;
+                        tile.Stars = 5;
                         break;
                     case 8:
-                        tile.Stars = 6;
+                        tile.Stars = 5;
                         break;
                     case 9:
                         tile.Stars = 4;

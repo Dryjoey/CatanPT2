@@ -446,6 +446,18 @@ ol.odd {
         left: 52px;
     }
 
+    .house.tlport {
+        transform: rotate(0deg);
+        top: -57px;
+        left: -27px;
+    }
+
+    .house.tportbottomrow {
+        transform: rotate(0deg);
+        top: -95px;
+        left: 44px;
+    }
+
     .house.number_two::before {
         content: "2";
         color: white;
