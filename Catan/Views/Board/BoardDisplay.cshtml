@@ -16,7 +16,7 @@
     var size = "";
     size = "\"+ @size"+ "\"" ;
     function DownloadImage() {
-   
+
         html2canvas($('#board_partial')[0],
             {
                 onclone: function (document) {
@@ -29,8 +29,13 @@
                 width: 1200,
                 height: 1200
             }).then(function (canvas) {
-                 
-            canvas.toBlob(function (blob) {
+                    if (size == "small") {
+                        canvas.CSSStyleSheet = "~/css/SmallBoard.css";
+                    } else {
+                        canvas.CSSStyleSheet = "~/css/BigBoard.css";
+                    }
+                canvas.toBlob(function (blob) {
+
                 saveAs(blob, "Catan_Board.jpg");
             });
         });
