@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     string size = "";
 }
 @{
@@ -14,17 +13,27 @@
     }
 }
 <script>
+    var size = "";
+    size = "\"+ @size"+ "\"" ;
     function DownloadImage() {
-
+   
         html2canvas($('#board_partial')[0],
             {
+                onclone: function (document) {
+                    if (size == "small") {
+                        document.querySelector('#board_partial').style.CSSStyleSheet = "~/css/SmallBoard.css";
+                    } else {
+                        document.querySelector('#board_partial').style.CSSStyleSheet = "~/css/BigBoard.css";
+                    }
+                },
                 width: 1200,
                 height: 1200
             }).then(function (canvas) {
-                canvas.toBlob(function (blob) {
-                   saveAs(blob, "Catan_Board.jpg");
-                });
+                 
+            canvas.toBlob(function (blob) {
+                saveAs(blob, "Catan_Board.jpg");
             });
+        });
     }
 
     function Refresh() {
