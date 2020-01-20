@@ -1,4 +1,19 @@
-﻿@functions {
+﻿@model Models.Board
+
+@{
+    string[] threeStepIndex = new string[Model.ThreeStepJumps.
+        ThreeStepJumpValues.Count];
+    for (int i = 0; i < Model.ThreeStepJumps.ThreeStepJumpValues.Count; i++)
+    {
+        threeStepIndex[i] = "";
+    }
+
+    threeStepIndex[Model.ThreeStepJumps.HighestFirstIndex] = "threejump " + NumberToStringThreeJump(Model.ThreeStepJumps.HighestFirst);
+    threeStepIndex[Model.ThreeStepJumps.HighestSecondIndex] = "threejump " + NumberToStringThreeJump(Model.ThreeStepJumps.HighestSecond);
+    threeStepIndex[Model.ThreeStepJumps.HighestThirdIndex] = "threejump " + NumberToStringThreeJump(Model.ThreeStepJumps.HighestThird);
+}
+
+@functions {
     string NumberToString(int input)
     {
         switch (input)
@@ -27,7 +42,53 @@
                 return "";
         }
     }
+
+    string NumberToStringThreeJump(int input)
+    {
+        switch (input)
+        {
+            case 1:
+                return "number_one";
+            case 2:
+                return "number_two";
+            case 3:
+                return "number_three";
+            case 4:
+                return "number_four";
+            case 5:
+                return "number_five";
+            case 6:
+                return "number_six";
+            case 7:
+                return "number_seven";
+            case 8:
+                return "number_eight";
+            case 9:
+                return "number_nine";
+            case 10:
+                return "number_ten";
+            case 11:
+                return "number_eleven";
+            case 12:
+                return "number_twelve";
+            case 13:
+                return "number_thirteen";
+            case 14:
+                return "number_fourteen";
+            case 15:
+                return "number_fifteen";
+            case 16:
+                return "number_sixteen";
+            case 17:
+                return "number_seventeen";
+            case 18:
+                return "number_eigthteen";
+            default:
+                return "";
+        }
+    }
 }
+
 <link rel="stylesheet" href="~/css/BigBoard.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
@@ -39,7 +100,6 @@
             <li class='hex water'></li>
             <li class='hex water'>
                 <div class='harbor @Model.Ports[0].Conversion'>
-                    <h5 class="lang" key="@Model.Ports[0].Conversion"></h5>
                     <div class='harbor-piece br'></div>
                 </div>
             </li>
@@ -62,22 +122,31 @@
             <!--Tile position 0-->
             <li class='hex @Model.Tiles[0].Resource'>
                 <div class='@NumberToString(Model.Tiles[0].Chip)'></div>
+                <div class="house tl @threeStepIndex[0]"></div>
+                <div class="house t @threeStepIndex[1]"></div>
             </li>
             <!--Tile position 1-->
             <li class='hex @Model.Tiles[1].Resource'>
                 <div class='@NumberToString(Model.Tiles[1].Chip)'></div>
+                <div class="house tl @threeStepIndex[2]"></div>
+                <div class="house t @threeStepIndex[3]"></div>
             </li>
             <!--Tile position 2-->
             <li class='hex @Model.Tiles[2].Resource'>
                 <div class='@NumberToString(Model.Tiles[2].Chip)'></div>
+                <div class="house tl @threeStepIndex[4]"></div>
+                <div class="house t @threeStepIndex[5]"></div>
             </li>
             <!--Tile position 3-->
             <li class='hex @Model.Tiles[3].Resource'>
                 <div class='@NumberToString(Model.Tiles[3].Chip)'></div>
+                <div class="house tl @threeStepIndex[6]"></div>
+                <div class="house t @threeStepIndex[7]"></div>
             </li>
             <li class='hex water'>
                 <div class='harbor @Model.Ports[2].Conversion'>
                     <div class='harbor-piece bl'></div>
+                    <div class="house tlport @threeStepIndex[8]"></div>
                 </div>
             </li>
         </ol>
@@ -87,24 +156,35 @@
             <!--Tile position 4-->
             <li class='hex @Model.Tiles[4].Resource'>
                 <div class='@NumberToString(Model.Tiles[4].Chip)'></div>
+                <div class="house tl @threeStepIndex[9]"></div>
+                <div class="house t @threeStepIndex[10]"></div>
             </li>
             <!--Tile position 5-->
             <li class='hex @Model.Tiles[5].Resource'>
                 <div class='@NumberToString(Model.Tiles[5].Chip)'></div>
+                <div class="house tl @threeStepIndex[11]"></div>
+                <div class="house t @threeStepIndex[12]"></div>
             </li>
             <!--Tile position 6-->
             <li class='hex @Model.Tiles[6].Resource'>
                 <div class='@NumberToString(Model.Tiles[6].Chip)'></div>
+                <div class="house tl @threeStepIndex[13]"></div>
+                <div class="house t @threeStepIndex[14]"></div>
             </li>
             <!--Tile position 7-->
             <li class='hex @Model.Tiles[7].Resource'>
                 <div class='@NumberToString(Model.Tiles[7].Chip)'></div>
+                <div class="house tl @threeStepIndex[15]"></div>
+                <div class="house t @threeStepIndex[16]"></div>
             </li>
             <!--Tile position 8-->
             <li class='hex @Model.Tiles[8].Resource'>
                 <div class='@NumberToString(Model.Tiles[8].Chip)'></div>
+                <div class="house tl @threeStepIndex[17]"></div>
+                <div class="house t @threeStepIndex[18]"></div>
             </li>
             <li class='hex water'></li>
+            <div class="house tlport @threeStepIndex[19]"></div>
         </ol>
 
         <ol class="odd">
@@ -116,61 +196,89 @@
             <!--Tile position 9-->
             <li class='hex @Model.Tiles[9].Resource'>
                 <div class='@NumberToString(Model.Tiles[9].Chip)'></div>
+                <div class="house tl @threeStepIndex[20]"></div>
+                <div class="house t @threeStepIndex[21]"></div>
             </li>
             <!--Tile position 10-->
             <li class='hex @Model.Tiles[10].Resource'>
                 <div class='@NumberToString(Model.Tiles[10].Chip)'></div>
+                <div class="house tl @threeStepIndex[22]"></div>
+                <div class="house t @threeStepIndex[23]"></div>
             </li>
             <!--Tile position 11-->
             <li class='hex @Model.Tiles[11].Resource'>
                 <div class='@NumberToString(Model.Tiles[11].Chip)'></div>
+                <div class="house tl @threeStepIndex[24]"></div>
+                <div class="house t @threeStepIndex[25]"></div>
             </li>
             <!--Tile position 12-->
             <li class='hex @Model.Tiles[12].Resource'>
                 <div class='@NumberToString(Model.Tiles[12].Chip)'></div>
+                <div class="house tl @threeStepIndex[26]"></div>
+                <div class="house t @threeStepIndex[27]"></div>
             </li>
             <!--Tile position 13-->
             <li class='hex @Model.Tiles[13].Resource'>
                 <div class='@NumberToString(Model.Tiles[13].Chip)'></div>
+                <div class="house tl @threeStepIndex[28]"></div>
+                <div class="house t @threeStepIndex[29]"></div>
             </li>
             <!--Tile position 14-->
             <li class='hex @Model.Tiles[14].Resource'>
                 <div class='@NumberToString(Model.Tiles[14].Chip)'></div>
+                <div class="house tl @threeStepIndex[30]"></div>
+                <div class="house t @threeStepIndex[31]"></div>
             </li>
             <li class='hex water'>
                 <div class='harbor @Model.Ports[3].Conversion'>
                     <div class='harbor-piece l'></div>
+                    <div class="house tlport @threeStepIndex[32]"></div>
                 </div>
             </li>
         </ol>
 
         <ol class="even">
-            <li class='hex water'></li>
+            <li class='hex water'>
+                <div class="house t @threeStepIndex[33]"></div>
+            </li>
             <!--Tile position 15-->
             <li class='hex @Model.Tiles[15].Resource'>
                 <div class='@NumberToString(Model.Tiles[15].Chip)'></div>
+                <div class="house tl @threeStepIndex[34]"></div>
+                <div class="house t @threeStepIndex[35]"></div>
             </li>
             <!--Tile position 16-->
             <li class='hex @Model.Tiles[16].Resource'>
                 <div class='@NumberToString(Model.Tiles[16].Chip)'></div>
+                <div class="house tl @threeStepIndex[36]"></div>
+                <div class="house t @threeStepIndex[37]"></div>
             </li>
             <!--Tile position 17-->
             <li class='hex @Model.Tiles[17].Resource'>
                 <div class='@NumberToString(Model.Tiles[17].Chip)'></div>
+                <div class="house tl @threeStepIndex[38]"></div>
+                <div class="house t @threeStepIndex[39]"></div>
             </li>
             <!--Tile position 18-->
             <li class='hex @Model.Tiles[18].Resource'>
                 <div class='@NumberToString(Model.Tiles[18].Chip)'></div>
+                <div class="house tl @threeStepIndex[40]"></div>
+                <div class="house t @threeStepIndex[41]"></div>
             </li>
             <!--Tile position 19-->
             <li class='hex @Model.Tiles[19].Resource'>
                 <div class='@NumberToString(Model.Tiles[19].Chip)'></div>
+                <div class="house tl @threeStepIndex[42]"></div>
+                <div class="house t @threeStepIndex[43]"></div>
             </li>
             <!--Tile position 20-->
             <li class='hex @Model.Tiles[20].Resource'>
                 <div class='@NumberToString(Model.Tiles[20].Chip)'></div>
+                <div class="house tl @threeStepIndex[44]"></div>
+                <div class="house t @threeStepIndex[45]"></div>
             </li>
             <li class='hex water'>
+                <div class="house tlport @threeStepIndex[46]"></div>
             </li>
         </ol>
 
@@ -179,55 +287,81 @@
             <li class='hex water'>
                 <div class='harbor @Model.Ports[8].Conversion'>
                     <div class='harbor-piece r'></div>
+                    <div class="house tlport @threeStepIndex[47]"></div>
                 </div>
             </li>
             <!--Tile position 21-->
             <li class='hex @Model.Tiles[21].Resource'>
                 <div class='@NumberToString(Model.Tiles[21].Chip)'></div>
+                <div class="house tl @threeStepIndex[48]"></div>
+                <div class="house t @threeStepIndex[49]"></div>
             </li>
             <!--Tile position 22-->
             <li class='hex @Model.Tiles[22].Resource'>
                 <div class='@NumberToString(Model.Tiles[22].Chip)'></div>
+                <div class="house tl @threeStepIndex[50]"></div>
+                <div class="house t @threeStepIndex[51]"></div>
             </li>
             <!--Tile position 23-->
             <li class='hex @Model.Tiles[23].Resource'>
                 <div class='@NumberToString(Model.Tiles[23].Chip)'></div>
+                <div class="house tl @threeStepIndex[52]"></div>
+                <div class="house t @threeStepIndex[53]"></div>
             </li>
             <!--Tile position 24-->
             <li class='hex @Model.Tiles[24].Resource'>
                 <div class='@NumberToString(Model.Tiles[24].Chip)'></div>
+                <div class="house tl @threeStepIndex[54]"></div>
+                <div class="house t @threeStepIndex[55]"></div>
             </li>
             <!--Tile position 25-->
             <li class='hex @Model.Tiles[25].Resource'>
                 <div class='@NumberToString(Model.Tiles[25].Chip)'></div>
+                <div class="house tl @threeStepIndex[56]"></div>
+                <div class="house t @threeStepIndex[57]"></div>
             </li>
             <li class='hex water'>
                 <div class='harbor @Model.Ports[4].Conversion'>
                     <div class='harbor-piece l'></div>
+                    <div class="house tlport @threeStepIndex[58]"></div>
+                    <div class="house t @threeStepIndex[59]"></div>
                 </div>
             </li>
         </ol>
 
         <ol class="even">
             <li class='hex spacer'></li>
-            <li class='hex water'></li>
+            <li class='hex water'>
+                <div class="house t @threeStepIndex[60]"></div>
+            </li>
             <!--Tile position 26-->
             <li class='hex @Model.Tiles[26].Resource'>
                 <div class='@NumberToString(Model.Tiles[26].Chip)'></div>
+                <div class="house tl @threeStepIndex[61]"></div>
+                <div class="house t @threeStepIndex[62]"></div>
             </li>
             <!--Tile position 27-->
             <li class='hex @Model.Tiles[27].Resource'>
                 <div class='@NumberToString(Model.Tiles[27].Chip)'></div>
+                <div class="house tl @threeStepIndex[63]"></div>
+                <div class="house t @threeStepIndex[64]"></div>
             </li>
             <!--Tile position 28-->
             <li class='hex @Model.Tiles[28].Resource'>
                 <div class='@NumberToString(Model.Tiles[28].Chip)'></div>
+                <div class="house tl @threeStepIndex[65]"></div>
+                <div class="house t @threeStepIndex[66]"></div>
             </li>
             <!--Tile position 29-->
             <li class='hex @Model.Tiles[29].Resource'>
                 <div class='@NumberToString(Model.Tiles[29].Chip)'></div>
+                <div class="house tl @threeStepIndex[67]"></div>
+                <div class="house t @threeStepIndex[68]"></div>
             </li>
-            <li class='hex water'></li>
+            <li class='hex water'>
+                <div class="house tlport @threeStepIndex[69]"></div>
+                <div class="house t @threeStepIndex[70]"></div>
+            </li>
         </ol>
 
         <ol class="odd">
@@ -236,18 +370,29 @@
             <li class='hex water'>
                 <div class='harbor @Model.Ports[7].Conversion'>
                     <div class='harbor-piece tr'></div>
+                    <div class="house tportbottomrow @threeStepIndex[71]"></div>
                 </div>
             </li>
-            <li class='hex water'></li>
+            <li class='hex water'>
+                <div class="house tlport @threeStepIndex[72]"></div>
+                <div class="house tportbottomrow @threeStepIndex[73]"></div>
+            </li>
             <li class='hex water'>
                 <div class='harbor @Model.Ports[6].Conversion'>
                     <div class='harbor-piece tl'></div>
+                    <div class="house tlport @threeStepIndex[74]"></div>
+                    <div class="house tportbottomrow @threeStepIndex[75]"></div>
                 </div>
             </li>
-            <li class='hex water'></li>
+            <li class='hex water'>
+                <div class="house tlport @threeStepIndex[76]"></div>
+                <div class="house tportbottomrow @threeStepIndex[77]"></div>
+            </li>
             <li class='hex water'>
                 <div class='harbor @Model.Ports[5].Conversion'>
                     <div class='harbor-piece tl'></div>
+                    <div class="house tlport @threeStepIndex[78]"></div>
+                    <div class="house tportbottomrow @threeStepIndex[79]"></div>
                 </div>
             </li>
         </ol>
