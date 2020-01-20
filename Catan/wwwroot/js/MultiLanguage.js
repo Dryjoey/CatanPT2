@@ -54,8 +54,7 @@
         'three-one any': '3:1 ieder',
         'two-one ore': '2:1 erts',
         'two-one wood': '2:1 hout',
-		'SaveLibText': 'Board opgeslagen in collectie!',
-
+        'SaveLibText': 'Board opgeslagen in collectie!',
     }
 };
 var lang = sessionStorage.getItem('lang');

@@ -14,15 +14,15 @@ namespace DAO
         private void InsertUser(int user)
         {
            
-                string query = "INSERT INTO Users(UserId) VALUES (@UserId)";
-                using (SqlCommand command = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    command.Parameters.Add("@UserID", SqlDbType.Int);
-                    command.Parameters["@UserID"].Value = user;
-                    command.ExecuteNonQuery();
-                    con.Close();
-                }
+                //string query = "INSERT INTO Users(UserId) VALUES (@UserId)";
+                ////using (SqlCommand command = new SqlCommand(query, con))
+                ////{
+                ////    con.Open();
+                ////    command.Parameters.Add("@UserID", SqlDbType.Int);
+                ////    command.Parameters["@UserID"].Value = user;
+                ////    command.ExecuteNonQuery();
+                ////    con.Close();
+                ////}
             
         }
 

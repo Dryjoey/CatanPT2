@@ -55,7 +55,6 @@ ol.odd {
     margin-right: 60px;
     transition: all 150ms ease-in-out;
 }
-
     .hex:before, .hex:after {
         position: absolute;
         width: inherit;
@@ -82,8 +81,7 @@ ol.odd {
     }
 
     .hex.water {
-        background-color: #8e8ee7;
-        
+        background-color: #8e8ee7
     }
 
     .hex.desert {

@@ -60,5 +60,10 @@ namespace Catan.Controllers
             iologic.SaveBoard(board, user.UserId);
             return View();
         }
+        [HttpPost]
+        public IActionResult ReturnToSettings()
+        {
+            return View();
+        }
     }
 }
