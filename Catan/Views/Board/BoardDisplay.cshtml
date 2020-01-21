@@ -1,4 +1,5 @@
-﻿@{
+﻿@Html.Raw("<script src=\"https://cdn.jsdelivr.net/npm/@grabzit/js@3.3.7/grabzit.min.js\"></script>")
+@{
     string size;
     if (Model.Tiles.Count <= 19)
     {
@@ -9,6 +10,16 @@
         size = "big";
     }
 }
+<style>
+    
+    img {
+         display: block;
+         position: absolute;
+         z-index: 100;
+         width: 24%;
+         float: right;
+     }
+</style>
 <div class="centered-@size">
     <div class="board-partial">
         @if (size == "small")
@@ -23,7 +34,7 @@
     <ul class="vertical-@size">
         <li>
             <div>
-                <button type="button" onClick="ToImage()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
+                <button type="button" onClick="DownloadImage()" class="main-menu-btn"><span class="lang" key="SaveImage"></span></button>
             </div>
         </li>
         <li>
@@ -52,6 +63,11 @@
 
 </div>
 <script>
+    function DownloadImage() {
+       
+            GrabzIt("YzFiMGZmNzljYWNmNDQ4ZGJmOGM5NWE1Yzg5NTZmZWY=").ConvertPage({ "target": "board_partial", "bheight": -1, "height": -1, "width": -1 }).Create();
+            
+    }
     function Refresh() {
         window.location.reload();
 
