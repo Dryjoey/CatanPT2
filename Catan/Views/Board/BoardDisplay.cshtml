@@ -1,4 +1,5 @@
-﻿@{
+﻿@Html.Raw("<script src=\"https://cdn.jsdelivr.net/npm/@grabzit/js@3.3.7/grabzit.min.js\"></script>")
+@{
     string size = "";
 }
 @{
@@ -12,33 +13,24 @@
         size = "big";
     }
 }
+<style>
+    img {
+        display: block;
+        position: absolute;
+        z-index: 100;
+        width: 25%;
+        float: right;
+    }
+</style>
 <script>
     var size = "";
-    size = "\"+ @size"+ "\"" ;
+    size = "\"+ @size" + "\"";
+    
     function DownloadImage() {
-
-        html2canvas($('#board_partial')[0],
-            {
-                onclone: function (document) {
-                    if (size == "small") {
-                        document.querySelector('#board_partial').style.CSSStyleSheet = "~/css/SmallBoard.css";
-                    } else {
-                        document.querySelector('#board_partial').style.CSSStyleSheet = "~/css/BigBoard.css";
-                    }
-                },
-                width: 1200,
-                height: 1200
-            }).then(function (canvas) {
-                    if (size == "small") {
-                        canvas.CSSStyleSheet = "~/css/SmallBoard.css";
-                    } else {
-                        canvas.CSSStyleSheet = "~/css/BigBoard.css";
-                    }
-                canvas.toBlob(function (blob) {
-
-                saveAs(blob, "Catan_Board.jpg");
-            });
-        });
+       @ViewBag.
+        //GrabzIt("YzFiMGZmNzljYWNmNDQ4ZGJmOGM5NWE1Yzg5NTZmZWY=").ConvertPage({ "target": "board_partial", "bheight": -1, "height": -1, "width": -1 }).Create();
+        GrabzIt("YzFiMGZmNzljYWNmNDQ4ZGJmOGM5NWE1Yzg5NTZmZWY=").ConvertURL("http://.com/BoardDisplay/index.html",
+            {"target": "#features", "bheight": -1, "height": -1, "width": -1}).Create();
     }
 
     function Refresh() {
@@ -66,7 +58,6 @@
 
 
 </script>
-
 <div class="centered-@size">
     <div class="board-partial" id="board_partial">
         @if (size == "small")
