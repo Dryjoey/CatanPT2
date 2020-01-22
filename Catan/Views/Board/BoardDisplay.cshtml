@@ -11,15 +11,40 @@
     }
 }
 <style>
-    
+
     img {
-         display: block;
-         position: absolute;
-         z-index: 100;
-         width: 24%;
-         float: right;
-     }
+        display: block;
+        position: absolute;
+        z-index: 40;
+        width: 24%;
+        float: right;
+    }
+
+    .loading {
+        visibility: hidden;
+        margin: 0 0 0 15px;
+    }
+
+        .loading img {
+            align-self: center;
+            display: block;
+            width: 50px;
+        }
+
+        .loading p {
+            display: block;
+            margin: 0 0 0 55px;
+        }
+
+    .helpSave {
+        visibility: hidden;
+        width: 150px;
+        position: fixed;
+        z-index: 6000;
+        margin: 290px 0 0 70px;
+    }
 </style>
+<div class="helpSave"><p>Richt Click to Save!</p></div>
 <div class="centered-@size">
     <div class="board-partial">
         @if (size == "small")
@@ -38,9 +63,9 @@
             </div>
         </li>
         <li>
-            <div>
-                <button type="button" class="main-menu-btn" onclick="Unhide()"><span class="lang" key="SaveLibrary"></span></button>
-                <h5 id="savedText" class="lang" key="SaveLibText"></h5>
+            <div class="loading">
+                <img src="~/images/loading.gif" /><br />
+                <p>Generating Image</p>
             </div>
         </li>
         <li>
@@ -63,10 +88,11 @@
 
 </div>
 <script>
+
     function DownloadImage() {
-       
-            GrabzIt("YzFiMGZmNzljYWNmNDQ4ZGJmOGM5NWE1Yzg5NTZmZWY=").ConvertPage({ "target": "board_partial", "bheight": -1, "height": -1, "width": -1 }).Create();
-            
+        GrabzIt("YzFiMGZmNzljYWNmNDQ4ZGJmOGM5NWE1Yzg5NTZmZWY=").ConvertPage({ "target": "board_partial", "bheight": -1, "height": -1, "width": -1 }).Create();
+        Unhide();
+
     }
     function Refresh() {
         window.location.reload();
@@ -77,15 +103,25 @@
     }
 
     function Unhide() {
-        var hid = document.querySelector('#savedText');
+        var hiddenSave = document.querySelector(".helpSave");
+        var hid = document.querySelector('.loading');
         var Hidstyle = getComputedStyle(hid);
         if (Hidstyle.visibility == "hidden") {
-            document.getElementById("savedText").style.visibility = "visible";
+            hid.style.visibility = "visible";
         }
         setTimeout(
             function () {
-                document.getElementById("savedText").style.visibility = "hidden";
-            }, 2000);
+                hid.style.visibility = "hidden";
+
+                hiddenSave.style.visibility = "visible";
+            }, 30000);
+    }
+    function Show() {
+        var hiddenSave = document.querySelector('.helpSave');
+
+        if (isHidden == true) {
+            hiddenSave.style.visibility = "visible";
+        }
     }
     function GoToHome() {
         window.location.href = "/Home";
