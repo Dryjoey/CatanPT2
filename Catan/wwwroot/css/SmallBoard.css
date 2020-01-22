@@ -33,12 +33,14 @@
 ol.even {
     position: relative;
     left: 68.18182px;
+    z-index: 10;
 }
 
 ol.odd {
     position: relative;
     margin-top: -73px;
     margin-bottom: -63px;
+    z-index: 10;
 }
 
 /* ----------------------------------------- */
@@ -55,7 +57,6 @@ ol.odd {
     margin-right: 60px;
     transition: all 150ms ease-in-out;
 }
-
     .hex:before, .hex:after {
         position: absolute;
         width: inherit;
@@ -82,8 +83,7 @@ ol.odd {
     }
 
     .hex.water {
-        background-color: #8e8ee7;
-        
+        background-color: #8e8ee7
     }
 
     .hex.desert {
@@ -399,54 +399,160 @@ ol.odd {
 /* ----------------------------------------- */
 /* ----------------------------------------- */
 /* begin houses */
-.hex .house {
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
+    .house {
     height: 20px;
     width: 20px;
     position: absolute;
-    z-index: 800;
 }
 
-    .hex .house::before {
+    .house::before {
         width: 0;
         height: 0;
-        border-style: solid;
         transform: rotate(90deg);
         content: "";
         position: absolute;
     }
 
     /* roof of the house */
-    .hex .house::before {
-        top: 4px;
-        left: 14px;
+    .house::before {
+        top: -3px;
+        left: 18px;
         border-width: 0 12px 12px 12px;
         border-color: transparent transparent #000000 transparent;
     }
 
-    .hex .house.target {
-        border: 2px dashed black;
+    .house.threejump {
+        position: absolute;
+        font-size: 25px;
+        line-height: 40px;
+        text-align: center;
+        z-index: 800;
+        height: 45px;
+        width: 45px;
+        border-radius: 45px;
+        border: 2px solid black;
+        top: 42px;
+        left: 18px;
+        transform: rotate(61deg);
+        background-color: red;
+
     }
 
-        .hex .house.target:hover {
-            background-color: yellow;
-        }
-
-        .hex .house.target::before {
-            display: none;
-        }
-
-    .hex .house.t {
-        top: 55px;
-        left: 100px;
+    .house.t {
+        top: 42px;
+        left: 89px;
     }
 
-    .hex .house.tl {
-        top: -15px;
-        left: 65px;
+    .house.tl {
+        top: -25px;
+        left: 57px;
     }
+
+    .house.number_two::before {
+        content: "2";
+        color: white;
+        transform: rotate(30deg);
+    }
+
+
+    .house.number_three::before {
+    content: "3";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    .house.number_four::before {
+    content: "4";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    .house.number_five::before {
+    content: "5";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    .house.number_six::before {
+    content: "6";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    .house.number_seven::before {
+        content: "7";
+        color: white;
+        transform: rotate(30deg);
+    }
+
+    .house.number_eight::before {
+    content: "8";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    .house.number_nine::before {
+    content: "9";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    .house.number_ten::before {
+    content: "10";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    .house.number_eleven::before {
+    content: "11";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    .house.number_twelve::before {
+    content: "12";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    .house.number_thirteen::before {
+    content: "13";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    .house.number_fourteen::before {
+    content: "14";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    house.number_fifteen::before {
+    content: "15";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    house.number_sixteen::before {
+    content: "16";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    house.number_seventeen::before {
+    content: "17";
+    color: white;
+    transform: rotate(30deg);
+    }
+
+    house.number_eighteen::before {
+    content: "18";
+    color: white;
+    transform: rotate(  );
+    }
+
+
+    
 
 /* end  houses */
 /* ----------------------------------------- */

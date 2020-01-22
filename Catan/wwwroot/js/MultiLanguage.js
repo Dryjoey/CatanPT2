@@ -20,9 +20,11 @@
         'Menu': 'Menu',
         'Library': 'Library',
         'Test': 'Test',
-        'Sheep': 'sheep',
-        'Brick': 'brick',
-		'Any': 'any',
+        'two-one sheep': '2:1 sheep',
+        'two-one brick': '2:1 brick',
+        'three-one any': '3:1 any',
+        'two-one ore': '2:1 ore',
+        'two-one wood': '2:1 wood',
 		'SaveLibText': 'Board Saved to Library!',
 
 
@@ -47,14 +49,16 @@
         'Menu': 'Menu',
         'Library': 'Collectie',
         'Test': 'Test',
-        'Sheep': 'schaap',
-        'Brick': 'baksteen',
-		'Any': 'elke',
-		'SaveLibText': 'Board opgeslagen in collectie!',
-
+        'two-one sheep': '2:1 schaap',
+        'two-one brick': '2:1 baksteen',
+        'three-one any': '3:1 ieder',
+        'two-one ore': '2:1 erts',
+        'two-one wood': '2:1 hout',
+        'SaveLibText': 'Board opgeslagen in collectie!',
     }
 };
 var lang = sessionStorage.getItem('lang');
+
 
 $(function () {
     if (sessionStorage.getItem('lang') == null || undefined) {
@@ -63,6 +67,12 @@ $(function () {
     lang = sessionStorage.getItem('lang');
     $('.lang').each(function(index, item) {
         $(this).text(arrLang[lang][$(this).attr('key')]);
+        if (lang == 'en') {
+            $(".submit-btn-en").css({ "visibility": "visible"});
+        }
+        else if (lang == 'nl') {
+            $(".submit-btn-nl").css({ "visibility": "visible" });
+        }
     })
 });
 
@@ -72,7 +82,7 @@ function Changelanguage(parameters) {
         sessionStorage.setItem('lang', 'nl');
     }
     else if (sessionStorage.getItem('lang') === 'nl') {
-        sessionStorage.setItem('lang',  'en');
+        sessionStorage.setItem('lang', 'en');
     }
     lang = sessionStorage.getItem('lang');
     $('.lang').each(function (index, item) {

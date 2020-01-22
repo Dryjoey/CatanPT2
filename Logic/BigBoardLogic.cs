@@ -346,86 +346,86 @@ namespace Logic
 
         public static int[][] TSJAdjecent = new int[][]
         {
-             new int[]{3},
-             new int[]{3},
-             new int[]{2},
-             new int[]{2, 3},
-             new int[]{3, 8},
-             new int[]{8},
-             new int[]{1},
-             new int[]{1, 2},
-             new int[]{3, 2, 7},
-             new int[]{3, 7, 8},
-             new int[]{8, 14},
-             new int[]{14},
-             new int[]{0},
-             new int[]{0, 1},
-             new int[]{1, 2, 6},
-             new int[]{2, 6, 7},
-             new int[]{7, 8, 13},
-             new int[]{8, 13, 14},
-             new int[]{14, 20},
-             new int[]{20},
-             new int[]{0},
-             new int[]{0, 1, 5},
-             new int[]{1, 5, 6},
-             new int[]{6, 7, 12},
-             new int[]{7, 12, 13},
-             new int[]{13, 14, 19},
-             new int[]{14, 19, 20},
-             new int[]{20},
-             new int[]{0, 4},
-             new int[]{0, 4, 5},
-             new int[]{5, 6, 11},
-             new int[]{6, 11, 12},
-             new int[]{12, 13, 18},
-             new int[]{13, 18, 19},
-             new int[]{19, 20, 25},
-             new int[]{20, 25},
-             new int[]{4},
-             new int[]{4, 5, 10},
-             new int[]{5, 10, 11},
-             new int[]{11, 12, 17},
-             new int[]{12, 17, 18},
-             new int[]{18, 19, 24},
-             new int[]{19, 24, 25},
-             new int[]{25},
-             new int[]{4, 9},
-             new int[]{4, 9, 10},
-             new int[]{10, 11, 16},
-             new int[]{11, 16, 17},
-             new int[]{17, 18, 23},
-             new int[]{18, 23, 24},
-             new int[]{24, 25, 29},
-             new int[]{25, 29},
-             new int[]{9},
-             new int[]{9, 10, 15},
-             new int[]{10, 15, 16},
-             new int[]{16, 17, 22},
-             new int[]{17, 22, 23},
-             new int[]{23, 24, 28},
-             new int[]{24, 28, 29},
-             new int[]{29},
-             new int[]{9},
-             new int[]{9, 15},
-             new int[]{15, 16, 21},
-             new int[]{16, 21, 22},
-             new int[]{22, 23, 27},
-             new int[]{23, 27, 28},
-             new int[]{28, 29},
-             new int[]{29},
-             new int[]{15},
-             new int[]{15, 21},
-             new int[]{21, 22, 26},
-             new int[]{22, 26, 27},
-             new int[]{27, 28},
-             new int[]{28},
-             new int[]{21},
-             new int[]{21, 26},
-             new int[]{26, 27},
-             new int[]{27},
-             new int[]{26},
-             new int[]{26}
+             new int[]{0}, // 0 
+             new int[]{0}, // 1
+             new int[]{0, 1}, // 2
+             new int[]{1}, // 3
+             new int[]{1, 2}, // 4
+             new int[]{2}, // 5
+             new int[]{2, 3}, // 6
+             new int[]{3},// 7
+             new int[]{3}, // 8 
+             new int[]{4}, // 9
+             new int[]{0, 4}, // 10
+             new int[]{0, 4, 5}, // 11
+             new int[]{0, 1, 5}, // 12
+             new int[]{1, 5, 6}, // 13
+             new int[]{1, 2, 6}, // 14
+             new int[]{2, 6, 7}, // 15
+             new int[]{2, 3, 7}, // 16
+             new int[]{3, 7, 8}, // 17
+             new int[]{3, 8}, // 18
+             new int[]{8}, // 19
+             new int[]{9}, // 20
+             new int[]{4, 9}, // 21
+             new int[]{4, 9, 10}, // 22
+             new int[]{4, 5, 10}, // 23
+             new int[]{5, 10, 11}, // 24
+             new int[]{5, 6, 11}, // 25
+             new int[]{6, 11, 12}, // 26
+             new int[]{6, 7, 12}, // 27
+             new int[]{7, 12, 13}, // 28
+             new int[]{7, 8, 13}, // 29
+             new int[]{8, 13, 14}, // 30
+             new int[]{8, 14}, // 31
+             new int[]{14}, // 32
+             new int[]{9}, // 33
+             new int[]{9, 15}, // 34
+             new int[]{9, 10, 15}, // 35
+             new int[]{10, 15, 16}, // 36
+             new int[]{10, 11, 16}, // 37
+             new int[]{11, 16, 17}, // 38
+             new int[]{11, 12, 17}, // 39
+             new int[]{12, 17, 18}, // 40
+             new int[]{12, 13, 18}, // 41
+             new int[]{13, 18, 19}, // 42
+             new int[]{13, 14, 19}, // 43
+             new int[]{14, 19, 20},  // 44
+             new int[]{14, 20}, // 45
+             new int[]{20}, // 46
+             new int[]{15}, // 47
+             new int[]{15, 21}, // 48
+             new int[]{15, 16, 21}, // 49
+             new int[]{16, 21, 22}, // 50
+             new int[]{16, 17, 22}, // 51
+             new int[]{17, 22, 23}, // 52
+             new int[]{17, 18, 23}, // 53
+             new int[]{18, 23, 24}, // 54
+             new int[]{18, 19, 24}, // 55
+             new int[]{19, 24, 25}, // 56
+             new int[]{19, 20, 25}, // 57
+             new int[]{20, 25}, // 58
+             new int[]{20}, // 59
+             new int[]{21}, // 60
+             new int[]{21, 26}, // 61
+             new int[]{21, 22, 26}, // 62
+             new int[]{22, 26, 27}, // 63
+             new int[]{22, 23, 27}, // 64
+             new int[]{23, 27, 28}, // 65
+             new int[]{23, 24, 28}, // 66
+             new int[]{24, 28, 29}, // 67
+             new int[]{24, 25, 29}, // 68
+             new int[]{25, 29}, // 69
+             new int[]{25}, // 70
+             new int[]{26}, // 71
+             new int[]{26}, // 72
+             new int[]{26, 27}, // 73
+             new int[]{27}, // 74
+             new int[]{27, 28}, // 75
+             new int[]{28}, // 76
+             new int[]{28, 29}, // 77
+             new int[]{29}, // 78
+             new int[]{29} // 79
         };
     }
 }

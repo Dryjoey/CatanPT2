@@ -1,29 +1,36 @@
 ﻿@using Models
-<body>
-    <nav class="navbar sticky-top">
-        <div class="image">
-            <img src="~/images/Banner.png" />
-            <label class="image-titel"><span class="lang" key="Boardgenerator"></span></label>
+    <body>
+        <nav class="navbar sticky-top">
+            <div class="image">
+                <img src="~/images/Banner.png" />
+                <label class="image-titel"><span class="lang" key="Boardgenerator"></span></label>
+            </div>
+        </nav>
+        <div class="main-menu-container">
+            <ul class="main-menu-list">
+                <li>
+                    <div>
+                        <button type="submit" class="main-menu-btn" onclick="GotoSettings()"><p class="lang" key="Generateboard"></p></button>
+                        @using (Html.BeginForm("index", "Library"))
+                        {
+                            <button type="submit" class="main-menu-btn"><span class="lang" key="Library"></span></button>
+                        }
+                    </div>
+                </li>
+            </ul>
         </div>
-    </nav>
-    <div class="main-menu-container">
-        <ul class="main-menu-list">
-            <li>
-                <div>
-                    @using (Html.BeginForm("index", "Settings"))
-                    {
-                        <button type="submit" class="main-menu-btn"><p class="lang" key="Generateboard"></p></button>
-                    }
-                </div>
-            </li>
-        </ul>
-    </div>
-    <nav class="navbar navbar-custom navbar-fixed-bottom">
-        <div class="Button-lower-Right">
-            @using (Html.BeginForm("index", "Options"))
-            {
-                <input type="image" src="images/Gear.png" />
-            }
-        </div>
-    </nav>
-</body> 
+        <nav class="navbar navbar-custom navbar-fixed-bottom">
+            <div class="Button-lower-Right">
+                @using (Html.BeginForm("index", "Options"))
+                {
+                    <input type="image" src="images/Gear.png" />
+                }
+            </div>
+        </nav>
+    </body> 
+<script>
+    function GotoSettings() {
+        window.location.href = '/Settings';
+    }
+
+</script>

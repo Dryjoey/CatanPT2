@@ -13,6 +13,7 @@ namespace Catan.Controllers
 {
     public class SettingsController : Controller
     { 
+        [HttpGet]
         public IActionResult Index(Settingsmodel settingsmodel)
         {
             settingsmodel = new Settingsmodel();

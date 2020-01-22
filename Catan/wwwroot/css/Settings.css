@@ -48,15 +48,23 @@
 .row-align-items-center{
     padding: 0px;
 }
-#submit-btn{
-	color: black;
-	font-size: 18px;
-	border-radius: 8px;
-	transition-duration: 0.4s;
-	text-decoration: none;
-	display: inline-block;
-	padding: 15px 32px;
-	border: solid;
+.submit-btn-en{
+    z-index:auto;
+    visibility:hidden;
+}
+.submit-btn-nl {
+    z-index:auto;
+    visibility:hidden;
+}
+#submit-btn {
+    color: black;
+    font-size: 18px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    display: inline;
+    padding: 15px 32px;
+    border: solid;
 }
 .settingsGear{
     position: absolute;
