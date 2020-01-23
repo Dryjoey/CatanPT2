@@ -20,7 +20,7 @@ namespace Catan.Controllers
             using (var storage = new LocalStorage())
             {
                 var key = "UserIDKey";
-                CatanUser.UserId = iologic.GetLastUser();
+                //CatanUser.UserId = iologic.GetLastUser();
                 storage.Store(key, CatanUser.UserId);
                 storage.Persist();
 

@@ -237,25 +237,43 @@ ol.odd {
 .harbor.any::after {
     content: "any";
 }
+.harbor.any.nl::after{
+    content: "ieder";
+}
 
 .harbor.wood::after {
-    content: "wood";
+    content: attr(data-content) 'wood';
+}
+.harbor.wood.nl::after{
+    content: "hout";
 }
 
 .harbor.ore::after {
     content: "ore";
 }
+.harbor.ore.nl::after{
+    content: "steen";
+}
 
 .harbor.wool::after {
     content: "wool";
+}
+.harbor.wool.nl::after{
+    content: "wol";
 }
 
 .harbor.brick::after {
     content: "brick";
 }
+.harbor.brick.nl::after{
+    content: "baksteen";
+}
 
 .harbor.wheat::after {
     content: "wheat";
+}
+.harbor.wheat.nl::after{
+    content: "graan";
 }
 
 /* end harbors */

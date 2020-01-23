@@ -69,10 +69,18 @@ $(function () {
     $('.lang').each(function(index, item) {
         $(this).text(arrLang[lang][$(this).attr('key')]);
         if (lang == 'en') {
-            $(".submit-btn-en").css({ "visibility": "visible"});
+            $(".submit-btn-en").css({ "visibility": "visible" });
+            $('.harbor.wood').attr('datacontent', 'wood');
         }
         else if (lang == 'nl') {
             $(".submit-btn-nl").css({ "visibility": "visible" });
+            $('.harbor.wood').attr('datacontent', 'hout');
+            $('.harbor.wood').addClass('nl');
+            $('.harbor.ore').addClass('nl');
+            $('.harbor.brick').addClass('nl');
+            $('.harbor.wheat').addClass('nl');
+            $('.harbor.any').addClass('nl');
+            $('.harbor.wool').addClass('nl');
         }
     })
 });
