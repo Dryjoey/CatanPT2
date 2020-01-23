@@ -72,6 +72,12 @@ $(function () {
         }
         else if (lang == 'nl') {
             $(".submit-btn-nl").css({ "visibility": "visible" });
+            $('.harbor.wood').addClass('nl');
+            $('.harbor.ore').addClass('nl');
+            $('.harbor.brick').addClass('nl');
+            $('.harbor.wheat').addClass('nl');
+            $('.harbor.any').addClass('nl');
+            $('.harbor.wool').addClass('nl');
         }
     })
 });

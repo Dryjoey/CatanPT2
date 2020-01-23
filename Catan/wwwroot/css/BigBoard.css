@@ -272,6 +272,29 @@ ol.odd {
 .harbor.wheat::after {
     content: "wheat";
 }
+.harbor.any.nl::after {
+    content: "ieder";
+}
+
+.harbor.ore.nl::after {
+    content: "steen";
+}
+
+.harbor.wool::after {
+    content: "wol";
+}
+
+.harbor.brick.nl::after {
+    content: "baksteen";
+}
+
+.harbor.wheat.nl::after {
+    content: "graan";
+}
+
+.harbor.wood.nl::after {
+    content: "hout";
+}
 
 /* end harbors */
 /* ----------------------------------------- */
